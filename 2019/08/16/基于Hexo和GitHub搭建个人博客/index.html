@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    
+        
+                <meta name="keywords" content="爱前端 | 爱工作 | 爱生活">
+                
+                    
+                            <meta name="description" content="This is My blog">
+                            
+                                <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+                                <title>
+                                    
+                                        Hexo+Github Page搭建个人博客 |
+                                            
+                                                一只正在成长的程序猿
+                                </title>
+                                
+                                    <link rel="shortcut icon" href="/images/headPortrait.png">
+                                    
+                                        <link rel="stylesheet" href="/css/style.css">
+                                            
+                                                <link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+                                                    
+                                                        <script src="/js/pace.min.js"></script>
+</head></html>
+
+    <body>
+        <main class="content">
+            <section class="outer">
+    <article id="post-基于Hexo和GitHub搭建个人博客" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Hexo+Github Page搭建个人博客
+    </h1>
+  
+  
+
+
+
+
+      </header>
+    
+
+    
+      <div class="article-meta">
+        <a href="/2019/08/16/基于Hexo和GitHub搭建个人博客/" class="article-date">
+  <time datetime="2019-08-16T09:57:58.650Z" itemprop="datePublished">2019-08-16</time>
+</a>
+        
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/技术/">技术</a>
+  </div>
+
+      </div>
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+
+      
+
+      
+        <p><a href="https://wgjh5.github.io/">我的博客</a></p>
+<h3 id="安装前提"><a href="#安装前提" class="headerlink" title="安装前提"></a>安装前提</h3><p>安装 Hexo 相当简单。然而在安装前，您必须检查电脑中是否已安装下列应用程序：</p>
+<ul>
+<li><a href="http://nodejs.org/" target="_blank" rel="noopener">Node.js</a> (至少nodejs 6.9)</li>
+<li><a href="http://git-scm.com/" target="_blank" rel="noopener">Git</a></li>
+</ul>
+<a id="more"></a>
+
+<h4 id="1-先全局安装脚手架"><a href="#1-先全局安装脚手架" class="headerlink" title="1.先全局安装脚手架"></a>1.先全局安装脚手架</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-cli -g</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-搭建博客文件夹"><a href="#2-搭建博客文件夹" class="headerlink" title="2.搭建博客文件夹"></a>2.搭建博客文件夹</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo init blog</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-进入建好的文件夹并安装依赖"><a href="#3-进入建好的文件夹并安装依赖" class="headerlink" title="3.进入建好的文件夹并安装依赖"></a>3.进入建好的文件夹并安装依赖</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> blog</span><br><span class="line">npm install</span><br></pre></td></tr></table></figure>
+
+<h4 id="4-开启服务"><a href="#4-开启服务" class="headerlink" title="4.开启服务"></a>4.开启服务</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo  server </span><br><span class="line"><span class="comment">//简写</span></span><br><span class="line">hexo s</span><br></pre></td></tr></table></figure>
+
+<p><a href="https://hexo.io/zh-cn/" target="_blank" rel="noopener">官方文档</a></p>
+<h3 id="选择主题"><a href="#选择主题" class="headerlink" title="选择主题"></a>选择主题</h3><p><a href="https://hexo.io/themes/" target="_blank" rel="noopener">主题链接</a></p>
+<blockquote>
+<p>我选择的主题是 <code>ocean</code></p>
+</blockquote>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="built_in">clone</span> https://github.com/zhwangart/hexo-theme-ocean.git themes/ocean</span><br></pre></td></tr></table></figure>
+
+<h3 id="启用"><a href="#启用" class="headerlink" title="启用"></a>启用</h3><p>目录 <code>theme</code> 中 <code>_config.yml</code> 选择 <code>theme: ocean</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">theme: ocean</span><br></pre></td></tr></table></figure>
+
+<h3 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> themes/ocean</span><br><span class="line">$ git pull</span><br></pre></td></tr></table></figure>
+
+<h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><p>默认开启<strong>相册</strong>与<strong>关于</strong>菜单，关闭 <strong>Gitalk</strong> 评论功能，需要的同学 <code>true</code> 就可以了，<a href="https://zhwangart.github.io/2018/12/06/Gitalk/" target="_blank" rel="noopener">关于 Gitalk 的使用</a> 过程中遇到各种报错，有同样问题的，或者有兴趣想要了解 Gitalk 可以移步看一看。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Menu</span></span><br><span class="line">menu:</span><br><span class="line">  主页: /</span><br><span class="line">  归档: /archives</span><br><span class="line">  相册: /gallery</span><br><span class="line">  关于: /about</span><br><span class="line">rss: /atom.xml</span><br><span class="line"></span><br><span class="line"><span class="comment"># Miscellaneous</span></span><br><span class="line">favicon: /favicon.ico</span><br><span class="line">brand: /images/hexo.svg</span><br><span class="line"></span><br><span class="line"><span class="comment"># Ocean 主页视频</span></span><br><span class="line"><span class="comment"># 多种格式的视频用于支持不同的浏览器，这里只需要配置好路径，前提是我把视频相关文件统一目录存放。</span></span><br><span class="line">ocean:</span><br><span class="line">  overlay: <span class="literal">true</span>      <span class="comment"># 可选，false 则 Ocean 视频下方的笔触式遮盖不显示</span></span><br><span class="line">  path: /images/ocean/      <span class="comment"># 视频统一存放路径，格式 mp4/ogg/webm</span></span><br><span class="line">  brand: /images/hexo-inverted.svg      <span class="comment"># 可选，一个小 Logo</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 内容</span></span><br><span class="line">excerpt_link: 阅读全文...</span><br><span class="line">share_text: 分享</span><br><span class="line">nav_text:</span><br><span class="line">  page_prev: 上一页</span><br><span class="line">  page_next: 下一页</span><br><span class="line">  post_prev: 前一篇</span><br><span class="line">  post_next: 后一篇</span><br><span class="line"></span><br><span class="line"><span class="comment"># fancybox</span></span><br><span class="line">fancybox: <span class="literal">true</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Local search</span></span><br><span class="line">search_text: 搜索</span><br><span class="line"></span><br><span class="line"><span class="comment"># Gitalk</span></span><br><span class="line">gitalk:</span><br><span class="line">  <span class="built_in">enable</span>: <span class="literal">false</span>      <span class="comment"># 默认关闭评论 开启：true</span></span><br><span class="line">  clientID:      <span class="comment"># 申请 GitHub Application 网页上对应的 Client ID 与 Client Secret 参数</span></span><br><span class="line">  clientSecret:      <span class="comment"># 同上</span></span><br><span class="line">  repo:      <span class="comment"># 创建的仓库名称</span></span><br><span class="line">  owner:      <span class="comment"># Github ID</span></span><br><span class="line">  admin:      <span class="comment"># Github ID</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>Ocean</strong> 使用了 <a href="https://feathericon.com/" target="_blank" rel="noopener">feathericon</a> 图标库，菜单中的图标定义在“CSS source / css / _partial / navbar.styl”中，可根据需要进行更改或添加。<br>如果你不需要开启 <strong>相册</strong> 与 <strong>关于</strong> 菜单，需要删除或者注销掉他们的图标，如下边的示例：</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">.nav-item</span><br><span class="line">  &amp;:nth-child(<span class="number">1</span>)         <span class="comment">// 主页</span></span><br><span class="line">    .nav-item-link</span><br><span class="line">      &amp;::before</span><br><span class="line">        <span class="attribute">content</span> <span class="string">'\f12f'</span></span><br><span class="line">  &amp;:nth-child(<span class="number">2</span>)         <span class="comment">// 归档</span></span><br><span class="line">    .nav-item-link</span><br><span class="line">      &amp;::before</span><br><span class="line">        <span class="attribute">content</span> <span class="string">'\f12a'</span></span><br><span class="line">  <span class="comment">//&amp;:nth-child(3)         // 相册</span></span><br><span class="line">  <span class="comment">//  .nav-item-link</span></span><br><span class="line">  <span class="comment">//    &amp;::before</span></span><br><span class="line">  <span class="comment">//      content '\f1a9'</span></span><br><span class="line">  <span class="comment">//&amp;:nth-child(4)         // 关于</span></span><br><span class="line">  <span class="comment">//  .nav-item-link</span></span><br><span class="line">  <span class="comment">//    &amp;::before</span></span><br><span class="line">  <span class="comment">//      content '\f174'</span></span><br></pre></td></tr></table></figure>
+
+<p>如果你想要开启 <strong>Tag（标签）</strong>、<strong>Categories（分类）</strong> 在菜单中显示，请看这里：<a href="https://zhwangart.github.io/2019/07/02/Ocean-Issues/" target="_blank" rel="noopener">关于 Ocean 使用中的问题</a></p>
+<h3 id="插件"><a href="#插件" class="headerlink" title="插件"></a>插件</h3><ul>
+<li><p><strong>本地搜索</strong> - 使用插件 <a href="https://github.com/wzpan/hexo-generator-search" target="_blank" rel="noopener">hexo-generator-search</a> 生成 <code>xml</code> 索引文件。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm <span class="keyword">install</span> hexo-generator-searchdb <span class="comment">--save</span></span><br></pre></td></tr></table></figure>
+
+<p>然后为 hexo 的配置文件 <code>_config.yml</code> 添加插件配置（注意：不是主题的配置文件，主题配置文件 Ocean 已经配置完成）：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># hexo-generator-searchdb@1.0.8</span></span><br><span class="line"><span class="attr">search:</span></span><br><span class="line"><span class="attr">  path:</span> <span class="string">search.xml</span></span><br><span class="line"><span class="attr">  field:</span> <span class="string">post</span></span><br><span class="line"><span class="attr">  format:</span> <span class="string">html</span></span><br><span class="line"><span class="attr">  content:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>RSS</strong> - 如果您想启用RSS，还需要 <a href="https://github.com/hexojs/hexo-generator-feed" target="_blank" rel="noopener">hexo-generate-feed</a> 插件，仅安装即可，Ocean 已经配置完成。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm <span class="keyword">install</span> hexo-generator-feed <span class="comment">--save</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="文章封面图"><a href="#文章封面图" class="headerlink" title="文章封面图"></a>文章封面图</h3><p>需要写在 markdown 的 Front-matter 区域：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="attr">title:</span> <span class="string">Post</span> <span class="string">name</span></span><br><span class="line"><span class="attr">photos:</span> <span class="string">[</span></span><br><span class="line">        <span class="string">["img_url"],</span></span><br><span class="line">        <span class="string">["img_url"]</span></span><br><span class="line">        <span class="string">]</span></span><br><span class="line"><span class="meta">---</span></span><br></pre></td></tr></table></figure>
+
+<p>需要<strong>注意</strong>的是，这里说的封面图并不是文章配图，文章配图按照 markdown 的语法写就好了！</p>
+<h3 id="相册"><a href="#相册" class="headerlink" title="相册"></a>相册</h3><p>首先需要创建一个 page ，关于页面也一样需要创建。</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new<span class="built_in"> page </span>gallery</span><br></pre></td></tr></table></figure>
+
+<p>然后在编辑 markdown 的时候需要写在 Front-matter 部分，这种写法可能不是特别特别的好，希望能有更好的方法。</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="attr">title:</span> <span class="string">Gallery</span></span><br><span class="line"><span class="attr">albums:</span> <span class="string">[</span></span><br><span class="line">        <span class="string">["img_url","img_caption"],</span></span><br><span class="line">        <span class="string">["img_url","img_caption"]</span></span><br><span class="line">        <span class="string">]</span></span><br><span class="line"><span class="meta">---</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="文章置顶"><a href="#文章置顶" class="headerlink" title="文章置顶"></a>文章置顶</h3><p>安装插件 <a href="https://github.com/netcan/hexo-generator-index-pin-top" target="_blank" rel="noopener">hexo-generator-index-pin-top</a>：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ npm <span class="keyword">uninstall</span> hexo-generator-<span class="keyword">index</span> <span class="comment">--save</span></span><br><span class="line">$ npm <span class="keyword">install</span> hexo-generator-<span class="keyword">index</span>-pin-top <span class="comment">--save</span></span><br></pre></td></tr></table></figure>
+
+<p>在需要置顶的文章的 Front-matter 区域加上 <code>top: ture</code> ，示例：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="attr">title:</span> <span class="string">新增文章置顶</span></span><br><span class="line"><span class="attr">author:</span> <span class="string">zhwangart</span></span><br><span class="line"><span class="attr">date:</span> <span class="number">2019</span><span class="bullet">-07</span><span class="bullet">-18</span> <span class="number">15</span><span class="string">:45:03</span></span><br><span class="line"><span class="attr">top:</span> <span class="string">ture</span></span><br><span class="line"><span class="meta">---</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="部署到-Github"><a href="#部署到-Github" class="headerlink" title="部署到 Github"></a>部署到 Github</h3><p>安装 <a href="https://github.com/hexojs/hexo-deployer-git" target="_blank" rel="noopener">hexo-deployer-git</a>。</p>
+<p>修改配置：</p>
+<figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">deploy:</span></span><br><span class="line"><span class="symbol">  type:</span> git</span><br><span class="line"><span class="symbol">  repo:</span> <span class="params">&lt;repository url&gt;</span> <span class="meta">#https:<span class="comment">//bitbucket.org/JohnSmith/johnsmith.bitbucket.io</span></span></span><br><span class="line"><span class="symbol">  branch:</span> [branch] <span class="meta">#published</span></span><br><span class="line"><span class="symbol">  message:</span> [message]</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>参考资料：<a href="https://hexo.io/zh-cn/docs/deployment" target="_blank" rel="noopener">https://hexo.io/zh-cn/docs/deployment</a></p>
+</blockquote>
+<p><a href="https://zhwangart.github.io/2019/07/02/Ocean-Issues/" target="_blank" rel="noopener">使用 Ocean 过程中遇到了问题？</a></p>
+<p><a href="https://zhwangart.github.io/2018/11/30/Ocean/" target="_blank" rel="noopener">ocean原文链接</a></p>
+<p><a href="https://zhwangart.github.io/2018/12/06/Gitalk/" target="_blank" rel="noopener">Gittalk评论的使用</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="wgjh5.github.io/2019/08/16/基于Hexo和GitHub搭建个人博客/" data-id="cjzdy95vf0025acu8342rka6h"
+         class="article-share-link">分享</a>
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vue/">vue</a></li></ul>
+
+    </footer>
+
+  </div>
+
+  
+    
+  <nav class="article-nav">
+    
+    
+      <a href="/2019/08/07/左滑动删除组件/" class="article-nav-link">
+        <strong class="article-nav-caption">后一篇</strong>
+        <div class="article-nav-title">左滑动删除组件</div>
+      </a>
+    
+  </nav>
+
+
+  
+
+  
+    
+    <div class="gitalk" id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+        <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+            <script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.min.js"></script>
+                <script type="text/javascript">
+                    var gitalk = new Gitalk({
+                        clientID: '64ce5333a42f02cf200d',
+                        clientSecret: '7d37a3d8d3c9e215de06d3078bd1894053368739',
+                        repo: 'wgjh5.github.io',
+                        owner: 'wgjh5',
+                        admin: ['wgjh5'],
+                        // id: location.pathname,      // Ensure uniqueness and length less than 50
+                        id: md5(location.pathname),
+                        distractionFreeMode: true, // Facebook-like distraction free mode
+                        pagerDirection: 'last'
+                    })
+
+                    gitalk.render('gitalk-container')
+                </script>
+                
+  
+
+</article>
+
+
+
+</section>
+                <footer class="footer">
+  <div class="outer">
+    <div class="float-right">
+      <ul class="list-inline">
+  
+    <li><i class="fe fe-smile-alt"></i> <span id="busuanzi_value_site_uv"></span></li>
+  
+</ul>
+    </div>
+    <ul class="list-inline">
+      <li>&copy; 2019 一只正在成长的程序猿</li>
+      <li>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></li>
+      <li>Theme  <a href="https://github.com/zhwangart/hexo-theme-ocean">Ocean</a></li>
+    </ul>
+  </div>
+</footer>
+
+        </main>
+        <aside class="sidebar">
+            <button class="navbar-toggle"></button>
+
+<nav class="navbar">
+  
+    <div class="logo">
+      <a href="/"><img src="/images/shark.svg" alt="一只正在成长的程序猿"></a>
+    </div>
+  
+  <ul class="nav nav-main">
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/">主页</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/archives">归档</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/about">关于</a>
+      </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link nav-item-search" title="搜索">
+        <i class="fe fe-search"></i>
+        搜索
+      </a>
+    </li>
+  </ul>
+</nav>
+
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      <div class="totop" id="totop">
+  <i class="fe fe-rocket"></i>
+</div>
+    </li>
+    <li class="nav-item">
+      
+        <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+          <i class="fe fe-feed"></i>
+        </a>
+      
+    </li>
+  </ul>
+</nav>
+
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+        </aside>
+        <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/lazyload.min.js"></script>
+<script src="/js/snap.svg-min.js"></script>
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+  <script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+  <script src="/js/search.js"></script>
+
+
+<script src="/js/ocean.js"></script>
+
+    </body>
+
+    </html>

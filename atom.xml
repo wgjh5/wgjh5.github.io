@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="wgjh5.github.io/"/>
-  <updated>2019-08-07T10:28:59.861Z</updated>
+  <updated>2019-08-16T10:05:47.650Z</updated>
   <id>wgjh5.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Hexo+Github Page搭建个人博客</title>
+    <link href="wgjh5.github.io/2019/08/16/%E5%9F%BA%E4%BA%8EHexo%E5%92%8CGitHub%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/"/>
+    <id>wgjh5.github.io/2019/08/16/基于Hexo和GitHub搭建个人博客/</id>
+    <published>2019-08-16T09:57:58.650Z</published>
+    <updated>2019-08-16T10:05:47.650Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;a href=&quot;https://wgjh5.github.io/&quot;&gt;我的博客&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;安装前提&quot;&gt;&lt;a href=&quot;#安装前提&quot; class=&quot;headerlink&quot; title=&quot;安装前提&quot;&gt;&lt;/a&gt;安装前提&lt;/h3&gt;&lt;p&gt;安装 Hexo 相当简单。然而在安装前，您必须检查电脑中是否已安装下列应用程序：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://nodejs.org/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Node.js&lt;/a&gt; (至少nodejs 6.9)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://git-scm.com/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Git&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+      <category term="技术" scheme="wgjh5.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="vue" scheme="wgjh5.github.io/tags/vue/"/>
+    
+  </entry>
   
   <entry>
     <title>左滑动删除组件</title>
@@ -457,33 +482,6 @@
       <category term="vue" scheme="wgjh5.github.io/tags/vue/"/>
     
       <category term="vue-pdf" scheme="wgjh5.github.io/tags/vue-pdf/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>vue 移动端 实现div拖拽移动</title>
-    <link href="wgjh5.github.io/2019/08/07/vuejs%20%E7%A7%BB%E5%8A%A8%E7%AB%AF%20%E5%AE%9E%E7%8E%B0div%E6%8B%96%E6%8B%BD%E7%A7%BB%E5%8A%A8/"/>
-    <id>wgjh5.github.io/2019/08/07/vuejs 移动端 实现div拖拽移动/</id>
-    <published>2019-08-07T09:31:46.591Z</published>
-    <updated>2019-08-07T10:18:08.032Z</updated>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;相关知识点&lt;br&gt;touchstart 当在屏幕上按下手指时触发&lt;/p&gt;
-&lt;p&gt;touchmove 当在屏幕上移动手指时触发&lt;/p&gt;
-&lt;p&gt;touchend 当在屏幕上抬起手指时触发&lt;br&gt;mousedown mousemove mouseup对应的是PC端的事件&lt;/p&gt;
-&lt;p&gt;touchcancel 当一些更高级别的事件发生的时候（如电话接入或者弹出信息）会取消当前的touch操作，即触发touchcancel。一般会在touchcancel时暂停游戏、存档等操作。&lt;/p&gt;
-&lt;/blockquote&gt;
-    
-    </summary>
-    
-      <category term="技术" scheme="wgjh5.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-      <category term="vue" scheme="wgjh5.github.io/tags/vue/"/>
-    
-      <category term="vue 移动端 实现div拖拽移动" scheme="wgjh5.github.io/tags/vue-%E7%A7%BB%E5%8A%A8%E7%AB%AF-%E5%AE%9E%E7%8E%B0div%E6%8B%96%E6%8B%BD%E7%A7%BB%E5%8A%A8/"/>
     
   </entry>
   
