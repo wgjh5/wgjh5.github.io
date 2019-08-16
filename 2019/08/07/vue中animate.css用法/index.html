@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    
+        
+                <meta name="keywords" content="爱前端 | 爱工作 | 爱生活">
+                
+                    
+                            <meta name="description" content="This is My blog">
+                            
+                                <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+                                <title>
+                                    
+                                        vue中`animate.css`用法 |
+                                            
+                                                一只正在成长的程序猿
+                                </title>
+                                
+                                    <link rel="shortcut icon" href="/images/headPortrait.png">
+                                    
+                                        <link rel="stylesheet" href="/css/style.css">
+                                            
+                                                <link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+                                                    
+                                                        <script src="/js/pace.min.js"></script>
+</head></html>
+
+    <body>
+        <main class="content">
+            <section class="outer">
+    <article id="post-vue中animate.css用法" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      vue中`animate.css`用法
+    </h1>
+  
+  
+
+
+
+
+      </header>
+    
+
+    
+      <div class="article-meta">
+        <a href="/2019/08/07/vue中animate.css用法/" class="article-date">
+  <time datetime="2019-08-07T09:31:46.699Z" itemprop="datePublished">2019-08-07</time>
+</a>
+        
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/技术/">技术</a>
+  </div>
+
+      </div>
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+
+      
+
+      
+        <h4 id="1-先下载"><a href="#1-先下载" class="headerlink" title="1.先下载"></a>1.先下载</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cnpm install animate.css --save</span><br></pre></td></tr></table></figure>
+
+<a id="more"></a>
+<h4 id="2-引入"><a href="#2-引入" class="headerlink" title="2.引入"></a>2.引入</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> animated <span class="keyword">from</span> <span class="string">'animate.css'</span> </span><br><span class="line">Vue.use(animated)</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-用法"><a href="#3-用法" class="headerlink" title="3.用法"></a>3.用法</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"> <span class="tag">&lt;<span class="name">div</span> <span class="attr">v-if</span>=<span class="string">"nextStatus==false"</span> <span class="attr">ref</span>=<span class="string">"statusOne"</span></span></span><br><span class="line">      &lt;!--添加类名的方式--&gt;</span><br><span class="line">      class="animated rotateInDownRight"&gt;</span><br><span class="line">     <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"phone_number code_popup"</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"phoneTitle"</span>&gt;</span></span><br><span class="line">             <span class="tag">&lt;<span class="name">span</span>&gt;</span>+86<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">span</span>&gt;</span>&#123;&#123;phoneNumber&#125;&#125;<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="fade"><a href="#fade" class="headerlink" title="fade"></a>fade</h4><table>
+<thead>
+<tr>
+<th align="center">title</th>
+<th align="center">淡入淡出</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">fadeIn</td>
+<td align="center">淡入</td>
+</tr>
+<tr>
+<td align="center">fadeInDown</td>
+<td align="center">向下淡入</td>
+</tr>
+<tr>
+<td align="center">fadeInDownBig</td>
+<td align="center">向下快速淡入</td>
+</tr>
+<tr>
+<td align="center">fadeInLeft</td>
+<td align="center">向右淡入</td>
+</tr>
+<tr>
+<td align="center">fadeInLeftBig</td>
+<td align="center">向右快速淡入</td>
+</tr>
+<tr>
+<td align="center">fadeInRight</td>
+<td align="center">向左淡入</td>
+</tr>
+<tr>
+<td align="center">fadeInRightBig</td>
+<td align="center">向左快速淡入</td>
+</tr>
+<tr>
+<td align="center">fadeInUp</td>
+<td align="center">向上淡入</td>
+</tr>
+<tr>
+<td align="center">fadeInUpBig</td>
+<td align="center">向上快速淡入</td>
+</tr>
+<tr>
+<td align="center">fadeOut</td>
+<td align="center">淡出</td>
+</tr>
+<tr>
+<td align="center">fadeOutDown</td>
+<td align="center">向下淡出</td>
+</tr>
+<tr>
+<td align="center">fadeOutDownBig</td>
+<td align="center">向下快速淡出</td>
+</tr>
+<tr>
+<td align="center">fadeOutLeft</td>
+<td align="center">向左淡出</td>
+</tr>
+<tr>
+<td align="center">fadeOutLeftBig</td>
+<td align="center">向左快速淡出</td>
+</tr>
+<tr>
+<td align="center">adeOutRight</td>
+<td align="center">向右淡出</td>
+</tr>
+<tr>
+<td align="center">fadeOutRightBig</td>
+<td align="center">向右快速淡出</td>
+</tr>
+<tr>
+<td align="center">fadeOutUp</td>
+<td align="center">向上淡出</td>
+</tr>
+<tr>
+<td align="center">fadeOutUpBig</td>
+<td align="center">向上快速淡出</td>
+</tr>
+</tbody></table>
+<h4 id="bounce"><a href="#bounce" class="headerlink" title="bounce"></a>bounce</h4><table>
+<thead>
+<tr>
+<th align="center">title</th>
+<th align="center">弹跳类</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">bounceIn</td>
+<td align="center">弹跳进入</td>
+</tr>
+<tr>
+<td align="center">bounceInDown</td>
+<td align="center">向下弹跳进入</td>
+</tr>
+<tr>
+<td align="center">bounceInLeft</td>
+<td align="center">向右弹跳进入</td>
+</tr>
+<tr>
+<td align="center">bounceInRight</td>
+<td align="center">向左弹跳进入</td>
+</tr>
+<tr>
+<td align="center">bounceInUp</td>
+<td align="center">向上弹跳进入</td>
+</tr>
+<tr>
+<td align="center">bounceOut</td>
+<td align="center">弹跳退出</td>
+</tr>
+<tr>
+<td align="center">bounceOutDown</td>
+<td align="center">向下弹跳退出</td>
+</tr>
+<tr>
+<td align="center">bounceOutLeft</td>
+<td align="center">向左弹跳退出</td>
+</tr>
+<tr>
+<td align="center">bounceOutRight</td>
+<td align="center">向右弹跳退出</td>
+</tr>
+<tr>
+<td align="center">bounceOutUp</td>
+<td align="center">向上弹跳退出</td>
+</tr>
+</tbody></table>
+<h4 id="zoom"><a href="#zoom" class="headerlink" title="zoom"></a>zoom</h4><table>
+<thead>
+<tr>
+<th align="center">title</th>
+<th align="center">缩放类</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">zoomIn</td>
+<td align="center">放大进入</td>
+</tr>
+<tr>
+<td align="center">zoomInDown</td>
+<td align="center">向下放大进入</td>
+</tr>
+<tr>
+<td align="center">zoomInLeft</td>
+<td align="center">向右放大进入</td>
+</tr>
+<tr>
+<td align="center">zoomInRight</td>
+<td align="center">向左放大进入</td>
+</tr>
+<tr>
+<td align="center">zoomInUp</td>
+<td align="center">向上放大进入</td>
+</tr>
+<tr>
+<td align="center">zoomOut</td>
+<td align="center">缩小退出</td>
+</tr>
+<tr>
+<td align="center">zoomOutDown</td>
+<td align="center">向下缩小退出</td>
+</tr>
+<tr>
+<td align="center">zoomOutLeft</td>
+<td align="center">向左缩小退出</td>
+</tr>
+<tr>
+<td align="center">zoomOutRight</td>
+<td align="center">向右缩小退出</td>
+</tr>
+<tr>
+<td align="center">zoomOutUp</td>
+<td align="center">向上缩小退出</td>
+</tr>
+</tbody></table>
+<h4 id="rotate"><a href="#rotate" class="headerlink" title="rotate"></a>rotate</h4><table>
+<thead>
+<tr>
+<th align="center">title</th>
+<th align="center">旋转类</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">rotateIn</td>
+<td align="center">顺时针旋转进入</td>
+</tr>
+<tr>
+<td align="center">rotateInDownLeft</td>
+<td align="center">从左往下旋入</td>
+</tr>
+<tr>
+<td align="center">rotateInDownRight</td>
+<td align="center">从右往下旋入</td>
+</tr>
+<tr>
+<td align="center">rotateInUpLeft</td>
+<td align="center">从左往上旋入</td>
+</tr>
+<tr>
+<td align="center">rotateInUpRight</td>
+<td align="center">从右往上旋入</td>
+</tr>
+<tr>
+<td align="center">rotateOut</td>
+<td align="center">顺时针旋转退出</td>
+</tr>
+<tr>
+<td align="center">rotateOutDownLeft</td>
+<td align="center">向左下旋出</td>
+</tr>
+<tr>
+<td align="center">rotateOutDownRight</td>
+<td align="center">向右下旋出</td>
+</tr>
+<tr>
+<td align="center">rotateOutUpLeft</td>
+<td align="center">向左上旋出</td>
+</tr>
+<tr>
+<td align="center">rotateOutUpRight</td>
+<td align="center">向右上旋出</td>
+</tr>
+</tbody></table>
+<h4 id="flip"><a href="#flip" class="headerlink" title="flip"></a>flip</h4><table>
+<thead>
+<tr>
+<th align="center">title</th>
+<th align="center">翻转类</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">flipInX</td>
+<td align="center">水平翻转进入</td>
+</tr>
+<tr>
+<td align="center">flipInY</td>
+<td align="center">垂直翻转进入</td>
+</tr>
+<tr>
+<td align="center">flipOutX</td>
+<td align="center">水平翻转退出</td>
+</tr>
+<tr>
+<td align="center">flipOutY</td>
+<td align="center">垂直翻转退出</td>
+</tr>
+</tbody></table>
+<h4 id="strong"><a href="#strong" class="headerlink" title="strong"></a>strong</h4><table>
+<thead>
+<tr>
+<th align="center">title</th>
+<th align="center">强调类</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">bounce</td>
+<td align="center">弹跳</td>
+</tr>
+<tr>
+<td align="center">flash</td>
+<td align="center">闪烁</td>
+</tr>
+<tr>
+<td align="center">pulse</td>
+<td align="center">脉冲</td>
+</tr>
+<tr>
+<td align="center">rubberBand</td>
+<td align="center">橡皮筋</td>
+</tr>
+<tr>
+<td align="center">shake</td>
+<td align="center">左右弱晃动</td>
+</tr>
+<tr>
+<td align="center">swing</td>
+<td align="center">上下摆动</td>
+</tr>
+<tr>
+<td align="center">tada</td>
+<td align="center">缩放摆动</td>
+</tr>
+<tr>
+<td align="center">wobble</td>
+<td align="center">左右强晃动</td>
+</tr>
+<tr>
+<td align="center">jello</td>
+<td align="center">拉伸抖动</td>
+</tr>
+</tbody></table>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="wgjh5.github.io/2019/08/07/vue中animate.css用法/" data-id="cjzdv8rtw000y84u8axgn62tq"
+         class="article-share-link">分享</a>
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vue/">vue</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vue中-animate-css-用法/">vue中`animate.css`用法</a></li></ul>
+
+    </footer>
+
+  </div>
+
+  
+    
+  <nav class="article-nav">
+    
+      <a href="/2019/08/07/vue中scss的用法/" class="article-nav-link">
+        <strong class="article-nav-caption">前一篇</strong>
+        <div class="article-nav-title">
+          
+            vue中scss的用法
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2019/08/07/vue图片上传及压缩组件的封装/" class="article-nav-link">
+        <strong class="article-nav-caption">后一篇</strong>
+        <div class="article-nav-title">vue图片上传及压缩组件的封装</div>
+      </a>
+    
+  </nav>
+
+
+  
+
+  
+    
+    <div class="gitalk" id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+        <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+            <script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.min.js"></script>
+                <script type="text/javascript">
+                    var gitalk = new Gitalk({
+                        clientID: '64ce5333a42f02cf200d',
+                        clientSecret: '7d37a3d8d3c9e215de06d3078bd1894053368739',
+                        repo: 'wgjh5.github.io',
+                        owner: 'wgjh5',
+                        admin: ['wgjh5'],
+                        // id: location.pathname,      // Ensure uniqueness and length less than 50
+                        id: md5(location.pathname),
+                        distractionFreeMode: true, // Facebook-like distraction free mode
+                        pagerDirection: 'last'
+                    })
+
+                    gitalk.render('gitalk-container')
+                </script>
+                
+  
+
+</article>
+
+
+
+</section>
+                <footer class="footer">
+  <div class="outer">
+    <div class="float-right">
+      <ul class="list-inline">
+  
+    <li><i class="fe fe-smile-alt"></i> <span id="busuanzi_value_site_uv"></span></li>
+  
+</ul>
+    </div>
+    <ul class="list-inline">
+      <li>&copy; 2019 一只正在成长的程序猿</li>
+      <li>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></li>
+      <li>Theme  <a href="https://github.com/zhwangart/hexo-theme-ocean">Ocean</a></li>
+    </ul>
+  </div>
+</footer>
+
+        </main>
+        <aside class="sidebar">
+            <button class="navbar-toggle"></button>
+
+<nav class="navbar">
+  
+    <div class="logo">
+      <a href="/"><img src="/images/shark.svg" alt="一只正在成长的程序猿"></a>
+    </div>
+  
+  <ul class="nav nav-main">
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/">主页</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/archives">归档</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/about">关于</a>
+      </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link nav-item-search" title="搜索">
+        <i class="fe fe-search"></i>
+        搜索
+      </a>
+    </li>
+  </ul>
+</nav>
+
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      <div class="totop" id="totop">
+  <i class="fe fe-rocket"></i>
+</div>
+    </li>
+    <li class="nav-item">
+      
+        <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+          <i class="fe fe-feed"></i>
+        </a>
+      
+    </li>
+  </ul>
+</nav>
+
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+        </aside>
+        <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/lazyload.min.js"></script>
+<script src="/js/snap.svg-min.js"></script>
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+  <script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+  <script src="/js/search.js"></script>
+
+
+<script src="/js/ocean.js"></script>
+
+    </body>
+
+    </html>

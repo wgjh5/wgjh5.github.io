@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    
+        
+                <meta name="keywords" content="爱前端 | 爱工作 | 爱生活">
+                
+                    
+                            <meta name="description" content="This is My blog">
+                            
+                                <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+                                <title>
+                                    
+                                        创建github账户 |
+                                            
+                                                一只正在成长的程序猿
+                                </title>
+                                
+                                    <link rel="shortcut icon" href="/images/headPortrait.png">
+                                    
+                                        <link rel="stylesheet" href="/css/style.css">
+                                            
+                                                <link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+                                                    
+                                                        <script src="/js/pace.min.js"></script>
+</head></html>
+
+    <body>
+        <main class="content">
+            <section class="outer">
+    <article id="post-git" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      创建github账户
+    </h1>
+  
+  
+
+
+
+
+      </header>
+    
+
+    
+      <div class="article-meta">
+        <a href="/2019/08/07/git/" class="article-date">
+  <time datetime="2019-08-07T09:31:46.475Z" itemprop="datePublished">2019-08-07</time>
+</a>
+        
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/技术/">技术</a>
+  </div>
+
+      </div>
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+
+      
+
+      
+        <blockquote>
+<p><a href="https://github.com/" target="_blank" rel="noopener">github官网</a></p>
+</blockquote>
+<h3 id="注册github，创建个人账户"><a href="#注册github，创建个人账户" class="headerlink" title="注册github，创建个人账户"></a>注册github，创建个人账户</h3><blockquote>
+<p>[有需要可使用谷歌的页面翻译]需要验证邮箱，此时注意邮箱信息，（验证信息可能在邮箱垃圾箱中）</p>
+</blockquote>
+<a id="more"></a>
+<p><a href="https://github.com/Jade-Ting/note/blob/master/git.md" target="_blank" rel="noopener"><img src alt="创建github账户"></a></p>
+<h1 id="建立本地仓库与远程仓库的连接"><a href="#建立本地仓库与远程仓库的连接" class="headerlink" title="建立本地仓库与远程仓库的连接"></a>建立本地仓库与远程仓库的连接</h1><h3 id="在本地创建一个ssh-key"><a href="#在本地创建一个ssh-key" class="headerlink" title="在本地创建一个ssh key"></a>在本地创建一个ssh key</h3><blockquote>
+<p>相当于在你的电脑中获取一个密匙，类似平常的验证码，获取后，输入到github账户里，则你的电脑就和github账户联系到一起了</p>
+</blockquote>
+<ul>
+<li><p>首先，在桌面（或者其他文件夹都ok）右键打开 <code>Git Bash Here</code>，到bash控制台，出现如下</p>
+<p><a href="https://github.com/Jade-Ting/note/blob/master/git.md" target="_blank" rel="noopener"><img src alt="bash控制台"></a></p>
+<ul>
+<li>这一栏 开始是你的计算机的名字</li>
+<li>@后边的内容是你的计算机型号，很多时候有的人打开之后@后边是乱码，这个时候也不要在意，因为有些电脑型号是中文的，可能在显示的时候出现了问题，不影响你后期的操作</li>
+<li>黄色，文件夹名称</li>
+<li>蓝色，当前所在分支名称（创建之后才有）</li>
+</ul>
+</li>
+<li><p>获取密匙，输入以下命令</p>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen-t rsa-C <span class="string">"your_email@youremail.com"</span>  </span><br><span class="line">//<span class="string">"your_email@youremail.com"</span>表示在引号中输入你github绑定的邮箱地址</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>然后一路回车或yes</p>
+</li>
+<li><p>得到钥匙的随机图像（说明密匙创建成功）</p>
+<p><a href="https://github.com/Jade-Ting/note/blob/master/git.md" target="_blank" rel="noopener"><img src alt="钥匙随机图像"></a></p>
+</li>
+<li><p>在前面打开bash的文件夹中找到 <code>.ssh</code>文件，（若在桌面打开的，则进入 <code>C:\Users\Administrator\.ssh</code>），找到<code>id_rsa.pub</code>文件，用记事本打开，复制里面的内容（即密匙），如下所示。</p>
+<figure class="highlight llvm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-rsa AAAAB<span class="number">3</span>NzaC<span class="number">1</span>yc<span class="number">2</span>EAAAADAQABAAABAQC<span class="number">8</span>h<span class="number">5</span>j+/a<span class="number">2</span>ANbzZhPuYWnqjgXwkBTBXOr/jgxZKZqB/gnKriwlaT<span class="number">3</span>XVQVryFJ<span class="number">8</span>Y<span class="number">9</span>TrbIAetA<span class="number">736</span>Jq<span class="number">6</span>WSTt+<span class="number">5</span>I<span class="number">2</span>OsPIfxzQ<span class="number">9</span>a<span class="number">91</span>PI<span class="number">9</span>UHl<span class="number">716</span>HnwugD<span class="number">1</span>pVFqxrwdrK<span class="number">5</span>Pst<span class="keyword">i4</span>n<span class="number">1</span>Q<span class="number">3</span>L/iWkEp<span class="number">0</span>guSxlKH<span class="number">4</span>AP<span class="number">90</span>xv+KoSKp<span class="keyword">i4</span>mNPaIb<span class="number">4</span>+dhE+hsKZIUfbioz<span class="number">7</span>tEHLSq<span class="number">114</span>aHREA<span class="number">6</span>J+<span class="number">8</span>EjgTLuX<span class="number">2</span>xGthXjuFfsG<span class="number">2</span>syBMV<span class="number">4</span>Iec<span class="number">7</span>qIZQtD<span class="number">1</span>L<span class="number">7</span>JK<span class="number">1</span>cYhfWhrgTZg<span class="number">936</span>hULT<span class="number">6</span>+<span class="keyword">i7</span>RnL<span class="number">53</span>h<span class="number">1</span>zK<span class="keyword">i015</span>KZGtiquaJYvNHScK/PnV<span class="number">2</span>azDgIiQQzUtf<span class="number">4</span>B/pBKLGNZINrOZwKL+<span class="number">3</span>y<span class="number">7</span>fH<span class="number">8</span>QB <span class="number">1416271094</span><span class="title">@qq.com</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>到github账户上添加这个钥匙 （在Settings—&gt; SSH and GPG keys）里面，点击<code>New SSH key</code></p>
+<p><a href="https://github.com/Jade-Ting/note/blob/master/git.md" target="_blank" rel="noopener"><img src alt="github添加钥匙"></a></p>
+</li>
+<li><p>复制到key里面，title可以自己起随意的名字，然后Add SSH key，ok。</p>
+</li>
+</ul>
+<p><a href="https://github.com/Jade-Ting/note/blob/master/git.md" target="_blank" rel="noopener"><img src alt="github添加钥匙2"></a></p>
+<ul>
+<li><p>回到bash控制台,然后输入以下代码，来检查是否成功绑定。</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ssh -T git@github.com</span><br><span class="line"></span><br><span class="line"><span class="comment">//第一次绑定的时候输入上边的代码之后会提示是否continue，在输入yes后如果出现了：You've successfully authenticated, but GitHub does not provide shell access 。那就说明，已经成功连上了GitHub。</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>设置用户名和邮箱，输入以下代码，name最好和GitHub上边的一样，email是一定要是注册GitHub的那个邮箱地址 （遇到的问题，我的两个github账号都是同一个邮箱，报错，后面会说到）</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git<span class="built_in"> config </span>--global user.name <span class="string">"你的github用户名"</span></span><br><span class="line">$ git<span class="built_in"> config </span>--global user.email <span class="string">"你的github账号绑定的邮箱账号"</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>将项目库克隆到本地文件夹中，或者将本地文件添加到项目库中，（此时，先创建项目库）</p>
+</li>
+</ul>
+<h3 id="创建项目库"><a href="#创建项目库" class="headerlink" title="创建项目库"></a>创建项目库</h3><blockquote>
+<p>右上角加号 <code>new repository</code> ,然后按步骤填写项目库名称，最后 <code>create repository</code> 就可以了</p>
+</blockquote>
+<p><a href="https://github.com/Jade-Ting/note/blob/master/git.md" target="_blank" rel="noopener"><img src alt="github创建项目"></a></p>
+<p><a href="https://github.com/Jade-Ting/note/blob/master/git.md" target="_blank" rel="noopener"><img src alt="github创建项目2"></a></p>
+<h3 id="拿到项目库地址"><a href="#拿到项目库地址" class="headerlink" title="拿到项目库地址"></a>拿到项目库地址</h3><blockquote>
+<p>可以复制使用上面的https或ssh 地址，进行clone到本地创建文件夹</p>
+<p>也直接复制使用<code>git remote add origin https://github.com/OneEightZeroSix/hujiang.git</code>命令将本地文件推入到该项目库中</p>
+</blockquote>
+<p><a href="https://github.com/Jade-Ting/note/blob/master/git.md" target="_blank" rel="noopener"><img src alt="github项目地址"></a></p>
+<h1 id="将项目克隆到项目库中"><a href="#将项目克隆到项目库中" class="headerlink" title="将项目克隆到项目库中"></a>将项目克隆到项目库中</h1><blockquote>
+<p>自己在电脑任意盘中，新建一个任意文件夹，或者直接在任意盘中，打开 git bash</p>
+</blockquote>
+<ul>
+<li><p>可以输入 ls 查看你目前所定位的文件夹中的文件有哪些，（可做可不做）</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">ls</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>开始克隆！！！</p>
+<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="keyword">clone</span> <span class="title">https</span>://github.com/....(也就是上面的项目库地址)</span><br></pre></td></tr></table></figure>
+
+<p>会出现警告：<code>warning: You appear to have cloned an empty.git</code>,不要担心，这时候项目库的文件夹已经克隆到你的文件夹中啦~</p>
+</li>
+<li><p>然后 定位到 克隆下来的文件夹中，或者进入克隆下来的文件夹，再打开 git bash</p>
+</li>
+<li><p>将文件添加到缓存区</p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git <span class="keyword">add</span><span class="bash"> .   //添加文件夹中的所有文件到缓存区</span></span><br><span class="line">或：</span><br><span class="line">git <span class="keyword">add</span><span class="bash"> test.txt   //添加<span class="built_in">test</span>文档文件到缓存区</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>将缓存区里的文件提交到本地版本库（嗯嗯嗯，我也不是很懂这些名词，照做了，哈哈）</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">git</span> commit -m <span class="string">"这里写你的备注，可以记录刚刚提交的文件是什么文件之类的"</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>将本地项目推送到远程仓库</p>
+<figure class="highlight maxima"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">push</span> <span class="built_in">origin</span> master</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>嗯，如果上面推入成功就ok，若出现下面内容，就输入你的github账号密码，然后login</p>
+<p><a href="https://github.com/Jade-Ting/note/blob/master/git.md" target="_blank" rel="noopener"><img src alt="git输入账号密码"></a></p>
+</li>
+<li><p>若出现下面，则失败,就再输入一次github密码</p>
+<p><a href="https://github.com/Jade-Ting/note/blob/master/git.md" target="_blank" rel="noopener"><img src alt="重新登录github"></a></p>
+</li>
+<li><p>成功页面</p>
+<p><a href="https://github.com/Jade-Ting/note/blob/master/git.md" target="_blank" rel="noopener"><img src alt="提交成功"></a></p>
+</li>
+</ul>
+<p><strong>之后修改文件再提交的话，只需要 git add . 、git commit -m “   “ 、最后git push origin master，将你的代码提交就可以了。</strong></p>
+<h1 id="将本地已经存在的文件中添加到github项目库中"><a href="#将本地已经存在的文件中添加到github项目库中" class="headerlink" title="将本地已经存在的文件中添加到github项目库中"></a>将本地已经存在的文件中添加到github项目库中</h1><blockquote>
+<p>本地文件已经存在了，现在要将本地代码推到git远程仓库保存。</p>
+</blockquote>
+<ol>
+<li><p>（先进入项目文件夹）通过命令 git init 把这个目录变成git可以管理的仓库</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">git init</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>把文件添加到版本库中，使用命令 git add .添加到暂存区里面去，不要忘记后面的小数点“.”，意为添加文件夹下的所有文件</p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="keyword">add</span><span class="bash"> .</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>用命令 git commit告诉Git，把文件提交到本地版本库。引号内为提交说明 （方便之后查看提交了什么）</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">git</span> commit -m <span class="string">"这是我第一次commit的内容"</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>关联到远程库</p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git remote <span class="keyword">add</span><span class="bash"> origin 你的远程库地址地址</span></span><br><span class="line">如：</span><br><span class="line">git remote <span class="keyword">add</span><span class="bash"> origin  https://github.com/OneEightZeroSix/hujiang.git</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p>【特别提醒】</p>
+<ul>
+<li><p>我在本次操作中，在执型 <code>git add .</code>的命令时就已经报错</p>
+<p><a href="https://github.com/Jade-Ting/note/blob/master/git.md" target="_blank" rel="noopener"><img src alt="git-add报错"></a></p>
+</li>
+<li><p>然后，查看了本地工作区、暂存区中文件的修改状态</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">git status</span></span><br></pre></td></tr></table></figure>
+
+<p><a href="https://github.com/Jade-Ting/note/blob/master/git.md" target="_blank" rel="noopener"><img src alt="git-status状态"></a></p>
+<ul>
+<li>从图中我们可以看到有一条红色和两条绿色得提示。-</li>
+<li>第一条绿色提示的前缀为newfile，表示为新增XXX文件。</li>
+<li>第二条绿色提示得前缀为deleted，表示为删除了XXX文件。</li>
+<li>橙色框框选的部分提示Changes tobe committed ，含义为：以下文件已存入暂存区，在提交到本地仓库时会将这些变更提交到本地仓库中。</li>
+<li>最底下红色提示的前缀为modified，表示为修改XXX文件。</li>
+<li>git status命令就可以看到你本次修改（新增、删除、修改）中涉及到哪些文件，同时也可以看到已经存入暂存区中发生修改变更的文件，便于检查具体修改了哪些文件，以免出现疏漏。</li>
+</ul>
+</li>
+<li><p>再次连接到远程仓库</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote <span class="built_in">add</span> origin http<span class="variable">s:</span>//github.<span class="keyword">com</span>/OneEightZeroSix/hujiang.git</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>再执行</p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="keyword">add</span><span class="bash"> .</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>提交到仓库</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">git</span> commit -m <span class="string">"这是我的项目"</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>推到分支中(不报错就完成)</p>
+<figure class="highlight maxima"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">push</span> <span class="built_in">origin</span> master</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h1 id="报错：403错误"><a href="#报错：403错误" class="headerlink" title="报错：403错误"></a>报错：403错误</h1><blockquote>
+<p><strong>关于用了两个github账号，新旧账号邮箱地址是一样的，虽然查看本地仓库的用户和邮箱都是新账号的，但是push的时候一直出现403错误</strong> ，大概意思就是，不能将当前内容推送到旧的那个账号上</p>
+</blockquote>
+<p>网上有其他解决方式，我是~</p>
+<p>到电脑的控制面板 <code>控制面板\用户帐户和家庭安全\凭据管理器</code> 进入编辑，把账户密码改成现在使用的github的账户密码<a href="https://github.com/Jade-Ting/note/blob/master/git.md" target="_blank" rel="noopener"><img src alt="修改普通凭据github信息"></a></p>
+<h2 id="git查看和修改用户名和邮箱地址"><a href="#git查看和修改用户名和邮箱地址" class="headerlink" title="git查看和修改用户名和邮箱地址"></a>git查看和修改用户名和邮箱地址</h2><h4 id="用户名和邮箱地址的作用"><a href="#用户名和邮箱地址的作用" class="headerlink" title="用户名和邮箱地址的作用"></a>用户名和邮箱地址的作用</h4><ul>
+<li>用户名和邮箱地址是本地git客户端的一个变量，不随git库而改变。</li>
+<li>每次commit都会用用户名和邮箱纪录。</li>
+<li>github的contributions统计就是按邮箱来统计的。</li>
+</ul>
+<h4 id="查看用户名和邮箱地址："><a href="#查看用户名和邮箱地址：" class="headerlink" title="查看用户名和邮箱地址："></a>查看用户名和邮箱地址：</h4><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git<span class="built_in"> config </span>user.name <span class="string">"你的github用户名"</span></span><br><span class="line">$ git<span class="built_in"> config </span>user.email <span class="string">"你的github账号绑定的邮箱账号"</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>或全局配置</strong></p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git<span class="built_in"> config </span>--global user.name <span class="string">"你的github用户名"</span></span><br><span class="line">$ git<span class="built_in"> config </span>--global user.email <span class="string">"你的github账号绑定的邮箱账号"</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="修改用户名和邮箱地址："><a href="#修改用户名和邮箱地址：" class="headerlink" title="修改用户名和邮箱地址："></a>修改用户名和邮箱地址：</h4><p>注意:输入的时候用户名和邮箱不用引号</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git<span class="built_in"> config </span>user.name <span class="string">"name"</span></span><br><span class="line">$ git<span class="built_in"> config </span>user.email <span class="string">"email"</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>或全局配置</strong></p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git<span class="built_in"> config </span>--global user.name <span class="string">"username"</span></span><br><span class="line">$ git<span class="built_in"> config </span>--global user.email <span class="string">"email"</span></span><br></pre></td></tr></table></figure>
+
+<p>如果上面的命令错误，出现了–repalce-all 这个东西。</p>
+<p>可以尝试使用：</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$  git<span class="built_in"> config </span>--global --replace-all user.email <span class="string">"username"</span> </span><br><span class="line">$  git<span class="built_in"> config </span>--global --replace-all user.name <span class="string">"email"</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="查看git设置列表信息"><a href="#查看git设置列表信息" class="headerlink" title="查看git设置列表信息"></a>查看git设置列表信息</h4><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git<span class="built_in"> config </span>--list</span><br></pre></td></tr></table></figure>
+
+<h1 id="文件夹中如果存在文件夹，要一个一个添加"><a href="#文件夹中如果存在文件夹，要一个一个添加" class="headerlink" title="文件夹中如果存在文件夹，要一个一个添加"></a>文件夹中如果存在文件夹，要一个一个添加</h1><p><a href="https://github.com/Jade-Ting/note/blob/master/git.md" target="_blank" rel="noopener"><img src alt="当git仓库里有文件夹"></a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="wgjh5.github.io/2019/08/07/git/" data-id="cjzdv8rt1000284u85v3tg2x9"
+         class="article-share-link">分享</a>
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/">git</a></li></ul>
+
+    </footer>
+
+  </div>
+
+  
+    
+  <nav class="article-nav">
+    
+      <a href="/2019/08/07/keepAlive使用方法/" class="article-nav-link">
+        <strong class="article-nav-caption">前一篇</strong>
+        <div class="article-nav-title">
+          
+            vue单页面，多路由，前进刷新，后退不刷新
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2019/08/07/Echarts/" class="article-nav-link">
+        <strong class="article-nav-caption">后一篇</strong>
+        <div class="article-nav-title">Vue中Echart用法</div>
+      </a>
+    
+  </nav>
+
+
+  
+
+  
+    
+    <div class="gitalk" id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+        <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+            <script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.min.js"></script>
+                <script type="text/javascript">
+                    var gitalk = new Gitalk({
+                        clientID: '64ce5333a42f02cf200d',
+                        clientSecret: '7d37a3d8d3c9e215de06d3078bd1894053368739',
+                        repo: 'wgjh5.github.io',
+                        owner: 'wgjh5',
+                        admin: ['wgjh5'],
+                        // id: location.pathname,      // Ensure uniqueness and length less than 50
+                        id: md5(location.pathname),
+                        distractionFreeMode: true, // Facebook-like distraction free mode
+                        pagerDirection: 'last'
+                    })
+
+                    gitalk.render('gitalk-container')
+                </script>
+                
+  
+
+</article>
+
+
+
+</section>
+                <footer class="footer">
+  <div class="outer">
+    <div class="float-right">
+      <ul class="list-inline">
+  
+    <li><i class="fe fe-smile-alt"></i> <span id="busuanzi_value_site_uv"></span></li>
+  
+</ul>
+    </div>
+    <ul class="list-inline">
+      <li>&copy; 2019 一只正在成长的程序猿</li>
+      <li>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></li>
+      <li>Theme  <a href="https://github.com/zhwangart/hexo-theme-ocean">Ocean</a></li>
+    </ul>
+  </div>
+</footer>
+
+        </main>
+        <aside class="sidebar">
+            <button class="navbar-toggle"></button>
+
+<nav class="navbar">
+  
+    <div class="logo">
+      <a href="/"><img src="/images/shark.svg" alt="一只正在成长的程序猿"></a>
+    </div>
+  
+  <ul class="nav nav-main">
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/">主页</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/archives">归档</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/about">关于</a>
+      </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link nav-item-search" title="搜索">
+        <i class="fe fe-search"></i>
+        搜索
+      </a>
+    </li>
+  </ul>
+</nav>
+
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      <div class="totop" id="totop">
+  <i class="fe fe-rocket"></i>
+</div>
+    </li>
+    <li class="nav-item">
+      
+        <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+          <i class="fe fe-feed"></i>
+        </a>
+      
+    </li>
+  </ul>
+</nav>
+
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+        </aside>
+        <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/lazyload.min.js"></script>
+<script src="/js/snap.svg-min.js"></script>
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+  <script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+  <script src="/js/search.js"></script>
+
+
+<script src="/js/ocean.js"></script>
+
+    </body>
+
+    </html>

@@ -1,0 +1,490 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>一只正在成长的程序猿</title>
+  
+  <subtitle>爱前端 | 爱工作 | 爱生活</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="wgjh5.github.io/"/>
+  <updated>2019-08-07T10:28:59.861Z</updated>
+  <id>wgjh5.github.io/</id>
+  
+  <author>
+    <name>wgj</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>左滑动删除组件</title>
+    <link href="wgjh5.github.io/2019/08/07/%E5%B7%A6%E6%BB%91%E5%8A%A8%E5%88%A0%E9%99%A4%E7%BB%84%E4%BB%B6/"/>
+    <id>wgjh5.github.io/2019/08/07/左滑动删除组件/</id>
+    <published>2019-08-07T09:31:46.842Z</published>
+    <updated>2019-08-07T10:28:59.861Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h4 id=&quot;HTML&quot;&gt;&lt;a href=&quot;#HTML&quot; class=&quot;headerlink&quot; title=&quot;HTML&quot;&gt;&lt;/a&gt;HTML&lt;/h4&gt;
+    
+    </summary>
+    
+      <category term="技术" scheme="wgjh5.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="vue" scheme="wgjh5.github.io/tags/vue/"/>
+    
+      <category term="左滑动删除组件" scheme="wgjh5.github.io/tags/%E5%B7%A6%E6%BB%91%E5%8A%A8%E5%88%A0%E9%99%A4%E7%BB%84%E4%BB%B6/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>运用百度api实现定位城市</title>
+    <link href="wgjh5.github.io/2019/08/07/%E8%BF%90%E7%94%A8%E7%99%BE%E5%BA%A6api%E5%AE%9E%E7%8E%B0%E5%AE%9A%E4%BD%8D%E5%9F%8E%E5%B8%82/"/>
+    <id>wgjh5.github.io/2019/08/07/运用百度api实现定位城市/</id>
+    <published>2019-08-07T09:31:46.826Z</published>
+    <updated>2019-08-07T10:28:37.048Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h4 id=&quot;1-在index-html中写&quot;&gt;&lt;a href=&quot;#1-在index-html中写&quot; class=&quot;headerlink&quot; title=&quot;1.在index.html中写&quot;&gt;&lt;/a&gt;1.在index.html中写&lt;/h4&gt;&lt;figure class=&quot;highlight js&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;script type=&lt;span class=&quot;string&quot;&gt;&quot;text/javascript&quot;&lt;/span&gt; src=&lt;span class=&quot;string&quot;&gt;&quot;http://api.map.baidu.com/api?v=2.0&amp;amp;ak=您的密钥&quot;&lt;/span&gt;&amp;gt;&lt;span class=&quot;xml&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;script&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+      <category term="技术" scheme="wgjh5.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="vue" scheme="wgjh5.github.io/tags/vue/"/>
+    
+      <category term="运用百度api实现定位城市" scheme="wgjh5.github.io/tags/%E8%BF%90%E7%94%A8%E7%99%BE%E5%BA%A6api%E5%AE%9E%E7%8E%B0%E5%AE%9A%E4%BD%8D%E5%9F%8E%E5%B8%82/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>解决Vuex持久化插件-在F5刷新页面后数据不见的问题</title>
+    <link href="wgjh5.github.io/2019/08/07/%E8%A7%A3%E5%86%B3vux%E5%88%B7%E6%96%B0%E6%B6%88%E5%A4%B1%E9%97%AE%E9%A2%98/"/>
+    <id>wgjh5.github.io/2019/08/07/解决vux刷新消失问题/</id>
+    <published>2019-08-07T09:31:46.808Z</published>
+    <updated>2019-08-08T01:48:31.366Z</updated>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;vuex优势：相比sessionStorage，存储数据更安全，sessionStorage可以在控制台被看到。&lt;/p&gt;
+&lt;p&gt;vuex劣势：在F5刷新页面后，vuex会重新更新state，所以，存储的数据会丢失。&lt;/p&gt;
+&lt;p&gt;为了克服这个问题， vuex-persistedstate出现了~~&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="技术" scheme="wgjh5.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="vue" scheme="wgjh5.github.io/tags/vue/"/>
+    
+      <category term="解决Vuex持久化插件-在F5刷新页面后数据不见的问题" scheme="wgjh5.github.io/tags/%E8%A7%A3%E5%86%B3Vuex%E6%8C%81%E4%B9%85%E5%8C%96%E6%8F%92%E4%BB%B6-%E5%9C%A8F5%E5%88%B7%E6%96%B0%E9%A1%B5%E9%9D%A2%E5%90%8E%E6%95%B0%E6%8D%AE%E4%B8%8D%E8%A7%81%E7%9A%84%E9%97%AE%E9%A2%98/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>解决SVN清理失败，显示乱码问题</title>
+    <link href="wgjh5.github.io/2019/08/07/%E8%A7%A3%E5%86%B3SVN%E6%B8%85%E7%90%86%E5%A4%B1%E8%B4%A5%E9%97%AE%E9%A2%98/"/>
+    <id>wgjh5.github.io/2019/08/07/解决SVN清理失败问题/</id>
+    <published>2019-08-07T09:31:46.799Z</published>
+    <updated>2019-08-07T10:27:41.306Z</updated>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;更新SVN时，提示要清理，但是清理失败，此时什么也操作不了，以下就是解决方案。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;情况如图：&lt;img src=&quot;/07/解决SVN清理失败问题/.%5Cimg%5CclearFail.png&quot; alt&gt;&lt;img src=&quot;/07/解决SVN清理失败问题/.%5Cimg%5CSVN.png&quot; alt&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="技术" scheme="wgjh5.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="vue" scheme="wgjh5.github.io/tags/vue/"/>
+    
+      <category term="解决SVN清理失败，显示乱码问题" scheme="wgjh5.github.io/tags/%E8%A7%A3%E5%86%B3SVN%E6%B8%85%E7%90%86%E5%A4%B1%E8%B4%A5%EF%BC%8C%E6%98%BE%E7%A4%BA%E4%B9%B1%E7%A0%81%E9%97%AE%E9%A2%98/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>关于watch和computed的结合监听props</title>
+    <link href="wgjh5.github.io/2019/08/07/%E5%85%B3%E4%BA%8Ewatch%E5%92%8Ccomputed%E7%9A%84%E7%BB%93%E5%90%88%E7%9B%91%E5%90%ACprops/"/>
+    <id>wgjh5.github.io/2019/08/07/关于watch和computed的结合监听props/</id>
+    <published>2019-08-07T09:31:46.784Z</published>
+    <updated>2019-08-08T02:20:24.145Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;需求&quot;&gt;&lt;a href=&quot;#需求&quot; class=&quot;headerlink&quot; title=&quot;需求&quot;&gt;&lt;/a&gt;需求&lt;/h2&gt;&lt;blockquote&gt;
+&lt;p&gt;如果你要根据&lt;code&gt;props&lt;/code&gt;传过来的值，来执行函数，你就需要监听，&lt;code&gt;props&lt;/code&gt;传过来的值的变化&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="技术" scheme="wgjh5.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="vue" scheme="wgjh5.github.io/tags/vue/"/>
+    
+      <category term="关于watch和computed的结合监听props" scheme="wgjh5.github.io/tags/%E5%85%B3%E4%BA%8Ewatch%E5%92%8Ccomputed%E7%9A%84%E7%BB%93%E5%90%88%E7%9B%91%E5%90%ACprops/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>webapp调起浏览器分享</title>
+    <link href="wgjh5.github.io/2019/08/07/webapp%E5%88%86%E4%BA%AB/"/>
+    <id>wgjh5.github.io/2019/08/07/webapp分享/</id>
+    <published>2019-08-07T09:31:46.766Z</published>
+    <updated>2019-08-07T10:26:14.109Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;起因&quot;&gt;&lt;a href=&quot;#起因&quot; class=&quot;headerlink&quot; title=&quot;起因&quot;&gt;&lt;/a&gt;起因&lt;/h3&gt;&lt;blockquote&gt;
+&lt;p&gt;最近在做一个新闻资讯页，有分享的功能，在参考了很多的资料后，有以下总结。&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="技术" scheme="wgjh5.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="vue" scheme="wgjh5.github.io/tags/vue/"/>
+    
+      <category term="webapp调起浏览器分享" scheme="wgjh5.github.io/tags/webapp%E8%B0%83%E8%B5%B7%E6%B5%8F%E8%A7%88%E5%99%A8%E5%88%86%E4%BA%AB/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>2018.12.21 vue总结</title>
+    <link href="wgjh5.github.io/2019/08/07/vue%E6%80%BB%E7%BB%93/"/>
+    <id>wgjh5.github.io/2019/08/07/vue总结/</id>
+    <published>2019-08-07T09:31:46.753Z</published>
+    <updated>2019-08-07T10:25:14.865Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;一、vue2-9-6版本起步&quot;&gt;&lt;a href=&quot;#一、vue2-9-6版本起步&quot; class=&quot;headerlink&quot; title=&quot;一、vue2.9.6版本起步&quot;&gt;&lt;/a&gt;一、vue2.9.6版本起步&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;先安装&lt;code&gt;node&lt;/code&gt;环境&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://nodejs.org/en/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Node下载&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;再安&lt;code&gt;vue&lt;/code&gt;的装脚手架&lt;/p&gt;&lt;/li&gt;&lt;/ol&gt;
+    
+    </summary>
+    
+      <category term="技术" scheme="wgjh5.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="vue" scheme="wgjh5.github.io/tags/vue/"/>
+    
+      <category term="2018.12.21 vue总结" scheme="wgjh5.github.io/tags/2018-12-21-vue%E6%80%BB%E7%BB%93/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>vue中websocket用法及封装</title>
+    <link href="wgjh5.github.io/2019/08/07/vue%E4%B8%ADwebsocket%E7%94%A8%E6%B3%95%E5%8F%8A%E5%B0%81%E8%A3%85/"/>
+    <id>wgjh5.github.io/2019/08/07/vue中websocket用法及封装/</id>
+    <published>2019-08-07T09:31:46.734Z</published>
+    <updated>2019-08-07T10:30:08.496Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h4 id=&quot;1-先下载&quot;&gt;&lt;a href=&quot;#1-先下载&quot; class=&quot;headerlink&quot; title=&quot;1.先下载&quot;&gt;&lt;/a&gt;1.先下载&lt;/h4&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;cnpm install vue-socket.io --save-dev&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+      <category term="技术" scheme="wgjh5.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="vue" scheme="wgjh5.github.io/tags/vue/"/>
+    
+      <category term="vue中websocket用法及封装" scheme="wgjh5.github.io/tags/vue%E4%B8%ADwebsocket%E7%94%A8%E6%B3%95%E5%8F%8A%E5%B0%81%E8%A3%85/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>vue中v-touch事件用法</title>
+    <link href="wgjh5.github.io/2019/08/07/vue%E4%B8%ADv-touch%E4%BA%8B%E4%BB%B6%E7%94%A8%E6%B3%95/"/>
+    <id>wgjh5.github.io/2019/08/07/vue中v-touch事件用法/</id>
+    <published>2019-08-07T09:31:46.733Z</published>
+    <updated>2019-08-07T10:19:39.778Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h4 id=&quot;1-先下载&quot;&gt;&lt;a href=&quot;#1-先下载&quot; class=&quot;headerlink&quot; title=&quot;1.先下载&quot;&gt;&lt;/a&gt;1.先下载&lt;/h4&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;cnpm install vue-touch@next --save dev&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+      <category term="技术" scheme="wgjh5.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="vue" scheme="wgjh5.github.io/tags/vue/"/>
+    
+      <category term="vue中v-touch事件用法" scheme="wgjh5.github.io/tags/vue%E4%B8%ADv-touch%E4%BA%8B%E4%BB%B6%E7%94%A8%E6%B3%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>vue中scss的用法</title>
+    <link href="wgjh5.github.io/2019/08/07/vue%E4%B8%ADscss%E7%9A%84%E7%94%A8%E6%B3%95/"/>
+    <id>wgjh5.github.io/2019/08/07/vue中scss的用法/</id>
+    <published>2019-08-07T09:31:46.714Z</published>
+    <updated>2019-08-07T10:29:32.301Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h4 id=&quot;1-在src文件夹里面新建assets文件夹&quot;&gt;&lt;a href=&quot;#1-在src文件夹里面新建assets文件夹&quot; class=&quot;headerlink&quot; title=&quot;1.在src文件夹里面新建assets文件夹&quot;&gt;&lt;/a&gt;1.在&lt;code&gt;src&lt;/code&gt;文件夹里面新建&lt;code&gt;assets&lt;/code&gt;文件夹&lt;/h4&gt;&lt;h4 id=&quot;2-在asstes文件夹里面新建css文件夹&quot;&gt;&lt;a href=&quot;#2-在asstes文件夹里面新建css文件夹&quot; class=&quot;headerlink&quot; title=&quot;2.在asstes文件夹里面新建css文件夹&quot;&gt;&lt;/a&gt;2.在&lt;code&gt;asstes&lt;/code&gt;文件夹里面新建&lt;code&gt;css&lt;/code&gt;文件夹&lt;/h4&gt;
+    
+    </summary>
+    
+      <category term="技术" scheme="wgjh5.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="vue" scheme="wgjh5.github.io/tags/vue/"/>
+    
+      <category term="vue中scss的用法" scheme="wgjh5.github.io/tags/vue%E4%B8%ADscss%E7%9A%84%E7%94%A8%E6%B3%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>vue中`animate.css`用法</title>
+    <link href="wgjh5.github.io/2019/08/07/vue%E4%B8%ADanimate.css%E7%94%A8%E6%B3%95/"/>
+    <id>wgjh5.github.io/2019/08/07/vue中animate.css用法/</id>
+    <published>2019-08-07T09:31:46.699Z</published>
+    <updated>2019-08-07T10:18:35.722Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h4 id=&quot;1-先下载&quot;&gt;&lt;a href=&quot;#1-先下载&quot; class=&quot;headerlink&quot; title=&quot;1.先下载&quot;&gt;&lt;/a&gt;1.先下载&lt;/h4&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;cnpm install animate.css --save&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+      <category term="技术" scheme="wgjh5.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="vue" scheme="wgjh5.github.io/tags/vue/"/>
+    
+      <category term="vue中`animate.css`用法" scheme="wgjh5.github.io/tags/vue%E4%B8%AD-animate-css-%E7%94%A8%E6%B3%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>vue图片上传及压缩组件的封装</title>
+    <link href="wgjh5.github.io/2019/08/07/vue%E5%9B%BE%E7%89%87%E4%B8%8A%E4%BC%A0%E5%8F%8A%E5%8E%8B%E7%BC%A9%E7%BB%84%E4%BB%B6%E7%9A%84%E5%B0%81%E8%A3%85/"/>
+    <id>wgjh5.github.io/2019/08/07/vue图片上传及压缩组件的封装/</id>
+    <published>2019-08-07T09:31:46.680Z</published>
+    <updated>2019-08-07T10:22:13.613Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;a href=&quot;./uploadPictures/uploadPictures.vue&quot;&gt;源码地址&lt;/a&gt;&lt;/p&gt;
+&lt;h4 id=&quot;使用方法：&quot;&gt;&lt;a href=&quot;#使用方法：&quot; class=&quot;headerlink&quot; title=&quot;使用方法：&quot;&gt;&lt;/a&gt;使用方法：&lt;/h4&gt;&lt;blockquote&gt;
+&lt;p&gt;先去上面的链接把组件，复制到自己的&lt;code&gt;components&lt;/code&gt;文件夹内&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="技术" scheme="wgjh5.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="vue" scheme="wgjh5.github.io/tags/vue/"/>
+    
+      <category term="vue图片上传及压缩组件的封装" scheme="wgjh5.github.io/tags/vue%E5%9B%BE%E7%89%87%E4%B8%8A%E4%BC%A0%E5%8F%8A%E5%8E%8B%E7%BC%A9%E7%BB%84%E4%BB%B6%E7%9A%84%E5%B0%81%E8%A3%85/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>vue上传图片与压缩</title>
+    <link href="wgjh5.github.io/2019/08/07/vue%E5%9B%BE%E7%89%87%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8A%E4%BC%A0%E4%B9%8B%E5%89%8D%E7%9A%84%E5%8E%8B%E7%BC%A9/"/>
+    <id>wgjh5.github.io/2019/08/07/vue图片上传和上传之前的压缩/</id>
+    <published>2019-08-07T09:31:46.664Z</published>
+    <updated>2019-08-07T10:22:51.411Z</updated>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;这其中我一共用了两种做法，推荐&lt;code&gt;第一种&lt;/code&gt;，因为第二种在有的苹果手机兼容性不是很好，有时会出现网页奔溃现象&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;一、compressorjs-方式&quot;&gt;&lt;a href=&quot;#一、compressorjs-方式&quot; class=&quot;headerlink&quot; title=&quot;一、compressorjs 方式&quot;&gt;&lt;/a&gt;一、compressorjs 方式&lt;/h2&gt;
+    
+    </summary>
+    
+      <category term="技术" scheme="wgjh5.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="vue" scheme="wgjh5.github.io/tags/vue/"/>
+    
+      <category term="vue上传图片与压缩" scheme="wgjh5.github.io/tags/vue%E4%B8%8A%E4%BC%A0%E5%9B%BE%E7%89%87%E4%B8%8E%E5%8E%8B%E7%BC%A9/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>vue图片上传</title>
+    <link href="wgjh5.github.io/2019/08/07/vue%E5%9B%BE%E7%89%87%E4%B8%8A%E4%BC%A0/"/>
+    <id>wgjh5.github.io/2019/08/07/vue图片上传/</id>
+    <published>2019-08-07T09:31:46.647Z</published>
+    <updated>2019-08-07T10:29:50.270Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h4 id=&quot;html&quot;&gt;&lt;a href=&quot;#html&quot; class=&quot;headerlink&quot; title=&quot;html&quot;&gt;&lt;/a&gt;html&lt;/h4&gt;
+    
+    </summary>
+    
+      <category term="技术" scheme="wgjh5.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="vue" scheme="wgjh5.github.io/tags/vue/"/>
+    
+      <category term="vue图片上传" scheme="wgjh5.github.io/tags/vue%E5%9B%BE%E7%89%87%E4%B8%8A%E4%BC%A0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>vue判断手机移动端</title>
+    <link href="wgjh5.github.io/2019/08/07/vue%E5%88%A4%E6%96%AD%E6%89%8B%E6%9C%BA%E7%A7%BB%E5%8A%A8%E7%AB%AF/"/>
+    <id>wgjh5.github.io/2019/08/07/vue判断手机移动端/</id>
+    <published>2019-08-07T09:31:46.646Z</published>
+    <updated>2019-08-07T10:20:41.212Z</updated>
+    
+    <summary type="html">
+    
+      &lt;figure class=&quot;highlight js&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//App.vue，判断是否为移动端&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;_isMobile() &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; flag = navigator.userAgent.match(&lt;span class=&quot;regexp&quot;&gt;/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	 &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; flag;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+      <category term="技术" scheme="wgjh5.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="vue" scheme="wgjh5.github.io/tags/vue/"/>
+    
+      <category term="vue判断手机移动端" scheme="wgjh5.github.io/tags/vue%E5%88%A4%E6%96%AD%E6%89%8B%E6%9C%BA%E7%A7%BB%E5%8A%A8%E7%AB%AF/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>vue技术点</title>
+    <link href="wgjh5.github.io/2019/08/07/vue%E6%8A%80%E6%9C%AF%E7%82%B9/"/>
+    <id>wgjh5.github.io/2019/08/07/vue技术点/</id>
+    <published>2019-08-07T09:31:46.629Z</published>
+    <updated>2019-08-07T10:30:28.025Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;2019-2-15&quot;&gt;&lt;a href=&quot;#2019-2-15&quot; class=&quot;headerlink&quot; title=&quot;2019 2.15&quot;&gt;&lt;/a&gt;2019 2.15&lt;/h1&gt;&lt;h2 id=&quot;一、vue中websocket用法及封装&quot;&gt;&lt;a href=&quot;#一、vue中websocket用法及封装&quot; class=&quot;headerlink&quot; title=&quot;一、vue中websocket用法及封装&quot;&gt;&lt;/a&gt;一、vue中websocket用法及封装&lt;/h2&gt;&lt;h4 id=&quot;1-先下载&quot;&gt;&lt;a href=&quot;#1-先下载&quot; class=&quot;headerlink&quot; title=&quot;1.先下载&quot;&gt;&lt;/a&gt;1.先下载&lt;/h4&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;cnpm install vue-socket.io --save-dev&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+      <category term="技术" scheme="wgjh5.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="vue" scheme="wgjh5.github.io/tags/vue/"/>
+    
+      <category term="vue技术点" scheme="wgjh5.github.io/tags/vue%E6%8A%80%E6%9C%AF%E7%82%B9/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>vue给js加版本号</title>
+    <link href="wgjh5.github.io/2019/08/07/vue%E7%BB%99js%E6%B7%BB%E5%8A%A0%E7%89%88%E6%9C%AC%E5%8F%B7/"/>
+    <id>wgjh5.github.io/2019/08/07/vue给js添加版本号/</id>
+    <published>2019-08-07T09:31:46.621Z</published>
+    <updated>2019-08-07T10:25:48.292Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h4 id=&quot;在build文件里面的webpack-prod-conf-js文件里面加如下代码&quot;&gt;&lt;a href=&quot;#在build文件里面的webpack-prod-conf-js文件里面加如下代码&quot; class=&quot;headerlink&quot; title=&quot;在build文件里面的webpack.prod.conf.js文件里面加如下代码&quot;&gt;&lt;/a&gt;在&lt;code&gt;build&lt;/code&gt;文件里面的&lt;code&gt;webpack.prod.conf.js&lt;/code&gt;文件里面加如下代码&lt;/h4&gt;
+    
+    </summary>
+    
+      <category term="技术" scheme="wgjh5.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="vue" scheme="wgjh5.github.io/tags/vue/"/>
+    
+      <category term="vue给js加版本号" scheme="wgjh5.github.io/tags/vue%E7%BB%99js%E5%8A%A0%E7%89%88%E6%9C%AC%E5%8F%B7/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>vue动态绑定类名的几种方法</title>
+    <link href="wgjh5.github.io/2019/08/07/vue%E5%8A%A8%E6%80%81%E7%BB%91%E5%AE%9A%E7%B1%BB%E5%90%8D%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E6%B3%95/"/>
+    <id>wgjh5.github.io/2019/08/07/vue动态绑定类名的几种方法/</id>
+    <published>2019-08-07T09:31:46.605Z</published>
+    <updated>2019-08-07T10:21:17.264Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;单个判断推荐&lt;a href=&quot;#1我们可以传给v-bindclass一个对象以动态地切换-class&quot; &quot;&gt;1&lt;/a&gt;，两个条件动态切换推荐&lt;a href=&quot;#5三元表达式动态切换class推荐&quot;&gt;5&lt;/a&gt;，多个推荐&lt;a href=&quot;#4数组的方式绑定class&quot;&gt;4&lt;/a&gt;&lt;/p&gt;
+&lt;h4 id=&quot;“1我们可以传给v-bindclass一个对象以动态地切换-class”&quot;&gt;1.我们可以传给 `v-bind:class` 一个对象，以动态地切换 class&lt;/h4&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;根据&lt;code&gt;isActive&lt;/code&gt;的true,false变化，动态绑定单个class&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="技术" scheme="wgjh5.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="vue" scheme="wgjh5.github.io/tags/vue/"/>
+    
+      <category term="vue动态绑定类名的几种方法" scheme="wgjh5.github.io/tags/vue%E5%8A%A8%E6%80%81%E7%BB%91%E5%AE%9A%E7%B1%BB%E5%90%8D%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E6%B3%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>vue-pdf</title>
+    <link href="wgjh5.github.io/2019/08/07/vue-pdf%E7%AE%80%E5%8D%95%E7%94%A8%E6%B3%95/"/>
+    <id>wgjh5.github.io/2019/08/07/vue-pdf简单用法/</id>
+    <published>2019-08-07T09:31:46.603Z</published>
+    <updated>2019-08-07T10:14:12.386Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h4 id=&quot;1-先下载&quot;&gt;&lt;a href=&quot;#1-先下载&quot; class=&quot;headerlink&quot; title=&quot;1.先下载&quot;&gt;&lt;/a&gt;1.先下载&lt;/h4&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;cnpm install vue-pdf --save-dev&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+      <category term="技术" scheme="wgjh5.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="vue" scheme="wgjh5.github.io/tags/vue/"/>
+    
+      <category term="vue-pdf" scheme="wgjh5.github.io/tags/vue-pdf/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>vue 移动端 实现div拖拽移动</title>
+    <link href="wgjh5.github.io/2019/08/07/vuejs%20%E7%A7%BB%E5%8A%A8%E7%AB%AF%20%E5%AE%9E%E7%8E%B0div%E6%8B%96%E6%8B%BD%E7%A7%BB%E5%8A%A8/"/>
+    <id>wgjh5.github.io/2019/08/07/vuejs 移动端 实现div拖拽移动/</id>
+    <published>2019-08-07T09:31:46.591Z</published>
+    <updated>2019-08-07T10:18:08.032Z</updated>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;相关知识点&lt;br&gt;touchstart 当在屏幕上按下手指时触发&lt;/p&gt;
+&lt;p&gt;touchmove 当在屏幕上移动手指时触发&lt;/p&gt;
+&lt;p&gt;touchend 当在屏幕上抬起手指时触发&lt;br&gt;mousedown mousemove mouseup对应的是PC端的事件&lt;/p&gt;
+&lt;p&gt;touchcancel 当一些更高级别的事件发生的时候（如电话接入或者弹出信息）会取消当前的touch操作，即触发touchcancel。一般会在touchcancel时暂停游戏、存档等操作。&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="技术" scheme="wgjh5.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="vue" scheme="wgjh5.github.io/tags/vue/"/>
+    
+      <category term="vue 移动端 实现div拖拽移动" scheme="wgjh5.github.io/tags/vue-%E7%A7%BB%E5%8A%A8%E7%AB%AF-%E5%AE%9E%E7%8E%B0div%E6%8B%96%E6%8B%BD%E7%A7%BB%E5%8A%A8/"/>
+    
+  </entry>
+  
+</feed>

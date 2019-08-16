@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    
+        
+                <meta name="keywords" content="爱前端 | 爱工作 | 爱生活">
+                
+                    
+                            <meta name="description" content="This is My blog">
+                            
+                                <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+                                <title>
+                                    
+                                        解决SVN清理失败，显示乱码问题 |
+                                            
+                                                一只正在成长的程序猿
+                                </title>
+                                
+                                    <link rel="shortcut icon" href="/images/headPortrait.png">
+                                    
+                                        <link rel="stylesheet" href="/css/style.css">
+                                            
+                                                <link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+                                                    
+                                                        <script src="/js/pace.min.js"></script>
+</head></html>
+
+    <body>
+        <main class="content">
+            <section class="outer">
+    <article id="post-解决SVN清理失败问题" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      解决SVN清理失败，显示乱码问题
+    </h1>
+  
+  
+
+
+
+
+      </header>
+    
+
+    
+      <div class="article-meta">
+        <a href="/2019/08/07/解决SVN清理失败问题/" class="article-date">
+  <time datetime="2019-08-07T09:31:46.799Z" itemprop="datePublished">2019-08-07</time>
+</a>
+        
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/技术/">技术</a>
+  </div>
+
+      </div>
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+
+      
+
+      
+        <blockquote>
+<p>更新SVN时，提示要清理，但是清理失败，此时什么也操作不了，以下就是解决方案。</p>
+</blockquote>
+<p>情况如图：<img src="/07/解决SVN清理失败问题/.%5Cimg%5CclearFail.png" alt><img src="/07/解决SVN清理失败问题/.%5Cimg%5CSVN.png" alt></p>
+<a id="more"></a>
+<h4 id="解决方案一："><a href="#解决方案一：" class="headerlink" title="解决方案一："></a>解决方案一：</h4><ol>
+<li>下载<a href="https://www.sqlite.org/download.html" target="_blank" rel="noopener">splite3</a></li>
+</ol>
+<p><img src="/07/解决SVN清理失败问题/splite.png" alt></p>
+<ol start="2">
+<li><p>新建一个临时文件夹，使用英文名字，将解压后的sqlite.exe文件复制到这个临时文件夹下</p>
+</li>
+<li><p>找到你存放文件的SVN文件库中.svn文件夹里的wc.db文件，复制到临时文件夹里。有可能在SVN文件库里找不到.svn文件夹，那是因为隐藏了。</p>
+<blockquote>
+<p>解决方法（win7）：点击菜单栏里的组织选项—&gt;文件夹和搜索选项-&gt;查看/显示隐藏的文件和文件夹</p>
+<p>解决方法（win10）：文件—&gt;查看—&gt;隐藏所选项目(勾上图示的两个框框)</p>
+<p><img src="/07/解决SVN清理失败问题/showFile.png" alt></p>
+</blockquote>
+<p><img src="/07/解决SVN清理失败问题/wcdb.png" alt></p>
+</li>
+<li><p>进入临时文件夹，<code>cmd</code>运行输入 <code>sqlite3 wc.db</code> 回车，再输入 <code>select * from work_queue;</code></p>
+</li>
+<li><p>如果有查询记录了再输入 <code>delete from work_queue;</code> 结束。 下图：</p>
+<p><img src="/07/解决SVN清理失败问题/sblite3.png" alt></p>
+</li>
+<li><p>复制临时文件夹里的wc.db，覆盖.svn下的wc.db</p>
+</li>
+<li><p>执行清理，正常清理，如果清理时显示锁定，且上下级清理都是，勾选清理选项中的解锁选项</p>
+</li>
+</ol>
+<blockquote>
+<p> 最后：再试试cleanup，一开始可能有点慢。</p>
+</blockquote>
+<h4 id="解决方案二："><a href="#解决方案二：" class="headerlink" title="解决方案二："></a><strong>解决方案二：</strong></h4><blockquote>
+<p>1,2,3跟方案1 一样</p>
+</blockquote>
+<ol start="4">
+<li>执行.table 把所有表找到。如下图：</li>
+</ol>
+<p><img src="/07/解决SVN清理失败问题/wc_lock.png" alt></p>
+<p>   5.这里要用到wc_lock这个表，所有执行<code>select * from wc_lock；</code>有个东西。</p>
+<ol start="6">
+<li>执行<code>delete from wc_lock;</code> 再查询就没有了。</li>
+</ol>
+<blockquote>
+<p> 最后：再试试cleanup，这下也可以成功了。</p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="wgjh5.github.io/2019/08/07/解决SVN清理失败问题/" data-id="cjzdv8ruo002884u8dba3xxzz"
+         class="article-share-link">分享</a>
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vue/">vue</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/解决SVN清理失败，显示乱码问题/">解决SVN清理失败，显示乱码问题</a></li></ul>
+
+    </footer>
+
+  </div>
+
+  
+    
+  <nav class="article-nav">
+    
+      <a href="/2019/08/07/解决vux刷新消失问题/" class="article-nav-link">
+        <strong class="article-nav-caption">前一篇</strong>
+        <div class="article-nav-title">
+          
+            解决Vuex持久化插件-在F5刷新页面后数据不见的问题
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2019/08/07/关于watch和computed的结合监听props/" class="article-nav-link">
+        <strong class="article-nav-caption">后一篇</strong>
+        <div class="article-nav-title">关于watch和computed的结合监听props</div>
+      </a>
+    
+  </nav>
+
+
+  
+
+  
+    
+    <div class="gitalk" id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+        <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+            <script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.min.js"></script>
+                <script type="text/javascript">
+                    var gitalk = new Gitalk({
+                        clientID: '64ce5333a42f02cf200d',
+                        clientSecret: '7d37a3d8d3c9e215de06d3078bd1894053368739',
+                        repo: 'wgjh5.github.io',
+                        owner: 'wgjh5',
+                        admin: ['wgjh5'],
+                        // id: location.pathname,      // Ensure uniqueness and length less than 50
+                        id: md5(location.pathname),
+                        distractionFreeMode: true, // Facebook-like distraction free mode
+                        pagerDirection: 'last'
+                    })
+
+                    gitalk.render('gitalk-container')
+                </script>
+                
+  
+
+</article>
+
+
+
+</section>
+                <footer class="footer">
+  <div class="outer">
+    <div class="float-right">
+      <ul class="list-inline">
+  
+    <li><i class="fe fe-smile-alt"></i> <span id="busuanzi_value_site_uv"></span></li>
+  
+</ul>
+    </div>
+    <ul class="list-inline">
+      <li>&copy; 2019 一只正在成长的程序猿</li>
+      <li>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></li>
+      <li>Theme  <a href="https://github.com/zhwangart/hexo-theme-ocean">Ocean</a></li>
+    </ul>
+  </div>
+</footer>
+
+        </main>
+        <aside class="sidebar">
+            <button class="navbar-toggle"></button>
+
+<nav class="navbar">
+  
+    <div class="logo">
+      <a href="/"><img src="/images/shark.svg" alt="一只正在成长的程序猿"></a>
+    </div>
+  
+  <ul class="nav nav-main">
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/">主页</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/archives">归档</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/about">关于</a>
+      </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link nav-item-search" title="搜索">
+        <i class="fe fe-search"></i>
+        搜索
+      </a>
+    </li>
+  </ul>
+</nav>
+
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      <div class="totop" id="totop">
+  <i class="fe fe-rocket"></i>
+</div>
+    </li>
+    <li class="nav-item">
+      
+        <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+          <i class="fe fe-feed"></i>
+        </a>
+      
+    </li>
+  </ul>
+</nav>
+
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+        </aside>
+        <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/lazyload.min.js"></script>
+<script src="/js/snap.svg-min.js"></script>
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+  <script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+  <script src="/js/search.js"></script>
+
+
+<script src="/js/ocean.js"></script>
+
+    </body>
+
+    </html>

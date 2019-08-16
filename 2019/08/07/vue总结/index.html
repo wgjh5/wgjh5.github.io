@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    
+        
+                <meta name="keywords" content="爱前端 | 爱工作 | 爱生活">
+                
+                    
+                            <meta name="description" content="This is My blog">
+                            
+                                <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+                                <title>
+                                    
+                                        2018.12.21 vue总结 |
+                                            
+                                                一只正在成长的程序猿
+                                </title>
+                                
+                                    <link rel="shortcut icon" href="/images/headPortrait.png">
+                                    
+                                        <link rel="stylesheet" href="/css/style.css">
+                                            
+                                                <link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+                                                    
+                                                        <script src="/js/pace.min.js"></script>
+</head></html>
+
+    <body>
+        <main class="content">
+            <section class="outer">
+    <article id="post-vue总结" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      2018.12.21 vue总结
+    </h1>
+  
+  
+
+
+
+
+      </header>
+    
+
+    
+      <div class="article-meta">
+        <a href="/2019/08/07/vue总结/" class="article-date">
+  <time datetime="2019-08-07T09:31:46.753Z" itemprop="datePublished">2019-08-07</time>
+</a>
+        
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/技术/">技术</a>
+  </div>
+
+      </div>
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+
+      
+
+      
+        <h3 id="一、vue2-9-6版本起步"><a href="#一、vue2-9-6版本起步" class="headerlink" title="一、vue2.9.6版本起步"></a>一、vue2.9.6版本起步</h3><ol>
+<li><p>先安装<code>node</code>环境</p>
+<p><a href="https://nodejs.org/en/" target="_blank" rel="noopener">Node下载</a></p>
+</li>
+<li><p>再安<code>vue</code>的装脚手架</p>
+<a id="more"></a>
+<figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g vue-<span class="keyword">cli</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建项目</p>
+</li>
+</ol>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vue init webpack <span class="keyword">my</span>-project</span><br></pre></td></tr></table></figure>
+
+<h3 id="二、vue3-0版本起步"><a href="#二、vue3-0版本起步" class="headerlink" title="二、vue3.0版本起步"></a>二、vue3.0版本起步</h3><blockquote>
+<p>关于旧版本</p>
+<p>Vue CLI 的包名称由 <code>vue-cli</code> 改成了 <code>@vue/cli</code>。 如果你已经全局安装了旧版本的 <code>vue-cli</code>(1.x 或 2.x)，你需要先通过 <code>npm uninstall vue-cli -g</code> 或 <code>yarn global remove vue-cli</code> 卸载它。</p>
+</blockquote>
+<p>1.安装脚手架</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g @vue/cli</span><br></pre></td></tr></table></figure>
+
+<p>2.检查版本是否安装正确</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vue --version</span><br></pre></td></tr></table></figure>
+
+<p>3.查看版本号</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vue -V</span><br></pre></td></tr></table></figure>
+
+<p>4.创建项目</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vue create weibo</span><br></pre></td></tr></table></figure>
+
+<p>5.定位到该文件夹</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> weibo</span><br></pre></td></tr></table></figure>
+
+<p>6.启动服务器</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm run serve</span><br></pre></td></tr></table></figure>
+
+<h3 id="三、在vue2-9-6脚手架用vuxUI配置"><a href="#三、在vue2-9-6脚手架用vuxUI配置" class="headerlink" title="三、在vue2.9.6脚手架用vuxUI配置"></a>三、在<code>vue2.9.6脚手架</code>用vuxUI配置</h3><p><a href="https://doc.vux.li/zh-CN/" target="_blank" rel="noopener">wux官方文档</a></p>
+<p>1.在项目里安装<code>vux</code> </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install vux --save-dev</span><br></pre></td></tr></table></figure>
+
+<p>2.安装vux-loader <strong>（这个vux文档中没有明文跟你说要安装的啦）</strong> </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install vux-loader --save-dev</span><br></pre></td></tr></table></figure>
+
+<p>3.安装less-loader </p>
+<blockquote>
+<p>（这个是用以正确编译less源码，否则会出现 ‘ Cannot GET / ‘，自己看package.json，如果安装了，就不用装啦！）</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install less less-loader --save-dev</span><br></pre></td></tr></table></figure>
+
+<p>4.在build文件夹下<code>webpack.base.conf.js</code> 文件进行配置 </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> vuxLoader = <span class="built_in">require</span>(<span class="string">'vux-loader'</span>) <span class="comment">//【新加上去的】</span></span><br><span class="line"><span class="keyword">const</span> webpackConfig = originalConfig <span class="comment">//【originalConfig就是原来的 </span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//module.exports出去的代码，把它整个赋值给变量 webpackConfig】</span></span><br><span class="line"><span class="comment">// 【在最后加多一句，这里就是引用插件vux啦！】</span></span><br><span class="line"><span class="built_in">module</span>.exports = vuxLoader.merge(webpackConfig, &#123; <span class="attr">plugins</span>: [<span class="string">'vux-ui'</span>] &#125;)</span><br></pre></td></tr></table></figure>
+
+<p>5.最后别忘了，在resolve: { extensions: [‘.js’, ‘.vue’, ‘.json’,’.less’]里加入.less。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">resolve: &#123; <span class="attr">extensions</span>: [<span class="string">'.js'</span>, <span class="string">'.vue'</span>, <span class="string">'.json'</span>,<span class="string">'.less'</span>]</span><br></pre></td></tr></table></figure>
+
+<p>6.<code>webpack.base.conf.js</code>整体代码</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">'use strict'</span></span><br><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>)</span><br><span class="line"><span class="keyword">const</span> utils = <span class="built_in">require</span>(<span class="string">'./utils'</span>)</span><br><span class="line"><span class="keyword">const</span> config = <span class="built_in">require</span>(<span class="string">'../config'</span>)</span><br><span class="line"><span class="keyword">const</span> vueLoaderConfig = <span class="built_in">require</span>(<span class="string">'./vue-loader.conf'</span>)</span><br><span class="line"><span class="keyword">const</span> vuxLoader = <span class="built_in">require</span>(<span class="string">'vux-loader'</span>) </span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">resolve</span> (<span class="params">dir</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> path.join(__dirname, <span class="string">'..'</span>, dir)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> createLintingRule = <span class="function"><span class="params">()</span> =&gt;</span> (&#123;</span><br><span class="line"><span class="comment">//test: /\.(js|vue)$/,</span></span><br><span class="line"><span class="comment">//loader: 'eslint-loader',</span></span><br><span class="line"><span class="comment">//enforce: 'pre',</span></span><br><span class="line"><span class="comment">//include: [resolve('src'), resolve('test')],</span></span><br><span class="line"><span class="comment">//options: &#123;</span></span><br><span class="line"><span class="comment">//  formatter: require('eslint-friendly-formatter'),</span></span><br><span class="line"><span class="comment">//  emitWarning: !config.dev.showEslintErrorsInOverlay</span></span><br><span class="line"><span class="comment">//&#125;</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> webpackConfig = &#123;</span><br><span class="line">  context: path.resolve(__dirname, <span class="string">'../'</span>),</span><br><span class="line">  entry: &#123;</span><br><span class="line">    app: <span class="string">'./src/main.js'</span></span><br><span class="line">  &#125;,</span><br><span class="line">  output: &#123;</span><br><span class="line">    path: config.build.assetsRoot,</span><br><span class="line">    filename: <span class="string">'[name].js'</span>,</span><br><span class="line">    publicPath: process.env.NODE_ENV === <span class="string">'production'</span></span><br><span class="line">      ? config.build.assetsPublicPath</span><br><span class="line">      : config.dev.assetsPublicPath</span><br><span class="line">  &#125;,</span><br><span class="line">  resolve: &#123;</span><br><span class="line">    extensions: [<span class="string">'.js'</span>, <span class="string">'.vue'</span>, <span class="string">'.json'</span>,<span class="string">'.less'</span>],</span><br><span class="line">    alias: &#123;</span><br><span class="line">      <span class="string">'vue$'</span>: <span class="string">'vue/dist/vue.esm.js'</span>,</span><br><span class="line">      <span class="string">'@'</span>: resolve(<span class="string">'src'</span>),</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="built_in">module</span>: &#123;</span><br><span class="line">    rules: [</span><br><span class="line">      ...(config.dev.useEslint ? [createLintingRule()] : []),</span><br><span class="line">      &#123;</span><br><span class="line">        test: <span class="regexp">/\.vue$/</span>,</span><br><span class="line">        loader: <span class="string">'vue-loader'</span>,</span><br><span class="line">        options: vueLoaderConfig</span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">        test: <span class="regexp">/\.js$/</span>,</span><br><span class="line">        loader: <span class="string">'babel-loader'</span>,</span><br><span class="line">        include: [resolve(<span class="string">'src'</span>), resolve(<span class="string">'test'</span>), resolve(<span class="string">'node_modules/webpack-dev-server/client'</span>)]</span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">        test: <span class="regexp">/\.(png|jpe?g|gif|svg)(\?.*)?$/</span>,</span><br><span class="line">        loader: <span class="string">'url-loader'</span>,</span><br><span class="line">        options: &#123;</span><br><span class="line">          limit: <span class="number">10000</span>,</span><br><span class="line">          name: utils.assetsPath(<span class="string">'img/[name].[hash:7].[ext]'</span>)</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">        test: <span class="regexp">/\.(mp4|webm|ogg|mp3|wav|flac|aac)(\?.*)?$/</span>,</span><br><span class="line">        loader: <span class="string">'url-loader'</span>,</span><br><span class="line">        options: &#123;</span><br><span class="line">          limit: <span class="number">10000</span>,</span><br><span class="line">          name: utils.assetsPath(<span class="string">'media/[name].[hash:7].[ext]'</span>)</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">        test: <span class="regexp">/\.(woff2?|eot|ttf|otf)(\?.*)?$/</span>,</span><br><span class="line">        loader: <span class="string">'url-loader'</span>,</span><br><span class="line">        options: &#123;</span><br><span class="line">          limit: <span class="number">10000</span>,</span><br><span class="line">          name: utils.assetsPath(<span class="string">'fonts/[name].[hash:7].[ext]'</span>)</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;,</span><br><span class="line">  node: &#123;</span><br><span class="line">    <span class="comment">// prevent webpack from injecting useless setImmediate polyfill because Vue</span></span><br><span class="line">    <span class="comment">// source contains it (although only uses it if it's native).</span></span><br><span class="line">    setImmediate: <span class="literal">false</span>,</span><br><span class="line">    <span class="comment">// prevent webpack from injecting mocks to Node native modules</span></span><br><span class="line">    <span class="comment">// that does not make sense for the client</span></span><br><span class="line">    dgram: <span class="string">'empty'</span>,</span><br><span class="line">    fs: <span class="string">'empty'</span>,</span><br><span class="line">    net: <span class="string">'empty'</span>,</span><br><span class="line">    tls: <span class="string">'empty'</span>,</span><br><span class="line">    child_process: <span class="string">'empty'</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">module</span>.exports = vuxLoader.merge(webpackConfig, &#123; <span class="attr">plugins</span>: [<span class="string">'vux-ui'</span>] &#125;)</span><br></pre></td></tr></table></figure>
+
+<p>7.需要什么在<code>main.js</code>里面引入即可，例如</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; Tab, TabItem &#125; <span class="keyword">from</span> <span class="string">'vux'</span></span><br><span class="line"></span><br><span class="line">Vue.component(<span class="string">'tab'</span>, Tab)</span><br><span class="line">Vue.component(<span class="string">'tab-item'</span>, TabItem)</span><br></pre></td></tr></table></figure>
+
+<h3 id="四、底部导航制作步骤"><a href="#四、底部导航制作步骤" class="headerlink" title="四、底部导航制作步骤"></a>四、底部导航制作步骤</h3><blockquote>
+<p>思路：底部导航动态切换的是路由 ，然后当你点击前有个未选中时的颜色，点击后有个选中时的颜色，这时图片就要动态切换路径，文字就要动态设置颜色，我用的是组件复用的方式，当你点击时通知向vuex仓库传递索引，别的页面拿到索引，动态选中颜色</p>
+</blockquote>
+<p>1.先下载<code>vue-router</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install vue-router --save-dev</span><br></pre></td></tr></table></figure>
+
+<p>2.在<code>src</code>里面新建<code>router</code>文件夹，在<code>router</code>里面新建<code>index.js</code>文件,搭建好路由</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">'vue'</span></span><br><span class="line"><span class="keyword">import</span> Router <span class="keyword">from</span> <span class="string">'	'</span></span><br><span class="line"></span><br><span class="line">Vue.use(Router)</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">new</span> Router(&#123;</span><br><span class="line">	routes: [&#123;</span><br><span class="line">		path: <span class="string">'/'</span>,</span><br><span class="line">		name: <span class="string">'home'</span>,</span><br><span class="line">		redirect: <span class="string">'/home'</span></span><br><span class="line">	&#125;,</span><br><span class="line">	&#123;</span><br><span class="line">		path: <span class="string">'/home'</span>,</span><br><span class="line">		name: <span class="string">'home'</span>,</span><br><span class="line">		component: <span class="function"><span class="params">resolve</span> =&gt;</span> <span class="built_in">require</span>([<span class="string">'@/pages/Home.vue'</span>], resolve),</span><br><span class="line">	&#125;,</span><br><span class="line">	&#123;</span><br><span class="line">		path: <span class="string">'/transaction'</span>,</span><br><span class="line">		name: <span class="string">'transaction'</span>,</span><br><span class="line">		component: <span class="function"><span class="params">resolve</span> =&gt;</span> <span class="built_in">require</span>([<span class="string">'@/pages/Transaction.vue'</span>], resolve),</span><br><span class="line">	&#125;,	&#123;</span><br><span class="line">		path: <span class="string">'/athletics'</span>,</span><br><span class="line">		name: <span class="string">'athletics'</span>,</span><br><span class="line">		component: <span class="function"><span class="params">resolve</span> =&gt;</span> <span class="built_in">require</span>([<span class="string">'@/pages/Athletics.vue'</span>], resolve),</span><br><span class="line">	&#125;,</span><br><span class="line">	&#123;</span><br><span class="line">		path: <span class="string">'/information'</span>,</span><br><span class="line">		name: <span class="string">'information'</span>,</span><br><span class="line">		component: <span class="function"><span class="params">resolve</span> =&gt;</span> <span class="built_in">require</span>([<span class="string">'@/pages/Information.vue'</span>], resolve),</span><br><span class="line">	&#125;,</span><br><span class="line">	&#123;</span><br><span class="line">		path: <span class="string">'/mine'</span>,</span><br><span class="line">		name: <span class="string">'mine'</span>,</span><br><span class="line">		component: <span class="function"><span class="params">resolve</span> =&gt;</span> <span class="built_in">require</span>([<span class="string">'@/pages/Mine.vue'</span>], resolve),</span><br><span class="line">	&#125;</span><br><span class="line">	]</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>3.新建<code>footerBar</code>搭建结构</p>
+<ul>
+<li><code>dom</code>结构</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">   </span><br><span class="line">    </span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"footer"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">li</span> <span class="attr">v-for</span>=<span class="string">"(f,index) in footerBar"</span> <span class="attr">:key</span>=<span class="string">"index"</span> <span class="attr">:class</span>=<span class="string">"&#123;active:idx==index&#125;"</span> @<span class="attr">click</span>=<span class="string">"toggle(index)"</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">img</span> <span class="attr">:src</span>=<span class="string">'idx===index?f.selectSrc:f.src'</span> <span class="attr">alt</span>=<span class="string">""</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">span</span>&gt;</span>&#123;&#123;f.title&#125;&#125;<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    </span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>js</code>逻辑</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  data() &#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">      idx: <span class="number">0</span>,</span><br><span class="line">      footerBar: [</span><br><span class="line">        &#123;</span><br><span class="line">          title: <span class="string">"首页"</span>,</span><br><span class="line">          path: <span class="string">"home"</span>,</span><br><span class="line">          src: <span class="built_in">require</span>(<span class="string">"@/assets/img/home/home.png"</span>),</span><br><span class="line">          selectSrc: <span class="built_in">require</span>(<span class="string">"@/assets/img/home/homeSelect.png"</span>)</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">          title: <span class="string">"交易"</span>,</span><br><span class="line">          path: <span class="string">"transaction"</span>,</span><br><span class="line">          src: <span class="built_in">require</span>(<span class="string">"@/assets/img/home/transaction.png"</span>),</span><br><span class="line">          selectSrc: <span class="built_in">require</span>(<span class="string">"@/assets/img/home/transactionSelect.png"</span>)</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">          title: <span class="string">"竞技"</span>,</span><br><span class="line">          path: <span class="string">"athletics"</span>,</span><br><span class="line">          src: <span class="built_in">require</span>(<span class="string">"@/assets/img/home/athletics.png"</span>),</span><br><span class="line">          selectSrc: <span class="built_in">require</span>(<span class="string">"@/assets/img/home/athleticsSelect.png"</span>)</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">          title: <span class="string">"资讯"</span>,</span><br><span class="line">          path: <span class="string">"information"</span>,</span><br><span class="line">          src: <span class="built_in">require</span>(<span class="string">"@/assets/img/home/information.png"</span>),</span><br><span class="line">          selectSrc: <span class="built_in">require</span>(<span class="string">"@/assets/img/home/informationSelect.png"</span>)</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">          title: <span class="string">"我的"</span>,</span><br><span class="line">          path: <span class="string">"mine"</span>,</span><br><span class="line">          src: <span class="built_in">require</span>(<span class="string">"@/assets/img/home/mine.png"</span>),</span><br><span class="line">          selectSrc: <span class="built_in">require</span>(<span class="string">"@/assets/img/home/mineSelect.png"</span>)</span><br><span class="line">        &#125;</span><br><span class="line">      ]</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;,</span><br><span class="line">  methods: &#123;</span><br><span class="line">    toggle(index) &#123;</span><br><span class="line">      <span class="keyword">this</span>.idx = index;</span><br><span class="line">      <span class="keyword">this</span>.$store.dispatch(<span class="string">"setIndex"</span>, index);</span><br><span class="line">      <span class="keyword">this</span>.$router.push(&#123; <span class="attr">name</span>: <span class="keyword">this</span>.footerBar[index].path &#125;);</span><br><span class="line">    &#125;,</span><br><span class="line">    setChannel(idx) &#123;</span><br><span class="line">      <span class="keyword">var</span> route = <span class="keyword">this</span>.$router.history.current.path;</span><br><span class="line">      <span class="comment">//   route = route.split("/");</span></span><br><span class="line"></span><br><span class="line">      <span class="keyword">switch</span> (route) &#123;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">"/home"</span>:</span><br><span class="line">          <span class="keyword">this</span>.idx = <span class="number">0</span>;</span><br><span class="line">          <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">"/transaction"</span>:</span><br><span class="line">          <span class="keyword">this</span>.idx = <span class="number">1</span>;</span><br><span class="line">          <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">"/athletics"</span>:</span><br><span class="line">          <span class="keyword">this</span>.idx = <span class="number">2</span>;</span><br><span class="line">          <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">"/information"</span>:</span><br><span class="line">          <span class="keyword">this</span>.idx = <span class="number">3</span>;</span><br><span class="line">          <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">"/mine"</span>:</span><br><span class="line">          <span class="keyword">this</span>.idx = <span class="number">4</span>;</span><br><span class="line">          <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">default</span>:</span><br><span class="line">          <span class="keyword">this</span>.idx = <span class="number">0</span>;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  computed: &#123;&#125;,</span><br><span class="line">  mounted() &#123;</span><br><span class="line">    <span class="keyword">this</span>.idx = <span class="keyword">this</span>.$store.getters.getidx;</span><br><span class="line">    <span class="keyword">this</span>.setChannel();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>css</code>样式</li>
+</ul>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">&lt;style scoped lang='scss'&gt;</span><br><span class="line">@<span class="keyword">import</span> <span class="string">"../assets/css/reset.scss"</span>;</span><br><span class="line"><span class="selector-class">.footer</span> &#123;</span><br><span class="line">  <span class="attribute">position</span>: fixed;</span><br><span class="line">  <span class="attribute">bottom</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">left</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">100%</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">ul</span> &#123;</span><br><span class="line">  <span class="attribute">font-family</span>: PingFangSC-Regular;</span><br><span class="line">  <span class="attribute">display</span>: flex;</span><br><span class="line">  <span class="attribute">font-size</span>: <span class="number">1.375rem</span>;</span><br><span class="line">  <span class="attribute">justify-content</span>: space-around;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">ul</span> <span class="selector-tag">li</span> &#123;</span><br><span class="line">  <span class="attribute">position</span>: relative;</span><br><span class="line">  <span class="attribute">display</span>: flex;</span><br><span class="line">  <span class="attribute">flex-direction</span>: column;</span><br><span class="line">  <span class="attribute">justify-content</span>: space-around;</span><br><span class="line">  <span class="attribute">padding-top</span>: <span class="built_in">rem</span>(22);</span><br><span class="line">  <span class="attribute">align-items</span>: center;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">li</span><span class="selector-class">.active</span><span class="selector-pseudo">::after</span> &#123;</span><br><span class="line">  <span class="attribute">content</span>: <span class="string">""</span>;</span><br><span class="line">  <span class="attribute">display</span>: block;</span><br><span class="line">  <span class="attribute">position</span>: absolute;</span><br><span class="line">  <span class="attribute">top</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">left</span>: <span class="built_in">rem</span>(-18);</span><br><span class="line">  <span class="attribute">width</span>: <span class="built_in">rem</span>(90);</span><br><span class="line">  <span class="attribute">height</span>: <span class="built_in">rem</span>(5);</span><br><span class="line">  <span class="attribute">border-radius</span>: <span class="built_in">rem</span>(40);</span><br><span class="line">  <span class="attribute">background-color</span>: <span class="number">#c59b59</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.active</span> &#123;</span><br><span class="line">  <span class="attribute">color</span>: <span class="number">#c59b59</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">ul</span> <span class="selector-tag">li</span> <span class="selector-tag">span</span> &#123;</span><br><span class="line">  <span class="attribute">line-height</span>: <span class="built_in">rem</span>(50);</span><br><span class="line">  <span class="attribute">font-size</span>: <span class="built_in">rem</span>(22);</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">img</span> &#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="built_in">rem</span>(44);</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+
+<p>4.在src文件夹里面新建store，里面新建<code>index.js</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">'vue'</span></span><br><span class="line"><span class="keyword">import</span> Vuex <span class="keyword">from</span> <span class="string">'vuex'</span></span><br><span class="line">Vue.use(Vuex)</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">new</span> Vuex.Store(&#123;</span><br><span class="line">    state: &#123;</span><br><span class="line">        idx: <span class="number">0</span></span><br><span class="line">    &#125;,</span><br><span class="line">    getters: &#123;</span><br><span class="line">        getidx: <span class="function"><span class="params">state</span> =&gt;</span> &#123;</span><br><span class="line">			<span class="keyword">return</span> state.idx</span><br><span class="line">		&#125;,</span><br><span class="line">    &#125;,</span><br><span class="line">    mutations: &#123;</span><br><span class="line">        editiIndex(state, data) &#123;</span><br><span class="line">            state.idx = data</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;,</span><br><span class="line">    actions: &#123;</span><br><span class="line">        setIndex(conText, data) &#123;</span><br><span class="line">            conText.commit(<span class="string">'editiIndex'</span>, data);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>## </p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="wgjh5.github.io/2019/08/07/vue总结/" data-id="cjzdv8ruc001o84u8b1a2m00a"
+         class="article-share-link">分享</a>
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/2018-12-21-vue总结/">2018.12.21 vue总结</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vue/">vue</a></li></ul>
+
+    </footer>
+
+  </div>
+
+  
+    
+  <nav class="article-nav">
+    
+      <a href="/2019/08/07/webapp分享/" class="article-nav-link">
+        <strong class="article-nav-caption">前一篇</strong>
+        <div class="article-nav-title">
+          
+            webapp调起浏览器分享
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2019/08/07/vue中websocket用法及封装/" class="article-nav-link">
+        <strong class="article-nav-caption">后一篇</strong>
+        <div class="article-nav-title">vue中websocket用法及封装</div>
+      </a>
+    
+  </nav>
+
+
+  
+
+  
+    
+    <div class="gitalk" id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+        <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+            <script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.min.js"></script>
+                <script type="text/javascript">
+                    var gitalk = new Gitalk({
+                        clientID: '64ce5333a42f02cf200d',
+                        clientSecret: '7d37a3d8d3c9e215de06d3078bd1894053368739',
+                        repo: 'wgjh5.github.io',
+                        owner: 'wgjh5',
+                        admin: ['wgjh5'],
+                        // id: location.pathname,      // Ensure uniqueness and length less than 50
+                        id: md5(location.pathname),
+                        distractionFreeMode: true, // Facebook-like distraction free mode
+                        pagerDirection: 'last'
+                    })
+
+                    gitalk.render('gitalk-container')
+                </script>
+                
+  
+
+</article>
+
+
+
+</section>
+                <footer class="footer">
+  <div class="outer">
+    <div class="float-right">
+      <ul class="list-inline">
+  
+    <li><i class="fe fe-smile-alt"></i> <span id="busuanzi_value_site_uv"></span></li>
+  
+</ul>
+    </div>
+    <ul class="list-inline">
+      <li>&copy; 2019 一只正在成长的程序猿</li>
+      <li>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></li>
+      <li>Theme  <a href="https://github.com/zhwangart/hexo-theme-ocean">Ocean</a></li>
+    </ul>
+  </div>
+</footer>
+
+        </main>
+        <aside class="sidebar">
+            <button class="navbar-toggle"></button>
+
+<nav class="navbar">
+  
+    <div class="logo">
+      <a href="/"><img src="/images/shark.svg" alt="一只正在成长的程序猿"></a>
+    </div>
+  
+  <ul class="nav nav-main">
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/">主页</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/archives">归档</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/about">关于</a>
+      </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link nav-item-search" title="搜索">
+        <i class="fe fe-search"></i>
+        搜索
+      </a>
+    </li>
+  </ul>
+</nav>
+
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      <div class="totop" id="totop">
+  <i class="fe fe-rocket"></i>
+</div>
+    </li>
+    <li class="nav-item">
+      
+        <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+          <i class="fe fe-feed"></i>
+        </a>
+      
+    </li>
+  </ul>
+</nav>
+
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+        </aside>
+        <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/lazyload.min.js"></script>
+<script src="/js/snap.svg-min.js"></script>
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+  <script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+  <script src="/js/search.js"></script>
+
+
+<script src="/js/ocean.js"></script>
+
+    </body>
+
+    </html>

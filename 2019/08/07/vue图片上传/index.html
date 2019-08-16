@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    
+        
+                <meta name="keywords" content="爱前端 | 爱工作 | 爱生活">
+                
+                    
+                            <meta name="description" content="This is My blog">
+                            
+                                <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+                                <title>
+                                    
+                                        vue图片上传 |
+                                            
+                                                一只正在成长的程序猿
+                                </title>
+                                
+                                    <link rel="shortcut icon" href="/images/headPortrait.png">
+                                    
+                                        <link rel="stylesheet" href="/css/style.css">
+                                            
+                                                <link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+                                                    
+                                                        <script src="/js/pace.min.js"></script>
+</head></html>
+
+    <body>
+        <main class="content">
+            <section class="outer">
+    <article id="post-vue图片上传" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      vue图片上传
+    </h1>
+  
+  
+
+
+
+
+      </header>
+    
+
+    
+      <div class="article-meta">
+        <a href="/2019/08/07/vue图片上传/" class="article-date">
+  <time datetime="2019-08-07T09:31:46.647Z" itemprop="datePublished">2019-08-07</time>
+</a>
+        
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/技术/">技术</a>
+  </div>
+
+      </div>
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+
+      
+
+      
+        <h4 id="html"><a href="#html" class="headerlink" title="html"></a>html</h4><a id="more"></a>
+
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"idCard"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>信用卡图像<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">li</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">img</span> <span class="attr">:src</span>=<span class="string">"frontSrc"</span> <span class="attr">alt</span>=<span class="string">""</span>&gt;</span></span><br><span class="line"></span><br><span class="line">            <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">p</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">p</span>&gt;</span>信用卡正面图像<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">p</span>&gt;</span>（文字清晰，四角齐全）<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line">            <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"file"</span> <span class="attr">ref</span>=<span class="string">"inputer"</span> @<span class="attr">change</span>=<span class="string">"addImg"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="js"><a href="#js" class="headerlink" title="js"></a>js</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">data() &#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">      selfname:<span class="string">""</span>,<span class="comment">//自定名称</span></span><br><span class="line">      formDataFront: <span class="keyword">new</span> FormData(),</span><br><span class="line">      frontStatus: <span class="literal">false</span>, <span class="comment">//判断是否提交了身份证正面</span></span><br><span class="line">      imgsFront: &#123;&#125;, <span class="comment">//正面</span></span><br><span class="line">      imgLen: <span class="number">0</span>,</span><br><span class="line">      frontSrc: <span class="string">""</span>, <span class="comment">//身份证正面的图片路径</span></span><br><span class="line">      creditfront: <span class="string">""</span></span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;,</span><br><span class="line"><span class="comment">// 上传银行卡图片</span></span><br><span class="line">    addImg() &#123;</span><br><span class="line">      <span class="keyword">let</span> inputDOM = <span class="keyword">this</span>.$refs.inputer;</span><br><span class="line">      <span class="comment">// 通过DOM取文件数据</span></span><br><span class="line">      <span class="keyword">this</span>.fil = inputDOM.files;</span><br><span class="line">      <span class="comment">// console.log(this.fil)</span></span><br><span class="line">      <span class="keyword">let</span> oldLen = <span class="keyword">this</span>.imgLen;</span><br><span class="line">      <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="keyword">this</span>.fil.length; i++) &#123;</span><br><span class="line">        <span class="keyword">let</span> size = <span class="built_in">Math</span>.floor(<span class="keyword">this</span>.fil[i].size / <span class="number">1024</span>);</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">"正面=================="</span>, size);</span><br><span class="line">        <span class="keyword">if</span> (size &gt; <span class="number">20</span> * <span class="number">1024</span> * <span class="number">1024</span>) &#123;</span><br><span class="line">          alert(<span class="string">"请选择20M以内的图片！"</span>);</span><br><span class="line">          <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">this</span>.imgLen++;</span><br><span class="line">        <span class="keyword">this</span>.imgsFront = &#123;&#125;;</span><br><span class="line">        <span class="keyword">this</span>.$<span class="keyword">set</span>(</span><br><span class="line">          this.imgsFront,</span><br><span class="line">          this.fil[i].name + "?" + new Date().getTime() + i,</span><br><span class="line">          this.fil[i]</span><br><span class="line">        );</span><br><span class="line">      &#125;</span><br><span class="line">      for (let key in this.imgsFront) &#123;</span><br><span class="line">        <span class="keyword">let</span> name = key.split(<span class="string">"?"</span>)[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">this</span>.formDataFront.append(<span class="string">"multipartFiles"</span>, <span class="keyword">this</span>.imgsFront[key], name);</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="comment">// 上传图片</span></span><br><span class="line">      <span class="comment">// console.log(this)</span></span><br><span class="line"></span><br><span class="line">      <span class="keyword">let</span> params = <span class="keyword">this</span>.formDataFront;</span><br><span class="line">      uploadimg(params).then(<span class="function"><span class="params">r</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(r.data);</span><br><span class="line">        <span class="keyword">if</span> (r.data.Url.length &gt; <span class="number">0</span>) &#123;</span><br><span class="line">          <span class="keyword">this</span>.frontStatus = <span class="literal">true</span>;</span><br><span class="line">          <span class="keyword">this</span>.creditfront = r.data.Url;	<span class="comment">//后端返回需要再次发到后端的东西</span></span><br><span class="line">          <span class="keyword">this</span>.frontSrc = <span class="keyword">this</span>.$axios + <span class="string">"/Img/Show/"</span> + r.data.Url;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;);</span><br><span class="line">    &#125;,</span><br></pre></td></tr></table></figure>
+
+<h4 id="scss"><a href="#scss" class="headerlink" title="scss"></a>scss</h4><figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.idCard</span> &#123;</span><br><span class="line">  <span class="attribute">padding</span>: <span class="number">0</span> rem(<span class="number">30</span>) rem(<span class="number">30</span>) rem(<span class="number">30</span>);</span><br><span class="line"></span><br><span class="line">  <span class="selector-tag">p</span> &#123;</span><br><span class="line">    <span class="attribute">text-align</span>: left;</span><br><span class="line">    <span class="attribute">font-size</span>: rem(<span class="number">24</span>);</span><br><span class="line">    <span class="attribute">line-height</span>: rem(<span class="number">84</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="selector-tag">ul</span> &#123;</span><br><span class="line">    <span class="attribute">display</span>: flex;</span><br><span class="line">    <span class="attribute">justify-content</span>: space-between;</span><br><span class="line"></span><br><span class="line">    <span class="selector-tag">li</span> &#123;</span><br><span class="line">      <span class="attribute">position</span>: relative;</span><br><span class="line">      <span class="attribute">width</span>: rem(<span class="number">310</span>);</span><br><span class="line">      <span class="attribute">height</span>: rem(<span class="number">200</span>);</span><br><span class="line">      <span class="attribute">background-color</span>: <span class="number">#ffffff</span>;</span><br><span class="line">      <span class="attribute">border</span>: rem(<span class="number">1</span>) dashed <span class="number">#ccc</span>;</span><br><span class="line"></span><br><span class="line">      <span class="selector-tag">div</span> &#123;</span><br><span class="line">        <span class="attribute">z-index</span>: <span class="number">88</span>;</span><br><span class="line"></span><br><span class="line">        <span class="selector-tag">p</span>:first-child &#123;</span><br><span class="line">          <span class="attribute">width</span>: rem(<span class="number">46</span>);</span><br><span class="line">          <span class="attribute">height</span>: rem(<span class="number">46</span>);</span><br><span class="line">          <span class="attribute">background</span>: url(<span class="string">"../../assets/img/mine/+.png"</span>) no-repeat;</span><br><span class="line">          <span class="attribute">background-size</span>: cover;</span><br><span class="line">          <span class="attribute">margin</span>: rem(<span class="number">40</span>) auto rem(<span class="number">10</span>) auto;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="selector-tag">p</span>:nth-child(2) &#123;</span><br><span class="line">          <span class="attribute">font-size</span>: rem(<span class="number">26</span>);</span><br><span class="line">          <span class="attribute">line-height</span>: rem(<span class="number">30</span>);</span><br><span class="line">          <span class="attribute">text-align</span>: center;</span><br><span class="line">          <span class="attribute">color</span>: <span class="number">#999999</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="selector-tag">p</span>:nth-child(3) &#123;</span><br><span class="line">          <span class="attribute">font-size</span>: rem(<span class="number">20</span>);</span><br><span class="line">          <span class="attribute">text-align</span>: center;</span><br><span class="line">          <span class="attribute">color</span>: <span class="number">#bbbbbb</span>;</span><br><span class="line">          <span class="attribute">line-height</span>: rem(<span class="number">40</span>);</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="selector-tag">img</span> &#123;</span><br><span class="line">        <span class="attribute">width</span>: <span class="number">100%</span>;</span><br><span class="line">        <span class="attribute">height</span>: <span class="number">100%</span>;</span><br><span class="line">        <span class="attribute">position</span>: absolute;</span><br><span class="line">        <span class="attribute">left</span>: <span class="number">0</span>;</span><br><span class="line">        <span class="attribute">top</span>: <span class="number">0</span>;</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="selector-tag">input</span> &#123;</span><br><span class="line">        <span class="attribute">position</span>: absolute;</span><br><span class="line">        <span class="attribute">left</span>: <span class="number">0</span>;</span><br><span class="line">        <span class="attribute">top</span>: <span class="number">0</span>;</span><br><span class="line">        <span class="attribute">z-index</span>: <span class="number">10000</span>;</span><br><span class="line">        <span class="attribute">width</span>: <span class="number">100%</span>;</span><br><span class="line">        <span class="attribute">height</span>: <span class="number">100%</span>;</span><br><span class="line">        <span class="attribute">opacity</span>: <span class="number">0</span>;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="wgjh5.github.io/2019/08/07/vue图片上传/" data-id="cjzdv8ru6001e84u82szyx0ee"
+         class="article-share-link">分享</a>
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vue/">vue</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vue图片上传/">vue图片上传</a></li></ul>
+
+    </footer>
+
+  </div>
+
+  
+    
+  <nav class="article-nav">
+    
+      <a href="/2019/08/07/vue图片上传和上传之前的压缩/" class="article-nav-link">
+        <strong class="article-nav-caption">前一篇</strong>
+        <div class="article-nav-title">
+          
+            vue上传图片与压缩
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2019/08/07/vue判断手机移动端/" class="article-nav-link">
+        <strong class="article-nav-caption">后一篇</strong>
+        <div class="article-nav-title">vue判断手机移动端</div>
+      </a>
+    
+  </nav>
+
+
+  
+
+  
+    
+    <div class="gitalk" id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+        <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+            <script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.min.js"></script>
+                <script type="text/javascript">
+                    var gitalk = new Gitalk({
+                        clientID: '64ce5333a42f02cf200d',
+                        clientSecret: '7d37a3d8d3c9e215de06d3078bd1894053368739',
+                        repo: 'wgjh5.github.io',
+                        owner: 'wgjh5',
+                        admin: ['wgjh5'],
+                        // id: location.pathname,      // Ensure uniqueness and length less than 50
+                        id: md5(location.pathname),
+                        distractionFreeMode: true, // Facebook-like distraction free mode
+                        pagerDirection: 'last'
+                    })
+
+                    gitalk.render('gitalk-container')
+                </script>
+                
+  
+
+</article>
+
+
+
+</section>
+                <footer class="footer">
+  <div class="outer">
+    <div class="float-right">
+      <ul class="list-inline">
+  
+    <li><i class="fe fe-smile-alt"></i> <span id="busuanzi_value_site_uv"></span></li>
+  
+</ul>
+    </div>
+    <ul class="list-inline">
+      <li>&copy; 2019 一只正在成长的程序猿</li>
+      <li>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></li>
+      <li>Theme  <a href="https://github.com/zhwangart/hexo-theme-ocean">Ocean</a></li>
+    </ul>
+  </div>
+</footer>
+
+        </main>
+        <aside class="sidebar">
+            <button class="navbar-toggle"></button>
+
+<nav class="navbar">
+  
+    <div class="logo">
+      <a href="/"><img src="/images/shark.svg" alt="一只正在成长的程序猿"></a>
+    </div>
+  
+  <ul class="nav nav-main">
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/">主页</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/archives">归档</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/about">关于</a>
+      </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link nav-item-search" title="搜索">
+        <i class="fe fe-search"></i>
+        搜索
+      </a>
+    </li>
+  </ul>
+</nav>
+
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      <div class="totop" id="totop">
+  <i class="fe fe-rocket"></i>
+</div>
+    </li>
+    <li class="nav-item">
+      
+        <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+          <i class="fe fe-feed"></i>
+        </a>
+      
+    </li>
+  </ul>
+</nav>
+
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+        </aside>
+        <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/lazyload.min.js"></script>
+<script src="/js/snap.svg-min.js"></script>
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+  <script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+  <script src="/js/search.js"></script>
+
+
+<script src="/js/ocean.js"></script>
+
+    </body>
+
+    </html>

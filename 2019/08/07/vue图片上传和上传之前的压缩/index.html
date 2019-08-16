@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    
+        
+                <meta name="keywords" content="爱前端 | 爱工作 | 爱生活">
+                
+                    
+                            <meta name="description" content="This is My blog">
+                            
+                                <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+                                <title>
+                                    
+                                        vue上传图片与压缩 |
+                                            
+                                                一只正在成长的程序猿
+                                </title>
+                                
+                                    <link rel="shortcut icon" href="/images/headPortrait.png">
+                                    
+                                        <link rel="stylesheet" href="/css/style.css">
+                                            
+                                                <link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+                                                    
+                                                        <script src="/js/pace.min.js"></script>
+</head></html>
+
+    <body>
+        <main class="content">
+            <section class="outer">
+    <article id="post-vue图片上传和上传之前的压缩" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      vue上传图片与压缩
+    </h1>
+  
+  
+
+
+
+
+      </header>
+    
+
+    
+      <div class="article-meta">
+        <a href="/2019/08/07/vue图片上传和上传之前的压缩/" class="article-date">
+  <time datetime="2019-08-07T09:31:46.664Z" itemprop="datePublished">2019-08-07</time>
+</a>
+        
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/技术/">技术</a>
+  </div>
+
+      </div>
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+
+      
+
+      
+        <blockquote>
+<p>这其中我一共用了两种做法，推荐<code>第一种</code>，因为第二种在有的苹果手机兼容性不是很好，有时会出现网页奔溃现象</p>
+</blockquote>
+<h2 id="一、compressorjs-方式"><a href="#一、compressorjs-方式" class="headerlink" title="一、compressorjs 方式"></a>一、compressorjs 方式</h2><a id="more"></a>
+<h4 id="1-先下载compressorjs"><a href="#1-先下载compressorjs" class="headerlink" title="1.先下载compressorjs"></a>1.先下载<code>compressorjs</code></h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cnpm install compressorjs --save-dev</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-引入"><a href="#2-引入" class="headerlink" title="2.引入"></a>2.引入</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import Compressor from <span class="string">'compressorjs'</span>;</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-用法例子"><a href="#3-用法例子" class="headerlink" title="3.用法例子"></a>3.用法例子</h4><h5 id="template"><a href="#template" class="headerlink" title="template"></a>template</h5><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"file"</span> <span class="attr">ref</span>=<span class="string">"inputer"</span> @<span class="attr">change</span>=<span class="string">"addImg"</span> <span class="attr">accept</span>=<span class="string">"image/*"</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="js"><a href="#js" class="headerlink" title="js"></a>js</h5><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 添加身份证正面</span></span><br><span class="line">addImg() &#123;</span><br><span class="line">    <span class="keyword">let</span> self = <span class="keyword">this</span>;</span><br><span class="line">    <span class="keyword">let</span> inputDOM = <span class="keyword">this</span>.$refs.inputer;</span><br><span class="line">    <span class="comment">// 通过DOM取文件数据</span></span><br><span class="line">    <span class="keyword">const</span> file = inputDOM.files[<span class="number">0</span>];</span><br><span class="line">    <span class="comment">//如果file为空return出去</span></span><br><span class="line">    <span class="keyword">if</span> (!file) &#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">new</span> Compressor(file, &#123;</span><br><span class="line">        quality: <span class="number">0.1</span>,<span class="comment">//压缩质量</span></span><br><span class="line">        success(result) &#123;</span><br><span class="line">            <span class="keyword">const</span> formData = <span class="keyword">new</span> FormData();</span><br><span class="line">            <span class="comment">// The third parameter is required for server</span></span><br><span class="line">            formData.append(<span class="string">'file'</span>, result, result.name);</span><br><span class="line">       <span class="comment">//上传图片</span></span><br><span class="line">            <span class="keyword">let</span> params = formData;</span><br><span class="line">            uploadimg(params).then(<span class="function"><span class="params">r</span> =&gt;</span> &#123;</span><br><span class="line">				</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><a href="https://www.npmjs.com/package/compressorjs" target="_blank" rel="noopener">compressorjs 参考链接</a></p>
+<h2 id="二、image-compressor方式"><a href="#二、image-compressor方式" class="headerlink" title="二、image-compressor方式"></a>二、image-compressor方式</h2><h4 id="1-先下载"><a href="#1-先下载" class="headerlink" title="1.先下载"></a>1.先下载</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cnpm install image-compressor.js --save-dev</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-再引入"><a href="#2-再引入" class="headerlink" title="2.再引入"></a>2.再引入</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import ImageCompressor from <span class="string">'image-compressor.js</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="3-用法例子-1"><a href="#3-用法例子-1" class="headerlink" title="3.用法例子"></a>3.用法例子</h4><h5 id="template-1"><a href="#template-1" class="headerlink" title="template"></a>template</h5><figure class="highlight d"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="keyword">template</span>&gt;</span><br><span class="line">    &lt;input type=<span class="string">"file"</span> <span class="keyword">ref</span>=<span class="string">"inputer"</span> <span class="keyword">@change</span>=<span class="string">"addImg"</span> accept=<span class="string">"image/*"</span>&gt;</span><br><span class="line"> &lt;/<span class="keyword">template</span>&gt;</span><br></pre></td></tr></table></figure>
+
+<h5 id="js-1"><a href="#js-1" class="headerlink" title="js"></a>js</h5><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 添加身份证正面</span></span><br><span class="line">addImg() &#123;</span><br><span class="line">    <span class="keyword">let</span> self = <span class="keyword">this</span>;</span><br><span class="line">    <span class="keyword">let</span> inputDOM = <span class="keyword">this</span>.$refs.inputer;</span><br><span class="line">	<span class="keyword">const</span> file = inputDOM.files[<span class="number">0</span>];</span><br><span class="line">    <span class="keyword">if</span> (!file) &#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">new</span> ImageCompressor(file, &#123;</span><br><span class="line">        quality: <span class="number">.6</span>,<span class="comment">//压缩质量</span></span><br><span class="line">        success(result) &#123;</span><br><span class="line">            <span class="keyword">const</span> formData = <span class="keyword">new</span> FormData();</span><br><span class="line">            formData.append(<span class="string">'file'</span>, result, result.name);</span><br><span class="line">            <span class="keyword">let</span> params = formData;</span><br><span class="line">            uploadimg(params).then(<span class="function"><span class="params">r</span> =&gt;</span> &#123;</span><br><span class="line"></span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><a href="https://www.jianshu.com/p/3ce3e3865ae2" target="_blank" rel="noopener">image-compressor参考链接</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="wgjh5.github.io/2019/08/07/vue图片上传和上传之前的压缩/" data-id="cjzdv8rua001l84u8fpdwmiwf"
+         class="article-share-link">分享</a>
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vue/">vue</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vue上传图片与压缩/">vue上传图片与压缩</a></li></ul>
+
+    </footer>
+
+  </div>
+
+  
+    
+  <nav class="article-nav">
+    
+      <a href="/2019/08/07/vue图片上传及压缩组件的封装/" class="article-nav-link">
+        <strong class="article-nav-caption">前一篇</strong>
+        <div class="article-nav-title">
+          
+            vue图片上传及压缩组件的封装
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2019/08/07/vue图片上传/" class="article-nav-link">
+        <strong class="article-nav-caption">后一篇</strong>
+        <div class="article-nav-title">vue图片上传</div>
+      </a>
+    
+  </nav>
+
+
+  
+
+  
+    
+    <div class="gitalk" id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+        <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+            <script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.min.js"></script>
+                <script type="text/javascript">
+                    var gitalk = new Gitalk({
+                        clientID: '64ce5333a42f02cf200d',
+                        clientSecret: '7d37a3d8d3c9e215de06d3078bd1894053368739',
+                        repo: 'wgjh5.github.io',
+                        owner: 'wgjh5',
+                        admin: ['wgjh5'],
+                        // id: location.pathname,      // Ensure uniqueness and length less than 50
+                        id: md5(location.pathname),
+                        distractionFreeMode: true, // Facebook-like distraction free mode
+                        pagerDirection: 'last'
+                    })
+
+                    gitalk.render('gitalk-container')
+                </script>
+                
+  
+
+</article>
+
+
+
+</section>
+                <footer class="footer">
+  <div class="outer">
+    <div class="float-right">
+      <ul class="list-inline">
+  
+    <li><i class="fe fe-smile-alt"></i> <span id="busuanzi_value_site_uv"></span></li>
+  
+</ul>
+    </div>
+    <ul class="list-inline">
+      <li>&copy; 2019 一只正在成长的程序猿</li>
+      <li>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></li>
+      <li>Theme  <a href="https://github.com/zhwangart/hexo-theme-ocean">Ocean</a></li>
+    </ul>
+  </div>
+</footer>
+
+        </main>
+        <aside class="sidebar">
+            <button class="navbar-toggle"></button>
+
+<nav class="navbar">
+  
+    <div class="logo">
+      <a href="/"><img src="/images/shark.svg" alt="一只正在成长的程序猿"></a>
+    </div>
+  
+  <ul class="nav nav-main">
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/">主页</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/archives">归档</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/about">关于</a>
+      </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link nav-item-search" title="搜索">
+        <i class="fe fe-search"></i>
+        搜索
+      </a>
+    </li>
+  </ul>
+</nav>
+
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      <div class="totop" id="totop">
+  <i class="fe fe-rocket"></i>
+</div>
+    </li>
+    <li class="nav-item">
+      
+        <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+          <i class="fe fe-feed"></i>
+        </a>
+      
+    </li>
+  </ul>
+</nav>
+
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+        </aside>
+        <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/lazyload.min.js"></script>
+<script src="/js/snap.svg-min.js"></script>
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+  <script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+  <script src="/js/search.js"></script>
+
+
+<script src="/js/ocean.js"></script>
+
+    </body>
+
+    </html>

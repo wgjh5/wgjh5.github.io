@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    
+        
+                <meta name="keywords" content="爱前端 | 爱工作 | 爱生活">
+                
+                    
+                            <meta name="description" content="This is My blog">
+                            
+                                <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+                                <title>
+                                    
+                                        localStorage和sessionStorage的监听 |
+                                            
+                                                一只正在成长的程序猿
+                                </title>
+                                
+                                    <link rel="shortcut icon" href="/images/headPortrait.png">
+                                    
+                                        <link rel="stylesheet" href="/css/style.css">
+                                            
+                                                <link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+                                                    
+                                                        <script src="/js/pace.min.js"></script>
+</head></html>
+
+    <body>
+        <main class="content">
+            <section class="outer">
+    <article id="post-localStorage和sessionStorage的监听" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      localStorage和sessionStorage的监听
+    </h1>
+  
+  
+
+
+
+
+      </header>
+    
+
+    
+      <div class="article-meta">
+        <a href="/2019/08/07/localStorage和sessionStorage的监听/" class="article-date">
+  <time datetime="2019-08-07T09:31:46.502Z" itemprop="datePublished">2019-08-07</time>
+</a>
+        
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/技术/">技术</a>
+  </div>
+
+      </div>
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+
+      
+
+      
+        <h4 id="1-先在src下新建utils文件夹，新建tools-js，它会抛出一个dispatchEventStroage方法"><a href="#1-先在src下新建utils文件夹，新建tools-js，它会抛出一个dispatchEventStroage方法" class="headerlink" title="1.先在src下新建utils文件夹，新建tools.js，它会抛出一个dispatchEventStroage方法"></a>1.先在src下新建utils文件夹，新建tools.js，它会抛出一个dispatchEventStroage方法</h4><a id="more"></a>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">    <span class="comment">//localStorage</span></span><br><span class="line">    dispatchEventStroage() &#123;</span><br><span class="line">        <span class="keyword">const</span> signSetItem = localStorage.setItem</span><br><span class="line">        localStorage.setItem = <span class="function"><span class="keyword">function</span>(<span class="params">key, val</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">let</span> setEvent = <span class="keyword">new</span> Event(<span class="string">'setItemEvent'</span>)</span><br><span class="line">            setEvent.key = key</span><br><span class="line">            setEvent.newValue = val</span><br><span class="line">            <span class="built_in">window</span>.dispatchEvent(setEvent)</span><br><span class="line">            signSetItem.apply(<span class="keyword">this</span>, <span class="built_in">arguments</span>)</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="comment">//sessionStorage</span></span><br><span class="line">    dispatchEventStroage_S() &#123;</span><br><span class="line">        <span class="keyword">const</span> signSetItem = sessionStorage.setItem</span><br><span class="line">        sessionStorage.setItem = <span class="function"><span class="keyword">function</span>(<span class="params">key, val</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">let</span> setEvent = <span class="keyword">new</span> Event(<span class="string">'setItemEvent_s'</span>)</span><br><span class="line">            setEvent.key = key</span><br><span class="line">            setEvent.newValue = val</span><br><span class="line">            <span class="built_in">window</span>.dispatchEvent(setEvent)</span><br><span class="line">            signSetItem.apply(<span class="keyword">this</span>, <span class="built_in">arguments</span>)</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-在main-js里面全局引入，并use，然后调用该dispatchEventStroage方法，以解决setitemEvent不会立即生效的问题"><a href="#2-在main-js里面全局引入，并use，然后调用该dispatchEventStroage方法，以解决setitemEvent不会立即生效的问题" class="headerlink" title="2.在main.js里面全局引入，并use，然后调用该dispatchEventStroage方法，以解决setitemEvent不会立即生效的问题"></a>2.在main.js里面全局引入，并use，然后调用该dispatchEventStroage方法，以解决setitemEvent不会立即生效的问题</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Tools <span class="keyword">from</span> <span class="string">'@/utils/tools'</span></span><br><span class="line">Vue.use(Tools)</span><br><span class="line"><span class="comment">// 为了解决setItemEvent不立即生效，使用事件派发强制更高</span></span><br><span class="line">Tools.dispatchEventStroage()</span><br><span class="line">Tools.dispatchEventStroage_S()</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-然后就可以使用了"><a href="#3-然后就可以使用了" class="headerlink" title="3.然后就可以使用了"></a>3.然后就可以使用了</h4><blockquote>
+<p>如果我们在每次发送请求的时候都需要携带token字段，token有时候可以存在localstorage里面，但是当token发生改变时，我们js不知道已经改变，所以就需要用到以上方法了。</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> reqHeaders = &#123;</span><br><span class="line">  Accept: <span class="string">'text/json'</span>,</span><br><span class="line">  <span class="comment">// 第一次登录之后返回的token，之后每次请求都携带token字段进行验证</span></span><br><span class="line">  token: localStorage.getItem(<span class="string">'token'</span>) || <span class="string">''</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// window全局监听localStorage的setItem事件以及时更新</span></span><br><span class="line"><span class="built_in">window</span>.addEventListener(<span class="string">'setItemEvent'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</span><br><span class="line">  reqHeaders.token = e.newValue</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p><a href="https://blog.csdn.net/weixin_43869192/article/details/85061248" target="_blank" rel="noopener">参考链接</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="wgjh5.github.io/2019/08/07/localStorage和sessionStorage的监听/" data-id="cjzdv8rt8000684u83bpng2f6"
+         class="article-share-link">分享</a>
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/localStorage/">localStorage</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/sessionStorage/">sessionStorage</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vue/">vue</a></li></ul>
+
+    </footer>
+
+  </div>
+
+  
+    
+  <nav class="article-nav">
+    
+      <a href="/2019/08/07/README/" class="article-nav-link">
+        <strong class="article-nav-caption">前一篇</strong>
+        <div class="article-nav-title">
+          
+            目录
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2019/08/07/keepAlive使用方法/" class="article-nav-link">
+        <strong class="article-nav-caption">后一篇</strong>
+        <div class="article-nav-title">vue单页面，多路由，前进刷新，后退不刷新</div>
+      </a>
+    
+  </nav>
+
+
+  
+
+  
+    
+    <div class="gitalk" id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+        <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+            <script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.min.js"></script>
+                <script type="text/javascript">
+                    var gitalk = new Gitalk({
+                        clientID: '64ce5333a42f02cf200d',
+                        clientSecret: '7d37a3d8d3c9e215de06d3078bd1894053368739',
+                        repo: 'wgjh5.github.io',
+                        owner: 'wgjh5',
+                        admin: ['wgjh5'],
+                        // id: location.pathname,      // Ensure uniqueness and length less than 50
+                        id: md5(location.pathname),
+                        distractionFreeMode: true, // Facebook-like distraction free mode
+                        pagerDirection: 'last'
+                    })
+
+                    gitalk.render('gitalk-container')
+                </script>
+                
+  
+
+</article>
+
+
+
+</section>
+                <footer class="footer">
+  <div class="outer">
+    <div class="float-right">
+      <ul class="list-inline">
+  
+    <li><i class="fe fe-smile-alt"></i> <span id="busuanzi_value_site_uv"></span></li>
+  
+</ul>
+    </div>
+    <ul class="list-inline">
+      <li>&copy; 2019 一只正在成长的程序猿</li>
+      <li>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></li>
+      <li>Theme  <a href="https://github.com/zhwangart/hexo-theme-ocean">Ocean</a></li>
+    </ul>
+  </div>
+</footer>
+
+        </main>
+        <aside class="sidebar">
+            <button class="navbar-toggle"></button>
+
+<nav class="navbar">
+  
+    <div class="logo">
+      <a href="/"><img src="/images/shark.svg" alt="一只正在成长的程序猿"></a>
+    </div>
+  
+  <ul class="nav nav-main">
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/">主页</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/archives">归档</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/about">关于</a>
+      </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link nav-item-search" title="搜索">
+        <i class="fe fe-search"></i>
+        搜索
+      </a>
+    </li>
+  </ul>
+</nav>
+
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      <div class="totop" id="totop">
+  <i class="fe fe-rocket"></i>
+</div>
+    </li>
+    <li class="nav-item">
+      
+        <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+          <i class="fe fe-feed"></i>
+        </a>
+      
+    </li>
+  </ul>
+</nav>
+
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+        </aside>
+        <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/lazyload.min.js"></script>
+<script src="/js/snap.svg-min.js"></script>
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+  <script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+  <script src="/js/search.js"></script>
+
+
+<script src="/js/ocean.js"></script>
+
+    </body>
+
+    </html>

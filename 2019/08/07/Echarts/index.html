@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    
+        
+                <meta name="keywords" content="爱前端 | 爱工作 | 爱生活">
+                
+                    
+                            <meta name="description" content="This is My blog">
+                            
+                                <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+                                <title>
+                                    
+                                        Vue中Echart用法 |
+                                            
+                                                一只正在成长的程序猿
+                                </title>
+                                
+                                    <link rel="shortcut icon" href="/images/headPortrait.png">
+                                    
+                                        <link rel="stylesheet" href="/css/style.css">
+                                            
+                                                <link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+                                                    
+                                                        <script src="/js/pace.min.js"></script>
+</head></html>
+
+    <body>
+        <main class="content">
+            <section class="outer">
+    <article id="post-Echarts" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Vue中Echart用法
+    </h1>
+  
+  
+
+
+
+
+      </header>
+    
+
+    
+      <div class="article-meta">
+        <a href="/2019/08/07/Echarts/" class="article-date">
+  <time datetime="2019-08-07T09:31:46.444Z" itemprop="datePublished">2019-08-07</time>
+</a>
+        
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/技术/">技术</a>
+  </div>
+
+      </div>
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+
+      
+
+      
+        <h2 id="一、先下载echarts"><a href="#一、先下载echarts" class="headerlink" title="一、先下载echarts"></a>一、先下载<code>echarts</code></h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cnpm install echarts --save-dev</span><br></pre></td></tr></table></figure>
+
+<a id="more"></a>
+<h2 id="二、在main-js中引入"><a href="#二、在main-js中引入" class="headerlink" title="二、在main.js中引入"></a>二、在<code>main.js</code>中引入</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">import echarts from <span class="string">'echarts'</span></span><br><span class="line"></span><br><span class="line">Vue.prototype.<span class="variable">$echarts</span> = echarts</span><br></pre></td></tr></table></figure>
+
+<h2 id="三、新建hours-vue组件"><a href="#三、新建hours-vue组件" class="headerlink" title="三、新建hours.vue组件"></a>三、新建<code>hours.vue</code>组件</h2><figure class="highlight dust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"myChart"</span> <span class="attr">:style</span>=<span class="string">"</span></span></span><span class="template-variable">&#123; height: '140px'&#125;</span><span class="xml"><span class="tag"><span class="string">"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">"title"</span>&gt;</span>伦敦金<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">"percent1"</span>&gt;</span></span><span class="template-variable">&#123;&#123;percent1&#125;</span><span class="xml">&#125;.00%<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">"percent2"</span>&gt;</span></span><span class="template-variable">&#123;&#123;percent2&#125;</span><span class="xml">&#125;.00%<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">"time"</span>&gt;</span>数据更新时间：</span><span class="template-variable">&#123;&#123;year&#125;</span><span class="xml">&#125;&amp;nbsp;</span><span class="template-variable">&#123;&#123;time&#125;</span><span class="xml">&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></span><br><span class="line"><span class="xml"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+
+<h2 id="四、在methods里面写这段代码"><a href="#四、在methods里面写这段代码" class="headerlink" title="四、在methods里面写这段代码"></a>四、在methods里面写这段代码</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br></pre></td><td class="code"><pre><span class="line"> mounted() &#123;</span><br><span class="line">    <span class="keyword">this</span>.drawLine();	<span class="comment">//执行下面的函数</span></span><br><span class="line">  &#125;,</span><br><span class="line">methods: &#123;</span><br><span class="line">    drawLine() &#123;</span><br><span class="line">      <span class="comment">// var i=0;</span></span><br><span class="line">      <span class="comment">// 基于准备好的dom，初始化echarts实例</span></span><br><span class="line">      <span class="keyword">let</span> myChart = <span class="keyword">this</span>.$echarts.init(<span class="built_in">document</span>.getElementById(<span class="string">"myChart"</span>));</span><br><span class="line">      <span class="keyword">var</span> color = [<span class="string">"#19D672"</span>, <span class="string">"#FD517D"</span>];</span><br><span class="line">      <span class="comment">// 绘制图表</span></span><br><span class="line">      myChart.setOption(&#123;</span><br><span class="line">        color: [<span class="string">"#23D864"</span>, <span class="string">"#FF4D51"</span>],</span><br><span class="line"></span><br><span class="line">        <span class="comment">// title: &#123; text: '伦敦金' &#125;,</span></span><br><span class="line"></span><br><span class="line">        tooltip: &#123;</span><br><span class="line">          trigger: <span class="string">"item"</span>,</span><br><span class="line">          formatter: <span class="string">"&#123;a&#125; &lt;br/&gt;&#123;b&#125;: &#123;c&#125; (&#123;d&#125;%)"</span></span><br><span class="line">        &#125;,</span><br><span class="line"></span><br><span class="line">        legend: [</span><br><span class="line">          &#123;</span><br><span class="line">            <span class="comment">// orient: "vertical",</span></span><br><span class="line">            itemWidth: <span class="number">15</span>,</span><br><span class="line">            x: <span class="string">"2%"</span>,</span><br><span class="line">            y: <span class="string">"20%"</span>,</span><br><span class="line"></span><br><span class="line">            textStyle: &#123;</span><br><span class="line">              <span class="comment">// color: '#ccc',</span></span><br><span class="line">            &#125;,</span><br><span class="line"></span><br><span class="line">            data: [<span class="string">"买跌"</span>]</span><br><span class="line">          &#125;,</span><br><span class="line">          &#123;</span><br><span class="line">            itemWidth: <span class="number">15</span>,</span><br><span class="line"></span><br><span class="line">            <span class="comment">// orient: "vertical",</span></span><br><span class="line">            x: <span class="string">"80%"</span>,</span><br><span class="line">            y: <span class="string">"20%"</span>,</span><br><span class="line">            data: [<span class="string">"买涨"</span>]</span><br><span class="line">          &#125;</span><br><span class="line">        ],</span><br><span class="line">        series: [</span><br><span class="line">          &#123;</span><br><span class="line">            name: <span class="string">"访问来源"</span>,</span><br><span class="line">            type: <span class="string">"pie"</span>,</span><br><span class="line">            data: [<span class="string">"20%"</span>, <span class="string">"80%"</span>],</span><br><span class="line">            radius: [<span class="string">"42%"</span>, <span class="string">"50%"</span>],</span><br><span class="line">            center: [<span class="string">"50%"</span>, <span class="string">"35%"</span>],</span><br><span class="line">            avoidLabelOverlap: <span class="literal">false</span>,</span><br><span class="line">            label: &#123;</span><br><span class="line">              normal: &#123;</span><br><span class="line">                show: <span class="literal">false</span>,</span><br><span class="line">                position: <span class="string">"center"</span></span><br><span class="line">              &#125;,</span><br><span class="line"></span><br><span class="line">              emphasis: &#123;</span><br><span class="line">                show: <span class="literal">true</span>,</span><br><span class="line">                textStyle: &#123;</span><br><span class="line">                  fontSize: <span class="string">"0"</span>,</span><br><span class="line">                  fontWeight: <span class="string">"bold"</span></span><br><span class="line">                &#125;</span><br><span class="line">              &#125;</span><br><span class="line">            &#125;,</span><br><span class="line">            labelLine: &#123;</span><br><span class="line">              normal: &#123;</span><br><span class="line">                show: <span class="literal">false</span></span><br><span class="line">              &#125;</span><br><span class="line">            &#125;,</span><br><span class="line"></span><br><span class="line">            itemStyle: &#123;</span><br><span class="line">              top: <span class="string">"50"</span></span><br><span class="line"></span><br><span class="line">              <span class="comment">// borderWidth: 50, //设置border的宽度有多大</span></span><br><span class="line">            &#125;,</span><br><span class="line"></span><br><span class="line">            data: [</span><br><span class="line">              &#123;</span><br><span class="line">                value: <span class="keyword">this</span>.percent1,</span><br><span class="line">                name: <span class="string">"买跌"</span>,</span><br><span class="line">                a: <span class="string">"1"</span></span><br><span class="line">              &#125;,</span><br><span class="line">              &#123;</span><br><span class="line">                value: <span class="keyword">this</span>.percent2,</span><br><span class="line">                name: <span class="string">"买涨"</span>,</span><br><span class="line">                a: <span class="string">"1"</span></span><br><span class="line">              &#125;</span><br><span class="line">            ]</span><br><span class="line">          &#125;</span><br><span class="line">        ]</span><br><span class="line">      &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="五、整体代码"><a href="#五、整体代码" class="headerlink" title="五、整体代码"></a>五、整体代码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">&lt;div&gt;</span><br><span class="line"></span><br><span class="line">    &lt;div&gt;</span><br><span class="line">        &lt;div id=&quot;myChart&quot; :style=&quot;&#123; height: &apos;140px&apos;&#125;&quot;&gt;&lt;/div&gt;</span><br><span class="line">        &lt;p class=&quot;title&quot;&gt;伦敦金&lt;/p&gt;</span><br><span class="line">        &lt;p class=&quot;percent1&quot;&gt;&#123;&#123;percent1&#125;&#125;.00%&lt;/p&gt;</span><br><span class="line">        &lt;p class=&quot;percent2&quot;&gt;&#123;&#123;percent2&#125;&#125;.00%&lt;/p&gt;</span><br><span class="line">        &lt;p class=&quot;time&quot;&gt;数据更新时间：&#123;&#123;year&#125;&#125;&amp;nbsp;&#123;&#123;time&#125;&#125;&lt;/p&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">    &lt;pieChart /&gt;</span><br><span class="line"></span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">import pieChart from &quot;./pieChart.vue&quot;;</span><br><span class="line"></span><br><span class="line">export default &#123;</span><br><span class="line">  components: &#123;</span><br><span class="line">    pieChart</span><br><span class="line">  &#125;,</span><br><span class="line">  data() &#123;</span><br><span class="line">    return &#123;</span><br><span class="line">      percent1: 30,</span><br><span class="line">      percent2: 70,</span><br><span class="line">      year: &quot;2018-10-20&quot;,</span><br><span class="line">      time: &quot;10:05:03&quot;</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;,</span><br><span class="line">  mounted() &#123;</span><br><span class="line">    this.drawLine();</span><br><span class="line">  &#125;,</span><br><span class="line">  methods: &#123;</span><br><span class="line">    drawLine() &#123;</span><br><span class="line">      // var i=0;</span><br><span class="line">      // 基于准备好的dom，初始化echarts实例</span><br><span class="line">      let myChart = this.$echarts.init(document.getElementById(&quot;myChart&quot;));</span><br><span class="line">      var color = [&quot;#19D672&quot;, &quot;#FD517D&quot;];</span><br><span class="line">      // 绘制图表</span><br><span class="line">      myChart.setOption(&#123;</span><br><span class="line">        color: [&quot;#23D864&quot;, &quot;#FF4D51&quot;],</span><br><span class="line"></span><br><span class="line">        // title: &#123; text: &apos;伦敦金&apos; &#125;,</span><br><span class="line"></span><br><span class="line">        tooltip: &#123;</span><br><span class="line">          trigger: &quot;item&quot;,</span><br><span class="line">          formatter: &quot;&#123;a&#125; &lt;br/&gt;&#123;b&#125;: &#123;c&#125; (&#123;d&#125;%)&quot;</span><br><span class="line">        &#125;,</span><br><span class="line"></span><br><span class="line">        legend: [</span><br><span class="line">          &#123;</span><br><span class="line">            // orient: &quot;vertical&quot;,</span><br><span class="line">            itemWidth: 15,</span><br><span class="line">            x: &quot;2%&quot;,</span><br><span class="line">            y: &quot;20%&quot;,</span><br><span class="line"></span><br><span class="line">            textStyle: &#123;</span><br><span class="line">              // color: &apos;#ccc&apos;,</span><br><span class="line">            &#125;,</span><br><span class="line"></span><br><span class="line">            data: [&quot;买跌&quot;]</span><br><span class="line">          &#125;,</span><br><span class="line">          &#123;</span><br><span class="line">            itemWidth: 15,</span><br><span class="line"></span><br><span class="line">            // orient: &quot;vertical&quot;,</span><br><span class="line">            x: &quot;80%&quot;,</span><br><span class="line">            y: &quot;20%&quot;,</span><br><span class="line">            data: [&quot;买涨&quot;]</span><br><span class="line">          &#125;</span><br><span class="line">        ],</span><br><span class="line">        series: [</span><br><span class="line">          &#123;</span><br><span class="line">            name: &quot;访问来源&quot;,</span><br><span class="line">            type: &quot;pie&quot;,</span><br><span class="line">            data: [&quot;20%&quot;, &quot;80%&quot;],</span><br><span class="line">            radius: [&quot;42%&quot;, &quot;50%&quot;],</span><br><span class="line">            center: [&quot;50%&quot;, &quot;35%&quot;],</span><br><span class="line">            avoidLabelOverlap: false,</span><br><span class="line">            label: &#123;</span><br><span class="line">              normal: &#123;</span><br><span class="line">                show: false,</span><br><span class="line">                position: &quot;center&quot;</span><br><span class="line">              &#125;,</span><br><span class="line"></span><br><span class="line">              emphasis: &#123;</span><br><span class="line">                show: true,</span><br><span class="line">                textStyle: &#123;</span><br><span class="line">                  fontSize: &quot;0&quot;,</span><br><span class="line">                  fontWeight: &quot;bold&quot;</span><br><span class="line">                &#125;</span><br><span class="line">              &#125;</span><br><span class="line">            &#125;,</span><br><span class="line">            labelLine: &#123;</span><br><span class="line">              normal: &#123;</span><br><span class="line">                show: false</span><br><span class="line">              &#125;</span><br><span class="line">            &#125;,</span><br><span class="line"></span><br><span class="line">            itemStyle: &#123;</span><br><span class="line">              top: &quot;50&quot;</span><br><span class="line"></span><br><span class="line">              // borderWidth: 50, //设置border的宽度有多大</span><br><span class="line">            &#125;,</span><br><span class="line"></span><br><span class="line">            data: [</span><br><span class="line">              &#123;</span><br><span class="line">                value: this.percent1,</span><br><span class="line">                name: &quot;买跌&quot;,</span><br><span class="line">                a: &quot;1&quot;</span><br><span class="line">              &#125;,</span><br><span class="line">              &#123;</span><br><span class="line">                value: this.percent2,</span><br><span class="line">                name: &quot;买涨&quot;,</span><br><span class="line">                a: &quot;1&quot;</span><br><span class="line">              &#125;</span><br><span class="line">            ]</span><br><span class="line">          &#125;</span><br><span class="line">        ]</span><br><span class="line">      &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;style lang=&quot;scss&quot; scoped&gt;</span><br><span class="line">@import &quot;../../assets/css/reset.scss&quot;;</span><br><span class="line"></span><br><span class="line">div &#123;</span><br><span class="line">  padding: 0 rem(30);</span><br><span class="line"></span><br><span class="line">  #myChart &#123;</span><br><span class="line">    border-bottom: rem(1) solid $line_color;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  position: relative;</span><br><span class="line"></span><br><span class="line">  .title &#123;</span><br><span class="line">    position: absolute;</span><br><span class="line">    left: 44%;</span><br><span class="line">    top: 29%;</span><br><span class="line">    font-size: rem(30);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  .percent1 &#123;</span><br><span class="line">    position: absolute;</span><br><span class="line">    left: 10%;</span><br><span class="line">    top: 35%;</span><br><span class="line">    font-size: rem(32);</span><br><span class="line">    color: #333;</span><br><span class="line">    font-weight: bold;</span><br><span class="line">    line-height: rem(55);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  .percent2 &#123;</span><br><span class="line">    position: absolute;</span><br><span class="line">    right: 10%;</span><br><span class="line">    top: 35%;</span><br><span class="line">    font-size: rem(32);</span><br><span class="line">    color: #333;</span><br><span class="line">    font-weight: bold;</span><br><span class="line">    line-height: rem(55);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  .time &#123;</span><br><span class="line">    position: absolute;</span><br><span class="line">    left: 24%;</span><br><span class="line">    top: 70%;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="效果图如下："><a href="#效果图如下：" class="headerlink" title="效果图如下："></a>效果图如下：</h4><p><img src="https://user-images.githubusercontent.com/43693262/50480530-6108c100-0a17-11e9-8667-8b9812e17770.png" alt="1545913923396"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="wgjh5.github.io/2019/08/07/Echarts/" data-id="cjzdv8rsu000084u8lhw5p4a5"
+         class="article-share-link">分享</a>
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Echart/">Echart</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vue/">vue</a></li></ul>
+
+    </footer>
+
+  </div>
+
+  
+    
+  <nav class="article-nav">
+    
+      <a href="/2019/08/07/git/" class="article-nav-link">
+        <strong class="article-nav-caption">前一篇</strong>
+        <div class="article-nav-title">
+          
+            创建github账户
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2019/08/07/解决keepAlive缓存bug/" class="article-nav-link">
+        <strong class="article-nav-caption">后一篇</strong>
+        <div class="article-nav-title">vue keepAlive移除缓存(代替this.$destroy())</div>
+      </a>
+    
+  </nav>
+
+
+  
+
+  
+    
+    <div class="gitalk" id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+        <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+            <script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.min.js"></script>
+                <script type="text/javascript">
+                    var gitalk = new Gitalk({
+                        clientID: '64ce5333a42f02cf200d',
+                        clientSecret: '7d37a3d8d3c9e215de06d3078bd1894053368739',
+                        repo: 'wgjh5.github.io',
+                        owner: 'wgjh5',
+                        admin: ['wgjh5'],
+                        // id: location.pathname,      // Ensure uniqueness and length less than 50
+                        id: md5(location.pathname),
+                        distractionFreeMode: true, // Facebook-like distraction free mode
+                        pagerDirection: 'last'
+                    })
+
+                    gitalk.render('gitalk-container')
+                </script>
+                
+  
+
+</article>
+
+
+
+</section>
+                <footer class="footer">
+  <div class="outer">
+    <div class="float-right">
+      <ul class="list-inline">
+  
+    <li><i class="fe fe-smile-alt"></i> <span id="busuanzi_value_site_uv"></span></li>
+  
+</ul>
+    </div>
+    <ul class="list-inline">
+      <li>&copy; 2019 一只正在成长的程序猿</li>
+      <li>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></li>
+      <li>Theme  <a href="https://github.com/zhwangart/hexo-theme-ocean">Ocean</a></li>
+    </ul>
+  </div>
+</footer>
+
+        </main>
+        <aside class="sidebar">
+            <button class="navbar-toggle"></button>
+
+<nav class="navbar">
+  
+    <div class="logo">
+      <a href="/"><img src="/images/shark.svg" alt="一只正在成长的程序猿"></a>
+    </div>
+  
+  <ul class="nav nav-main">
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/">主页</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/archives">归档</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/about">关于</a>
+      </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link nav-item-search" title="搜索">
+        <i class="fe fe-search"></i>
+        搜索
+      </a>
+    </li>
+  </ul>
+</nav>
+
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      <div class="totop" id="totop">
+  <i class="fe fe-rocket"></i>
+</div>
+    </li>
+    <li class="nav-item">
+      
+        <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+          <i class="fe fe-feed"></i>
+        </a>
+      
+    </li>
+  </ul>
+</nav>
+
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+        </aside>
+        <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/lazyload.min.js"></script>
+<script src="/js/snap.svg-min.js"></script>
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+  <script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+  <script src="/js/search.js"></script>
+
+
+<script src="/js/ocean.js"></script>
+
+    </body>
+
+    </html>

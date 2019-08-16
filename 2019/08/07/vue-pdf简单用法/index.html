@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    
+        
+                <meta name="keywords" content="爱前端 | 爱工作 | 爱生活">
+                
+                    
+                            <meta name="description" content="This is My blog">
+                            
+                                <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+                                <title>
+                                    
+                                        vue-pdf |
+                                            
+                                                一只正在成长的程序猿
+                                </title>
+                                
+                                    <link rel="shortcut icon" href="/images/headPortrait.png">
+                                    
+                                        <link rel="stylesheet" href="/css/style.css">
+                                            
+                                                <link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+                                                    
+                                                        <script src="/js/pace.min.js"></script>
+</head></html>
+
+    <body>
+        <main class="content">
+            <section class="outer">
+    <article id="post-vue-pdf简单用法" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      vue-pdf
+    </h1>
+  
+  
+
+
+
+
+      </header>
+    
+
+    
+      <div class="article-meta">
+        <a href="/2019/08/07/vue-pdf简单用法/" class="article-date">
+  <time datetime="2019-08-07T09:31:46.603Z" itemprop="datePublished">2019-08-07</time>
+</a>
+        
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/技术/">技术</a>
+  </div>
+
+      </div>
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+
+      
+
+      
+        <h4 id="1-先下载"><a href="#1-先下载" class="headerlink" title="1.先下载"></a>1.先下载</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cnpm install vue-pdf --save-dev</span><br></pre></td></tr></table></figure>
+
+<a id="more"></a>
+<h4 id="2-在局部引入-使用"><a href="#2-在局部引入-使用" class="headerlink" title="2.在局部引入,使用"></a>2.在局部引入,使用</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;pdf src=&quot;./static/relativity.pdf&quot;&gt;&lt;/pdf&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">import pdf from &apos;vue-pdf&apos;</span><br><span class="line"></span><br><span class="line">export default &#123;</span><br><span class="line">  components: &#123;</span><br><span class="line">    pdf</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="例子：可实现放大缩小，翻页功能"><a href="#例子：可实现放大缩小，翻页功能" class="headerlink" title="例子：可实现放大缩小，翻页功能"></a>例子：可实现放大缩小，翻页功能</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">	&lt;div class=&quot;all&quot;&gt;</span><br><span class="line">		&lt;!-- &lt;Mheader status=&quot;useAgreement&quot; class=&quot;head&quot; /&gt; --&gt;</span><br><span class="line">		&lt;header&gt;</span><br><span class="line">			&lt;router-link to=&quot;/main/mine&quot; slot=&quot;left&quot; class=&quot;sprites_all sprites_back&quot;&gt;&lt;/router-link&gt;</span><br><span class="line">			&lt;div class=&quot;newbankCard&quot;&gt;</span><br><span class="line">				&lt;span class=&quot;sprites_all sprites_back&quot; @click=&quot;goBack&quot;&gt;&lt;/span&gt;</span><br><span class="line">				&lt;span class=&quot;pf_thick&quot;&gt;&#123;&#123;clauseTitle&#125;&#125;&lt;/span&gt;</span><br><span class="line">			&lt;/div&gt;</span><br><span class="line">		&lt;/header&gt;</span><br><span class="line">		&lt;div class=&quot;main&quot;&gt;</span><br><span class="line">			&lt;!-- &#123;&#123;currentPage&#125;&#125; / &#123;&#123;pageCount&#125;&#125; --&gt;</span><br><span class="line">			&lt;pdf :src=&quot;src&quot; :page=&quot;currentPage&quot; @progress=&quot;loadedRatio = $event&quot; @num-pages=&quot;pageCount=$event&quot; @page-loaded=&quot;currentPage=$event&quot; @loaded=&quot;loadPdfHandler&quot; ref=&quot;wrapper&quot; class=&quot;pdf&quot;&gt;&lt;/pdf&gt;</span><br><span class="line">			&lt;!-- &lt;button @click=&quot;changePdfPage(1)&quot;&gt;+&lt;/button&gt; --&gt;</span><br><span class="line">		&lt;/div&gt;</span><br><span class="line">		&lt;ul class=&quot;footers&quot;&gt;</span><br><span class="line">			&lt;li :class=&quot;&#123;select:idx==0&#125;&quot; @touchstart=&quot;idx=0&quot; @touchend=&quot;idx=-1&quot; @click=&quot;scaleD&quot;&gt;</span><br><span class="line">				&lt;p&gt;放大&lt;/p&gt;</span><br><span class="line">			&lt;/li&gt;</span><br><span class="line">			&lt;li :class=&quot;&#123;select:idx==1&#125;&quot; @touchstart=&quot;idx=1&quot; @touchend=&quot;idx=-1&quot; @click=&quot;scaleX&quot;&gt;</span><br><span class="line">				&lt;p&gt;缩小&lt;/p&gt;</span><br><span class="line">			&lt;/li&gt;</span><br><span class="line">			&lt;li :class=&quot;&#123;select:idx==2&#125;&quot; @touchstart=&quot;idx=2&quot; @touchend=&quot;idx=-1&quot; @click=&quot;changePdfPage(0)&quot;&gt;</span><br><span class="line">				&lt;p&gt;上一页&lt;/p&gt;</span><br><span class="line">			&lt;/li&gt;</span><br><span class="line">			&lt;li :class=&quot;&#123;select:idx==3&#125;&quot; @touchstart=&quot;idx=3&quot; @touchend=&quot;idx=-1&quot; @click=&quot;changePdfPage(1)&quot;&gt;</span><br><span class="line">				&lt;p&gt;下一页&lt;/p&gt;</span><br><span class="line">			&lt;/li&gt;</span><br><span class="line">		&lt;/ul&gt;</span><br><span class="line"></span><br><span class="line">	&lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">	import pdf from &quot;vue-pdf&quot;;</span><br><span class="line">	import Mheader from &quot;../Mheader&quot;;</span><br><span class="line">	export default &#123;</span><br><span class="line">		components: &#123;</span><br><span class="line">			pdf,</span><br><span class="line">			Mheader</span><br><span class="line">		&#125;,</span><br><span class="line">		data() &#123;</span><br><span class="line">			return &#123;</span><br><span class="line">				currentPage: 1,</span><br><span class="line">				pageCount: 0,</span><br><span class="line">				src: &quot;&quot;, // pdf文件地址</span><br><span class="line">				scale: 100, //放大系数</span><br><span class="line">				idx: -1,</span><br><span class="line">				clauseTitle: &quot;&quot;,</span><br><span class="line">				loadedRatio: 0</span><br><span class="line">			&#125;;</span><br><span class="line">		&#125;,</span><br><span class="line">		created() &#123;</span><br><span class="line">			// 有时PDF文件地址会出现跨域的情况,这里最好处理一下</span><br><span class="line">			let clause = this.$route.query.clause + &quot;&quot;;</span><br><span class="line">			switch(clause) &#123;</span><br><span class="line">				case &quot;0&quot;:</span><br><span class="line">					this.src = &quot;../../../../static/clause/A1.pdf&quot;;</span><br><span class="line">					this.clauseTitle = &quot;使用者协定&quot;;</span><br><span class="line">					break;</span><br><span class="line">				case &quot;1&quot;:</span><br><span class="line">					this.src = &quot;../../../../static/clause/A2.pdf&quot;;</span><br><span class="line">					this.clauseTitle = &quot;私隐政策声明&quot;;</span><br><span class="line">					break;</span><br><span class="line">				case &quot;2&quot;:</span><br><span class="line">					this.src = &quot;../../../../static/clause/C1.pdf&quot;;</span><br><span class="line">					this.clauseTitle = &quot;产品披露及风险声明&quot;;</span><br><span class="line">					break;</span><br><span class="line">				case &quot;3&quot;:</span><br><span class="line">					this.src = &quot;../../../../static/clause/C2.pdf&quot;;</span><br><span class="line">					this.clauseTitle = &quot;反洗钱及反恐融资声明&quot;;</span><br><span class="line">					break;</span><br><span class="line">				case &quot;4&quot;:</span><br><span class="line">					this.src = &quot;../../../../static/clause/C3.pdf&quot;;</span><br><span class="line">					this.clauseTitle = &quot;私隐政策声明&quot;;</span><br><span class="line">					break;</span><br><span class="line">				case &quot;5&quot;:</span><br><span class="line">					this.src = &quot;../../../../static/clause/C4.pdf&quot;;</span><br><span class="line">					this.clauseTitle = &quot;客户协议&quot;;</span><br><span class="line">					break;</span><br><span class="line">				case &quot;6&quot;:</span><br><span class="line">					this.src = &quot;../../../../static/clause/C5.pdf&quot;;</span><br><span class="line">					this.clauseTitle = &quot;使用者协定&quot;;</span><br><span class="line">					break;</span><br><span class="line">				case &quot;7&quot;:</span><br><span class="line">					this.src = &quot;&quot;;</span><br><span class="line">					this.clauseTitle = &quot;积分计划&quot;;</span><br><span class="line">					break;</span><br><span class="line">				default:</span><br><span class="line">					this.src = &quot;../../../../static/clause/A1.pdf&quot;;</span><br><span class="line">			&#125;</span><br><span class="line">			// this.src = pdf.createLoadingTask(this.src);</span><br><span class="line">		&#125;,</span><br><span class="line">		methods: &#123;</span><br><span class="line">			// 改变PDF页码,val传过来区分上一页下一页的值,0上一页,1下一页</span><br><span class="line">			changePdfPage(val) &#123;</span><br><span class="line">				if(val === 0 &amp;&amp; this.currentPage &gt; 1) &#123;</span><br><span class="line">					this.currentPage--;</span><br><span class="line">				&#125;</span><br><span class="line">				if(val === 1 &amp;&amp; this.currentPage &lt; this.pageCount) &#123;</span><br><span class="line">					this.currentPage++;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;,</span><br><span class="line">			goBack() &#123;</span><br><span class="line">				this.$router.go(-1);</span><br><span class="line">			&#125;,</span><br><span class="line">			// pdf加载时</span><br><span class="line">			loadPdfHandler(e) &#123;</span><br><span class="line">				this.currentPage = 1; // 加载的时候先加载第一页</span><br><span class="line">			&#125;,</span><br><span class="line">			//放大</span><br><span class="line">			scaleD() &#123;</span><br><span class="line">				this.scale += 5;</span><br><span class="line">				// this.$refs.wrapper.$el.style.transform = &quot;scale(&quot; + this.scale + &quot;)&quot;;</span><br><span class="line">				this.$refs.wrapper.$el.style.width = parseInt(this.scale) + &quot;%&quot;;</span><br><span class="line">			&#125;,</span><br><span class="line"></span><br><span class="line">			//缩小</span><br><span class="line">			scaleX() &#123;</span><br><span class="line">				if(this.scale == 100) &#123;</span><br><span class="line">					return;</span><br><span class="line">				&#125;</span><br><span class="line">				this.scale += -5;</span><br><span class="line">				this.$refs.wrapper.$el.style.width = parseInt(this.scale) + &quot;%&quot;;</span><br><span class="line">				// this.$refs.wrapper.$el.style.transform = &quot;scale(&quot; + this.scale + &quot;)&quot;;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;,</span><br><span class="line">		mounted() &#123;&#125;</span><br><span class="line">	&#125;;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line">&lt;style lang=&quot;scss&quot; scoped&gt;</span><br><span class="line">	@import &quot;../../../assets/css/reset.scss&quot;;</span><br><span class="line">	.all &#123;</span><br><span class="line">		padding: 0 0 rem(80);</span><br><span class="line">		header &#123;</span><br><span class="line">			height: rem(88);</span><br><span class="line">			position: sticky;</span><br><span class="line">			top: 0;</span><br><span class="line">			background-color: #fff;</span><br><span class="line">			width: 100%;</span><br><span class="line">			z-index: 400;</span><br><span class="line">			.sprites_all &#123;</span><br><span class="line">				position: absolute;</span><br><span class="line">				left: rem(30);</span><br><span class="line">				top: rem(24);</span><br><span class="line">				display: inline-block;</span><br><span class="line">				width: rem(40);</span><br><span class="line">				height: rem(40);</span><br><span class="line">				background: url(&quot;../../../assets/img/transaction/transaction_icon.png&quot;) no-repeat;</span><br><span class="line">				background-size: rem(400);</span><br><span class="line">				vertical-align: bottom;</span><br><span class="line">				background-position: 0 rem(-50);</span><br><span class="line">			&#125;</span><br><span class="line">			.sprites_back &#123;</span><br><span class="line">				background-position: rem(-50) 0;</span><br><span class="line">			&#125;</span><br><span class="line">			span &#123;</span><br><span class="line">				line-height: rem(86);</span><br><span class="line">				font-size: rem(30);</span><br><span class="line">				color: $text_3;</span><br><span class="line">				// font-weight: bold;</span><br><span class="line">			&#125;</span><br><span class="line">			border-bottom: 1px solid $line_color;</span><br><span class="line">			.newbankCard &#123;</span><br><span class="line">				border-bottom: 1px solid $line_color;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		.main &#123;</span><br><span class="line">			overflow: auto;</span><br><span class="line">		&#125;</span><br><span class="line">		.head &#123;</span><br><span class="line">			position: fixed;</span><br><span class="line">			top: 0;</span><br><span class="line">			height: rem(88);</span><br><span class="line">		&#125;</span><br><span class="line">		.footers &#123;</span><br><span class="line">			position: fixed;</span><br><span class="line">			bottom: 0;</span><br><span class="line">			width: 100%;</span><br><span class="line">			height: rem(100);</span><br><span class="line">			display: flex;</span><br><span class="line">			z-index: 100;</span><br><span class="line">			color: #333;</span><br><span class="line">			border-top: 1px solid #f0f0f0;</span><br><span class="line">			line-height: rem(80);</span><br><span class="line">			background-color: #fff;</span><br><span class="line">			li &#123;</span><br><span class="line">				text-align: center;</span><br><span class="line">				flex: 1;</span><br><span class="line">				padding: rem(10) 0;</span><br><span class="line">				p &#123;</span><br><span class="line">					border-right: 1px solid #f0f0f0;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			li:last-child &#123;</span><br><span class="line">				p &#123;</span><br><span class="line">					border-right: 0 none;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			.select &#123;</span><br><span class="line">				color: #fff;</span><br><span class="line">				background-color: #c59c5a;</span><br><span class="line">				p &#123;</span><br><span class="line">					border-right: 0 none;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+
+<p>参考链接：<a href="https://www.npmjs.com/package/vue-pdf" target="_blank" rel="noopener">https://www.npmjs.com/package/vue-pdf</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="wgjh5.github.io/2019/08/07/vue-pdf简单用法/" data-id="cjzdv8rtr000p84u809uhvrr4"
+         class="article-share-link">分享</a>
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vue/">vue</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vue-pdf/">vue-pdf</a></li></ul>
+
+    </footer>
+
+  </div>
+
+  
+    
+  <nav class="article-nav">
+    
+      <a href="/2019/08/07/vue动态绑定类名的几种方法/" class="article-nav-link">
+        <strong class="article-nav-caption">前一篇</strong>
+        <div class="article-nav-title">
+          
+            vue动态绑定类名的几种方法
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2019/08/07/vuejs 移动端 实现div拖拽移动/" class="article-nav-link">
+        <strong class="article-nav-caption">后一篇</strong>
+        <div class="article-nav-title">vue 移动端 实现div拖拽移动</div>
+      </a>
+    
+  </nav>
+
+
+  
+
+  
+    
+    <div class="gitalk" id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+        <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+            <script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.min.js"></script>
+                <script type="text/javascript">
+                    var gitalk = new Gitalk({
+                        clientID: '64ce5333a42f02cf200d',
+                        clientSecret: '7d37a3d8d3c9e215de06d3078bd1894053368739',
+                        repo: 'wgjh5.github.io',
+                        owner: 'wgjh5',
+                        admin: ['wgjh5'],
+                        // id: location.pathname,      // Ensure uniqueness and length less than 50
+                        id: md5(location.pathname),
+                        distractionFreeMode: true, // Facebook-like distraction free mode
+                        pagerDirection: 'last'
+                    })
+
+                    gitalk.render('gitalk-container')
+                </script>
+                
+  
+
+</article>
+
+
+
+</section>
+                <footer class="footer">
+  <div class="outer">
+    <div class="float-right">
+      <ul class="list-inline">
+  
+    <li><i class="fe fe-smile-alt"></i> <span id="busuanzi_value_site_uv"></span></li>
+  
+</ul>
+    </div>
+    <ul class="list-inline">
+      <li>&copy; 2019 一只正在成长的程序猿</li>
+      <li>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></li>
+      <li>Theme  <a href="https://github.com/zhwangart/hexo-theme-ocean">Ocean</a></li>
+    </ul>
+  </div>
+</footer>
+
+        </main>
+        <aside class="sidebar">
+            <button class="navbar-toggle"></button>
+
+<nav class="navbar">
+  
+    <div class="logo">
+      <a href="/"><img src="/images/shark.svg" alt="一只正在成长的程序猿"></a>
+    </div>
+  
+  <ul class="nav nav-main">
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/">主页</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/archives">归档</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/about">关于</a>
+      </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link nav-item-search" title="搜索">
+        <i class="fe fe-search"></i>
+        搜索
+      </a>
+    </li>
+  </ul>
+</nav>
+
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      <div class="totop" id="totop">
+  <i class="fe fe-rocket"></i>
+</div>
+    </li>
+    <li class="nav-item">
+      
+        <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+          <i class="fe fe-feed"></i>
+        </a>
+      
+    </li>
+  </ul>
+</nav>
+
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+        </aside>
+        <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/lazyload.min.js"></script>
+<script src="/js/snap.svg-min.js"></script>
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+  <script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+  <script src="/js/search.js"></script>
+
+
+<script src="/js/ocean.js"></script>
+
+    </body>
+
+    </html>

@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    
+        
+                <meta name="keywords" content="爱前端 | 爱工作 | 爱生活">
+                
+                    
+                            <meta name="description" content="This is My blog">
+                            
+                                <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+                                <title>
+                                    
+                                        vue-clipboard2 实现复制粘贴 |
+                                            
+                                                一只正在成长的程序猿
+                                </title>
+                                
+                                    <link rel="shortcut icon" href="/images/headPortrait.png">
+                                    
+                                        <link rel="stylesheet" href="/css/style.css">
+                                            
+                                                <link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+                                                    
+                                                        <script src="/js/pace.min.js"></script>
+</head></html>
+
+    <body>
+        <main class="content">
+            <section class="outer">
+    <article id="post-vue-clipboard2实现复制粘贴" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      vue-clipboard2 实现复制粘贴
+    </h1>
+  
+  
+
+
+
+
+      </header>
+    
+
+    
+      <div class="article-meta">
+        <a href="/2019/08/07/vue-clipboard2实现复制粘贴/" class="article-date">
+  <time datetime="2019-08-07T09:31:46.557Z" itemprop="datePublished">2019-08-07</time>
+</a>
+        
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/技术/">技术</a>
+  </div>
+
+      </div>
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+
+      
+
+      
+        <h4 id="1-先下载vue-clipboard2"><a href="#1-先下载vue-clipboard2" class="headerlink" title="1.先下载vue-clipboard2"></a>1.先下载<code>vue-clipboard2</code></h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cnpm install vue-clipboard2 --save-dev</span><br></pre></td></tr></table></figure>
+
+<a id="more"></a>
+<h4 id="2-在main-js引入配置"><a href="#2-在main-js引入配置" class="headerlink" title="2.在main.js引入配置"></a>2.在<code>main.js</code>引入配置</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 复制到粘贴板插件</span></span><br><span class="line"><span class="keyword">import</span> VueClipboard <span class="keyword">from</span> <span class="string">'vue-clipboard2'</span></span><br><span class="line">VueClipboard.config.autoSetContainer = <span class="literal">true</span> <span class="comment">// add this line</span></span><br><span class="line">Vue.use(VueClipboard)</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-在组件里面的用法"><a href="#3-在组件里面的用法" class="headerlink" title="3.在组件里面的用法"></a>3.在组件里面的用法</h4><h5 id="html"><a href="#html" class="headerlink" title="html"></a>html</h5><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--v-clipboard:copy="要复制的内容"--&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- v-clipboard:success="onCopy"，复制成功执行的函数--&gt;</span></span><br><span class="line"><span class="comment">&lt;!--v-clipboard:error="onError",复制失败执行的函数--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"footerButton copyBank"</span> <span class="attr">v-clipboard:copy</span>=<span class="string">"b.BankNo"</span> <span class="attr">v-clipboard:success</span>=<span class="string">"onCopy"</span> <span class="attr">v-clipboard:error</span>=<span class="string">"onError"</span>&gt;</span></span><br><span class="line">                	&#123;&#123;$t("m.recharge.copyBank")&#125;&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="js"><a href="#js" class="headerlink" title="js"></a>js</h5><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//复制成功执行的函数</span></span><br><span class="line">onCopy(e) &#123;</span><br><span class="line">    <span class="keyword">this</span>.isShowCopy=<span class="literal">true</span>;</span><br><span class="line">    <span class="keyword">this</span>.showCopyResult=<span class="keyword">this</span>.$t(<span class="string">"m.recharge.copySuccess"</span>);</span><br><span class="line">    &#125;,</span><br><span class="line"><span class="comment">//复制失败执行的函数</span></span><br><span class="line">onError(e) &#123;</span><br><span class="line">    <span class="keyword">this</span>.isShowCopy=<span class="literal">true</span>;</span><br><span class="line">    <span class="keyword">this</span>.showCopyResult=<span class="keyword">this</span>.$t(<span class="string">"m.recharge.copyFail"</span>);</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+
+<p><a href="https://www.npmjs.com/package/vue-clipboard2" target="_blank" rel="noopener">参考链接</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="wgjh5.github.io/2019/08/07/vue-clipboard2实现复制粘贴/" data-id="cjzdv8rtm000i84u87gonr89i"
+         class="article-share-link">分享</a>
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vue/">vue</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vue-clipboard2/">vue-clipboard2</a></li></ul>
+
+    </footer>
+
+  </div>
+
+  
+    
+  <nav class="article-nav">
+    
+      <a href="/2019/08/07/vue-cookies/" class="article-nav-link">
+        <strong class="article-nav-caption">前一篇</strong>
+        <div class="article-nav-title">
+          
+            vue-cookies
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2019/08/07/vue2.0到3.0的桥接/" class="article-nav-link">
+        <strong class="article-nav-caption">后一篇</strong>
+        <div class="article-nav-title">vue cli3=&gt;vue cli2桥接</div>
+      </a>
+    
+  </nav>
+
+
+  
+
+  
+    
+    <div class="gitalk" id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+        <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+            <script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.min.js"></script>
+                <script type="text/javascript">
+                    var gitalk = new Gitalk({
+                        clientID: '64ce5333a42f02cf200d',
+                        clientSecret: '7d37a3d8d3c9e215de06d3078bd1894053368739',
+                        repo: 'wgjh5.github.io',
+                        owner: 'wgjh5',
+                        admin: ['wgjh5'],
+                        // id: location.pathname,      // Ensure uniqueness and length less than 50
+                        id: md5(location.pathname),
+                        distractionFreeMode: true, // Facebook-like distraction free mode
+                        pagerDirection: 'last'
+                    })
+
+                    gitalk.render('gitalk-container')
+                </script>
+                
+  
+
+</article>
+
+
+
+</section>
+                <footer class="footer">
+  <div class="outer">
+    <div class="float-right">
+      <ul class="list-inline">
+  
+    <li><i class="fe fe-smile-alt"></i> <span id="busuanzi_value_site_uv"></span></li>
+  
+</ul>
+    </div>
+    <ul class="list-inline">
+      <li>&copy; 2019 一只正在成长的程序猿</li>
+      <li>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></li>
+      <li>Theme  <a href="https://github.com/zhwangart/hexo-theme-ocean">Ocean</a></li>
+    </ul>
+  </div>
+</footer>
+
+        </main>
+        <aside class="sidebar">
+            <button class="navbar-toggle"></button>
+
+<nav class="navbar">
+  
+    <div class="logo">
+      <a href="/"><img src="/images/shark.svg" alt="一只正在成长的程序猿"></a>
+    </div>
+  
+  <ul class="nav nav-main">
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/">主页</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/archives">归档</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/about">关于</a>
+      </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link nav-item-search" title="搜索">
+        <i class="fe fe-search"></i>
+        搜索
+      </a>
+    </li>
+  </ul>
+</nav>
+
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      <div class="totop" id="totop">
+  <i class="fe fe-rocket"></i>
+</div>
+    </li>
+    <li class="nav-item">
+      
+        <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+          <i class="fe fe-feed"></i>
+        </a>
+      
+    </li>
+  </ul>
+</nav>
+
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+        </aside>
+        <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/lazyload.min.js"></script>
+<script src="/js/snap.svg-min.js"></script>
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+  <script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+  <script src="/js/search.js"></script>
+
+
+<script src="/js/ocean.js"></script>
+
+    </body>
+
+    </html>

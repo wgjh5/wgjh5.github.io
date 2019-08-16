@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    
+        
+                <meta name="keywords" content="爱前端 | 爱工作 | 爱生活">
+                
+                    
+                            <meta name="description" content="This is My blog">
+                            
+                                <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+                                <title>
+                                    
+                                        webapp调起浏览器分享 |
+                                            
+                                                一只正在成长的程序猿
+                                </title>
+                                
+                                    <link rel="shortcut icon" href="/images/headPortrait.png">
+                                    
+                                        <link rel="stylesheet" href="/css/style.css">
+                                            
+                                                <link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+                                                    
+                                                        <script src="/js/pace.min.js"></script>
+</head></html>
+
+    <body>
+        <main class="content">
+            <section class="outer">
+    <article id="post-webapp分享" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      webapp调起浏览器分享
+    </h1>
+  
+  
+
+
+
+
+      </header>
+    
+
+    
+      <div class="article-meta">
+        <a href="/2019/08/07/webapp分享/" class="article-date">
+  <time datetime="2019-08-07T09:31:46.766Z" itemprop="datePublished">2019-08-07</time>
+</a>
+        
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/技术/">技术</a>
+  </div>
+
+      </div>
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+
+      
+
+      
+        <h3 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h3><blockquote>
+<p>最近在做一个新闻资讯页，有分享的功能，在参考了很多的资料后，有以下总结。</p>
+</blockquote>
+<a id="more"></a>
+<h3 id="兼容性"><a href="#兼容性" class="headerlink" title="兼容性"></a>兼容性</h3><ul>
+<li><strong>移动端几乎所有浏览器都支持分享到QQ和QQ空间</strong></li>
+<li>QQ浏览器</li>
+<li>UC浏览器</li>
+<li>微信自带浏览器</li>
+<li>QQ自带浏览器</li>
+<li>QQ空间APP</li>
+<li>百度浏览器</li>
+<li>百度APP自带浏览器</li>
+<li>ios 搜狗浏览器</li>
+<li>支持分享到web微博</li>
+<li>即将支持(android 搜狗浏览器，微博APP）</li>
+</ul>
+<p>存在的问题</p>
+<ul>
+<li>安卓的QQ自带浏览器不支持.com以外的域名后缀。可能会支持.cn,.com.cn，但明确不支持.me,.io这个具体可以自己测试。</li>
+<li>安卓的QQ自带浏览器分享url必须跟页面url同一个域名，否则所有设置不生效。</li>
+<li>安卓的QQ自带浏览器无法直接分享</li>
+<li>虽然几乎所有的浏览器都支持分享到QQ和QQ空间，但是webview中基本都会不支持。我也很难判断当前浏览器是否支持，浏览器是否唤起QQ APP我也很难判断，所有除了上述支持的浏览器，APP外其他情况调用分享到QQ我也会抛出异常。</li>
+<li>UC浏览器安卓端不能设置icon</li>
+<li>百度浏览器，百度APP不能直接分享</li>
+<li>QQ空间APP，微信自带浏览器只能设置文案，分享需要用户手动点击右上角</li>
+</ul>
+<h2 id="示例："><a href="#示例：" class="headerlink" title="示例："></a>示例：</h2><p><a href="https://wgjh5.github.io/webapp-share/dist/#/app">demo</a></p>
+<p><img src="/07/webapp分享/QR.png" alt="Nativeshare"></p>
+<h3 id="用法-vue"><a href="#用法-vue" class="headerlink" title="用法(vue)"></a>用法(vue)</h3><h4 id="Nativeshare"><a href="#Nativeshare" class="headerlink" title="Nativeshare"></a>Nativeshare</h4><blockquote>
+<p>在观察了一圈后，发现这个方式还是有一些缺陷的，于是我就在vue中做了一些简单的出力，把这个分享封装成一个组件的形式，当遇到不支持的浏览器时，直接采取URL Scheme让客户<code>复制链接并分享的微信</code>，在微信内就是直接复制链接。</p>
+</blockquote>
+<p>1.先引入<code>NativeShare.js</code>(我用的是在index.html中的script方式引入)</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type=<span class="string">"text/javascript"</span> src=<span class="string">"static/NativeShare.js"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+
+<p>2.在<code>components</code>新建组件<code>sharePopup.vue</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">&lt;div class=&quot;shareAll&quot;&gt;</span><br><span class="line">    &lt;popup class=&quot;popup_data telArea&quot; v-model=&quot;showPopup&quot; @on-hide=&quot;hide&quot;&gt;</span><br><span class="line">        &lt;div&gt;</span><br><span class="line">            &lt;!--支持的情况下--&gt;</span><br><span class="line">            &lt;div v-if=&quot;showWXGo==1&quot;&gt;</span><br><span class="line">                &lt;div @click=&quot;call(&apos;wechatFriend&apos;)&quot; class=&quot;langue&quot;&gt;微信好友&lt;/div&gt;</span><br><span class="line">                &lt;div @click=&quot;call(&apos;wechatTimeline&apos;)&quot; class=&quot;langue&quot;&gt;朋友圈&lt;/div&gt;</span><br><span class="line">                &lt;div @click=&quot;call(&apos;qqFriend&apos;)&quot; class=&quot;langue&quot;&gt;QQ&lt;/div&gt;</span><br><span class="line">                &lt;div @click=&quot;call(&apos;qZone&apos;)&quot; class=&quot;langue&quot;&gt;QQ空间&lt;/div&gt;</span><br><span class="line">                &lt;div @click=&quot;call(&apos;weibo&apos;)&quot; class=&quot;langue&quot;&gt;分享到微博&lt;/div&gt;</span><br><span class="line">            &lt;/div&gt;</span><br><span class="line">			&lt;!--不支持的情况下--&gt;</span><br><span class="line">            &lt;div v-if=&quot;showWXGo==2&quot;&gt;</span><br><span class="line">                &lt;div class=&quot;langue&quot; v-clipboard:copy=&quot;shareConfig.url&quot; v-clipboard:success=&quot;onCopy&quot; v-clipboard:error=&quot;onError&quot; @click=&quot;shareWX&quot;&gt;</span><br><span class="line">                    复制链接并分享到微信</span><br><span class="line">                &lt;/div&gt;</span><br><span class="line">            &lt;/div&gt;</span><br><span class="line">            &lt;div class=&quot;langue&quot; @click=&quot;shareSina&quot; v-if=&quot;showWXGo!=1&quot;&gt;</span><br><span class="line">                分享到微博</span><br><span class="line">            &lt;/div&gt;</span><br><span class="line">            &lt;div class=&quot;langue&quot; v-clipboard:copy=&quot;shareConfig.url&quot; v-clipboard:success=&quot;onCopy&quot; v-clipboard:error=&quot;onError&quot;&gt;</span><br><span class="line">                复制链接</span><br><span class="line">            &lt;/div&gt;</span><br><span class="line">            &lt;div @click=&quot;call()&quot; class=&quot;langue&quot; v-if=&quot;showWXGo==1&quot;&gt;更多&lt;/div&gt;</span><br><span class="line">            &lt;div class=&quot;langue cancels&quot; @click=&quot;hide&quot;&gt;</span><br><span class="line">                取消</span><br><span class="line">            &lt;/div&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line"></span><br><span class="line">    &lt;/popup&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">export default &#123;</span><br><span class="line">  props: [&quot;showShare&quot;, &quot;shareConfig&quot;],</span><br><span class="line">  data() &#123;</span><br><span class="line">    return &#123;</span><br><span class="line">      chooseText: [&quot;&quot;],</span><br><span class="line">      mshare: &quot;&quot;,</span><br><span class="line">      share_obj: &quot;&quot;,</span><br><span class="line">      showWXGo: false, //false为既不是qq,也不是UC</span><br><span class="line">      showChrome: false,</span><br><span class="line">      nativeShare: new NativeShare(),//初始化 nativeShare</span><br><span class="line">      shareData: &#123;&#125;</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;,</span><br><span class="line">  computed: &#123;</span><br><span class="line">    showPopup: &#123;</span><br><span class="line">      get() &#123;</span><br><span class="line">        return this.showShare;</span><br><span class="line">      &#125;,</span><br><span class="line">      set(newVal) &#123;&#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  methods: &#123;</span><br><span class="line">    shareTest() &#123;</span><br><span class="line">      this.shareData = &#123;</span><br><span class="line">        title: this.shareConfig.title,</span><br><span class="line">        desc: this.shareConfig.desc,</span><br><span class="line">        // 如果是微信该link的域名必须要在微信后台配置的安全域名之内的。</span><br><span class="line">        link: this.shareConfig.url,</span><br><span class="line">        icon: this.shareConfig.img,</span><br><span class="line">        // 不要过于依赖以下两个回调，很多浏览器是不支持的</span><br><span class="line">        success: function() &#123;</span><br><span class="line">          alert(&quot;分享成功&quot;);</span><br><span class="line">        &#125;,</span><br><span class="line">        fail: function() &#123;</span><br><span class="line">          alert(&quot;您的浏览器不支持该分享功能，请手动复制链接!&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;;</span><br><span class="line">      this.nativeShare.setShareData(this.shareData);</span><br><span class="line">    &#125;,</span><br><span class="line">    call(command) &#123;</span><br><span class="line">      this.shareTest();</span><br><span class="line">      try &#123;</span><br><span class="line">        this.nativeShare.call(command);</span><br><span class="line">        this.hide();</span><br><span class="line">      &#125; catch (err) &#123;</span><br><span class="line">        // 如果不支持，你可以在这里做降级处理</span><br><span class="line">        alert(&quot;您的浏览器不支持该分享功能，请手动复制链接!&quot;);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    confirm() &#123;</span><br><span class="line">      this.$parent.$emit(&quot;showShare&quot;, false);</span><br><span class="line">      this.hide();</span><br><span class="line">    &#125;,</span><br><span class="line">    //复制成功执行的函数</span><br><span class="line">    onCopy(e) &#123;</span><br><span class="line">      this.hide();</span><br><span class="line">      this.$vux.toast.text(&quot;链接复制成功!&quot;, &quot;middle&quot;);</span><br><span class="line">    &#125;,</span><br><span class="line">    //复制失败执行的函数</span><br><span class="line">    onError(e) &#123;</span><br><span class="line">      this.hide();</span><br><span class="line">      if (e.text == this.shareConfig.url) &#123;</span><br><span class="line">        this.$vux.toast.text(&quot;链接复制成功!&quot;, &quot;middle&quot;);</span><br><span class="line">      &#125; else &#123;</span><br><span class="line">        this.$vux.toast.text(&quot;链接复制失败!&quot;, &quot;middle&quot;);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    hide() &#123;</span><br><span class="line">      this.$parent.$emit(&quot;showShare&quot;, false);</span><br><span class="line">    &#125;,</span><br><span class="line">    // 分享微博</span><br><span class="line">    shareSina() &#123;</span><br><span class="line">      //分享到新浪微博</span><br><span class="line">      var param = &#123;</span><br><span class="line">        url: this.shareConfig.url,</span><br><span class="line">        // type: &quot;2&quot;,</span><br><span class="line">        // count: &quot;2&quot; /**是否显示分享数，1显示(可选)*/,</span><br><span class="line">        // appkey:&apos;111&apos;, /**您申请的应用appkey,显示分享来源(可选)*/</span><br><span class="line">        title: this.shareConfig.title /**分享的文字内容(可选，默认为所在页面的title)*/,</span><br><span class="line">        pic: this.shareConfig.img /**分享图片的路径(可选)*/,</span><br><span class="line">        // ralateUid: &quot;6024068761&quot; /**关联用户的UID，分享微博会@该用户(可选)*/,</span><br><span class="line">        language: &quot;zh_cn&quot; /**设置语言，zh_cn|zh_tw(可选)*/,</span><br><span class="line">        dpc: this.shareConfig.desc</span><br><span class="line">      &#125;;</span><br><span class="line">      console.log(this.shareConfig.img);</span><br><span class="line"></span><br><span class="line">      var temp = [];</span><br><span class="line">      for (var p in param) &#123;</span><br><span class="line">        temp.push(p + &quot;=&quot; + encodeURIComponent(param[p] || &quot;&quot;));</span><br><span class="line">      &#125;</span><br><span class="line">      var sharesinastring = &quot;https://service.weibo.com/share/mobile.php?&quot; + temp.join(&quot;&amp;&quot;);</span><br><span class="line">      this.$router.push(&#123;</span><br><span class="line">        name: &quot;iframeShare&quot;,</span><br><span class="line">        query: &#123;</span><br><span class="line">          link: sharesinastring</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;);</span><br><span class="line">      this.hide();</span><br><span class="line">    &#125;,</span><br><span class="line">    // 普通分享微信</span><br><span class="line">    shareWX() &#123;</span><br><span class="line">      try &#123;</span><br><span class="line">        window.top.location.replace(&quot;weixin://&quot;);</span><br><span class="line">        this.hide();</span><br><span class="line">      &#125; catch (err) &#123;</span><br><span class="line">        // 如果不支持，你可以在这里做降级处理</span><br><span class="line">        alert(&quot;您的浏览器不支持该分享功能，请手动复制链接!&quot;);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">  mounted() &#123;</span><br><span class="line">    var UA = navigator.appVersion;</span><br><span class="line">    var ue = /(iPad).*OS\s([\d_]+)/.test(UA);</span><br><span class="line">    var le = /(iPod)(.*OS\s([\d_]+))?/.test(UA);</span><br><span class="line">    var fe = !UA &amp;&amp; /(iPhone\sOS)\s([\d_]+)/.test(UA);</span><br><span class="line">    var pe = /(Android);?[\s\/]+([\d.]+)?/.test(UA);</span><br><span class="line">    var wx = /micromessenger/i.test(UA);</span><br><span class="line">    var chrome = UA.toLowerCase().indexOf(&quot;chrome&quot;);</span><br><span class="line">    var baidu = /mobile.*baidubrowser/i.test(UA);</span><br><span class="line">    var Sogou = /SogouMobileBrowser/i.test(UA);</span><br><span class="line">    var baiduAPP = /baiduboxapp/i.test(UA);</span><br><span class="line">    var uc = UA.split(&quot;UCBrowser/&quot;).length &gt; 1 ? 1 : 0;</span><br><span class="line">    var qq = UA.split(&quot;MQQBrowser/&quot;).length &gt; 1 ? 2 : 0;</span><br><span class="line">    var qqNot = /QQ\/([\d\.]+)/.test(UA);</span><br><span class="line">   if (uc == 1 || qq == 1 || qq == 2 || baidu || baiduAPP||(Sogou&amp;&amp;!pe)) &#123;</span><br><span class="line">      this.showWXGo = 1;</span><br><span class="line">      if (wx || qqNot) &#123;</span><br><span class="line">        this.showWXGo = 3;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125; else if (wx) &#123;</span><br><span class="line">      this.showWXGo = 3;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">      this.showWXGo = 2;</span><br><span class="line">    &#125;</span><br><span class="line">    if (chrome != -1) &#123;</span><br><span class="line">      this.showChrome = true;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">      this.showChrome = false;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="父组件调用"><a href="#父组件调用" class="headerlink" title="父组件调用"></a>父组件调用</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">&lt;sharePopup :showShare=&quot;showShare&quot;  :shareConfig=&quot;shareConfig&quot;/&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    import sharePopup from &quot;../../components/sharePopup&quot;;</span><br><span class="line">    export default &#123;</span><br><span class="line">      data() &#123;</span><br><span class="line">        return &#123;</span><br><span class="line">          showShare: false,</span><br><span class="line">          shareConfig: &quot;&quot;</span><br><span class="line">        &#125;;</span><br><span class="line">      &#125;,</span><br><span class="line">        components: &#123;</span><br><span class="line">              sharePopup</span><br><span class="line">        &#125;,</span><br><span class="line">   methods: &#123;</span><br><span class="line">        sharePage() &#123;</span><br><span class="line">          this.showShare = true;</span><br><span class="line">              this.shareConfig = &#123;</span><br><span class="line">                url: &quot;&quot;, //分享url</span><br><span class="line">                title: &quot;&quot;, //内容标题</span><br><span class="line">                desc: &quot;&quot;, //描述</span><br><span class="line">                img: &quot;&quot; //分享的图片</span><br><span class="line">              &#125;;</span><br><span class="line">        &#125;,</span><br><span class="line">   	&#125;</span><br><span class="line">   &#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="单独使用"><a href="#单独使用" class="headerlink" title="单独使用"></a>单独使用</h3><p>支持ES6模块,AMD，CMD引入 如果你的项目没有模块化。你也可以直接用script标签引入NativeShare.js。可以参考</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> NativeShare <span class="keyword">from</span> <span class="string">'nativeshare'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 先创建一个实例</span></span><br><span class="line"><span class="keyword">var</span> nativeShare = <span class="keyword">new</span> NativeShare()</span><br><span class="line"><span class="comment">// 如果你需要在微信浏览器中分享，那么你需要设置额外的微信配置</span></span><br><span class="line"><span class="comment">// 特别提示一下微信分享有一个坑，不要分享安全域名以外的链接(具体见jssdk文档)，否则会导致你配置的文案无效</span></span><br><span class="line"><span class="comment">// 创建实例应该带参数</span></span><br><span class="line"><span class="keyword">var</span> nativeShare = <span class="keyword">new</span> NativeShare(&#123;</span><br><span class="line">    wechatConfig: &#123;</span><br><span class="line">        appId: <span class="string">''</span>,</span><br><span class="line">        timestamp: <span class="string">''</span>,</span><br><span class="line">        nonceStr: <span class="string">''</span>,</span><br><span class="line">        signature: <span class="string">''</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">  	<span class="comment">// 让你修改的分享的文案同步到标签里，比如title文案会同步到&lt;title&gt;标签中</span></span><br><span class="line">	<span class="comment">// 这样可以让一些不支持分享的浏览器也能修改部分文案，默认都不会同步</span></span><br><span class="line">  	syncDescToTag: <span class="literal">false</span>,</span><br><span class="line">  	syncIconToTag: <span class="literal">false</span>,</span><br><span class="line">  	syncTitleToTag: <span class="literal">false</span>,</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 你也可以在setConfig方法中设置配置参数</span></span><br><span class="line">nativeShare.setConfig(&#123;</span><br><span class="line">    wechatConfig: &#123;</span><br><span class="line">        appId: <span class="string">''</span>,</span><br><span class="line">        timestamp: <span class="string">''</span>,</span><br><span class="line">        nonceStr: <span class="string">''</span>,</span><br><span class="line">        signature: <span class="string">''</span>,</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 设置分享文案</span></span><br><span class="line">nativeShare.setShareData(&#123;</span><br><span class="line">    icon: <span class="string">'https://pic3.zhimg.com/v2-080267af84aa0e97c66d5f12e311c3d6_xl.jpg'</span>,</span><br><span class="line">    link: <span class="string">'https://github.com/fa-ge/NativeShare'</span>,</span><br><span class="line">    title: <span class="string">'NativeShare'</span>,</span><br><span class="line">    desc: <span class="string">'NativeShare是一个整合了各大移动端浏览器调用原生分享的插件'</span>,</span><br><span class="line">    <span class="keyword">from</span>: <span class="string">'@fa-ge'</span>,</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 唤起浏览器原生分享组件(如果在微信中不会唤起，此时call方法只会设置文案。类似setShareData)</span></span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">	nativeShare.call()</span><br><span class="line">    <span class="comment">// 如果是分享到微信则需要 nativeShare.call('wechatFriend')</span></span><br><span class="line">    <span class="comment">// 类似的命令下面有介绍</span></span><br><span class="line">&#125; <span class="keyword">catch</span>(err) &#123;</span><br><span class="line">  <span class="comment">// 如果不支持，你可以在这里做降级处理</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="API"><a href="#API" class="headerlink" title="API"></a>API</h3><p>NativeShare一共只有五个实例方法</p>
+<ul>
+<li>getShareData() 获得分享的文案</li>
+<li>setShareData() 设置分享的文案</li>
+<li>call(command = ‘default’, [options]) 调用浏览器原生的分享组件</li>
+<li>setConfig() 设置配置参数和new NativeShare()中设置的一样</li>
+<li>getConfig() 获得配置参数</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    icon: <span class="string">''</span>,</span><br><span class="line">    link: <span class="string">''</span>,</span><br><span class="line">    title: <span class="string">''</span>,</span><br><span class="line">    desc: <span class="string">''</span>,</span><br><span class="line">    <span class="keyword">from</span>: <span class="string">''</span>,</span><br><span class="line">      </span><br><span class="line">    <span class="comment">// 以下两个个回调目前只有在微信和百度APP中很好的支持</span></span><br><span class="line">    success: noop,</span><br><span class="line">    fail: noop,</span><br><span class="line">      </span><br><span class="line">    <span class="comment">// 只有微信支持</span></span><br><span class="line">    trigger: noop,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>调用call方法时第一个参数是指定用什么命令调用分享组件。目前支持6个命令。分别是</p>
+<ul>
+<li>default 默认，调用起底部的分享组件，当其他命令不支持的时候也会调用该命令</li>
+<li>wechatTimeline 分享到朋友圈</li>
+<li>wechatFriend 分享给微信好友</li>
+<li>qqFriend 分享给QQ好友</li>
+<li>qZone 分享到QQ空间</li>
+<li>weibo 分享到微博</li>
+</ul>
+<p>图片示例：</p>
+<p><img src="/07/webapp分享/Nativeshare.png" alt="Nativeshare"></p>
+<p><a href="https://github.com/fa-ge/nativeShare" target="_blank" rel="noopener">参考链接Nativeshare</a></p>
+<p><a href="https://blog.csdn.net/lianzhang861/article/details/81908063" target="_blank" rel="noopener">参考链接Nativeshare—CSDN</a></p>
+<h4 id="vue-native-share"><a href="#vue-native-share" class="headerlink" title="vue-native-share"></a>vue-native-share</h4><blockquote>
+<p>一个vue移动端的h5分享组件 支持的浏览器：UC浏览器，QQ浏览器，百度浏览器 不支持则提示：手动调起浏览器自带的分享面板 </p>
+</blockquote>
+<p>1.先下载</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cnpm install vue-native-share --save-dev</span><br></pre></td></tr></table></figure>
+
+<p>2.引入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">import vueNativeShare from &apos;vue-native-share&apos;</span><br><span class="line"></span><br><span class="line">components: &#123;</span><br><span class="line">    vueNativeShare</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">data () &#123;</span><br><span class="line"> return &#123;</span><br><span class="line">    shareMenu: [0,1,2,3,4,5],</span><br><span class="line">    config: &#123;</span><br><span class="line">    title: &apos;分享标题&apos;,</span><br><span class="line">    desc:&apos;描述&apos;,</span><br><span class="line">    img:&apos;图片地址&apos;,</span><br><span class="line">    img_title:&apos;图片标题&apos;,</span><br><span class="line">    link: &apos;当前链接&apos;,</span><br><span class="line">    success: () =&gt; &#123;console.log(&apos;success&apos;)&#125;, //成功回调</span><br><span class="line">    cancel: () =&gt; &#123;console.log(&apos;cancel&apos;)&#125;, //取消回调</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&lt;vue-native-share :shareMenu=&quot;shareMenu&quot; :config=&quot;config&quot; /&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="关于shareMenu"><a href="#关于shareMenu" class="headerlink" title="关于shareMenu"></a>关于shareMenu</h4><table>
+<thead>
+<tr>
+<th>shareMenu</th>
+<th>分享面板</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>[0]</td>
+<td>微信好友</td>
+</tr>
+<tr>
+<td>[1]</td>
+<td>朋友圈</td>
+</tr>
+<tr>
+<td>[2]</td>
+<td>新浪微博</td>
+</tr>
+<tr>
+<td>[3]</td>
+<td>qq好友</td>
+</tr>
+<tr>
+<td>[4]</td>
+<td>qq空间</td>
+</tr>
+<tr>
+<td>[5]</td>
+<td>更多</td>
+</tr>
+</tbody></table>
+<p>不传入shareMenu则默认设为[0,1,2,3,4,5]</p>
+<p>图片示例：</p>
+<p><img src="/07/webapp分享/.%5Cimg%5Cvue-native-share.png" alt="vue-native-share"></p>
+<h2 id="推荐："><a href="#推荐：" class="headerlink" title="推荐："></a>推荐：</h2><blockquote>
+<p>相对来说，本人更推荐第一种类型，相对来说兼容性更好(毕竟经过本人的亲自升级啦!)</p>
+</blockquote>
+<p><a href="https://blog.csdn.net/weixin_38787928/article/details/86741227" target="_blank" rel="noopener">参考链接vue-native-share</a></p>
+<p><a href="https://blog.csdn.net/weixin_38787928/article/details/86741227" target="_blank" rel="noopener">参考链接mshare</a></p>
+<p><a href="https://www.w3cplus.com/mobile/h5-share.html" target="_blank" rel="noopener">移动端H5多平台分享实践1</a></p>
+<p><a href="https://juejin.im/post/5a61a8b86fb9a01cba42a742" target="_blank" rel="noopener">移动端H5多平台分享实践2</a></p>
+<h4 id="原文地址：https-github-com-wgjh5-webapp-share"><a href="#原文地址：https-github-com-wgjh5-webapp-share" class="headerlink" title="原文地址：https://github.com/wgjh5/webapp-share"></a>原文地址：<a href="https://github.com/wgjh5/webapp-share" target="_blank" rel="noopener">https://github.com/wgjh5/webapp-share</a></h4>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="wgjh5.github.io/2019/08/07/webapp分享/" data-id="cjzdv8ruj001y84u8pdo2q3wy"
+         class="article-share-link">分享</a>
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vue/">vue</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/webapp调起浏览器分享/">webapp调起浏览器分享</a></li></ul>
+
+    </footer>
+
+  </div>
+
+  
+    
+  <nav class="article-nav">
+    
+      <a href="/2019/08/07/关于watch和computed的结合监听props/" class="article-nav-link">
+        <strong class="article-nav-caption">前一篇</strong>
+        <div class="article-nav-title">
+          
+            关于watch和computed的结合监听props
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2019/08/07/vue总结/" class="article-nav-link">
+        <strong class="article-nav-caption">后一篇</strong>
+        <div class="article-nav-title">2018.12.21 vue总结</div>
+      </a>
+    
+  </nav>
+
+
+  
+
+  
+    
+    <div class="gitalk" id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+        <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+            <script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.min.js"></script>
+                <script type="text/javascript">
+                    var gitalk = new Gitalk({
+                        clientID: '64ce5333a42f02cf200d',
+                        clientSecret: '7d37a3d8d3c9e215de06d3078bd1894053368739',
+                        repo: 'wgjh5.github.io',
+                        owner: 'wgjh5',
+                        admin: ['wgjh5'],
+                        // id: location.pathname,      // Ensure uniqueness and length less than 50
+                        id: md5(location.pathname),
+                        distractionFreeMode: true, // Facebook-like distraction free mode
+                        pagerDirection: 'last'
+                    })
+
+                    gitalk.render('gitalk-container')
+                </script>
+                
+  
+
+</article>
+
+
+
+</section>
+                <footer class="footer">
+  <div class="outer">
+    <div class="float-right">
+      <ul class="list-inline">
+  
+    <li><i class="fe fe-smile-alt"></i> <span id="busuanzi_value_site_uv"></span></li>
+  
+</ul>
+    </div>
+    <ul class="list-inline">
+      <li>&copy; 2019 一只正在成长的程序猿</li>
+      <li>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></li>
+      <li>Theme  <a href="https://github.com/zhwangart/hexo-theme-ocean">Ocean</a></li>
+    </ul>
+  </div>
+</footer>
+
+        </main>
+        <aside class="sidebar">
+            <button class="navbar-toggle"></button>
+
+<nav class="navbar">
+  
+    <div class="logo">
+      <a href="/"><img src="/images/shark.svg" alt="一只正在成长的程序猿"></a>
+    </div>
+  
+  <ul class="nav nav-main">
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/">主页</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/archives">归档</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/about">关于</a>
+      </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link nav-item-search" title="搜索">
+        <i class="fe fe-search"></i>
+        搜索
+      </a>
+    </li>
+  </ul>
+</nav>
+
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      <div class="totop" id="totop">
+  <i class="fe fe-rocket"></i>
+</div>
+    </li>
+    <li class="nav-item">
+      
+        <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+          <i class="fe fe-feed"></i>
+        </a>
+      
+    </li>
+  </ul>
+</nav>
+
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+        </aside>
+        <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/lazyload.min.js"></script>
+<script src="/js/snap.svg-min.js"></script>
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+  <script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+  <script src="/js/search.js"></script>
+
+
+<script src="/js/ocean.js"></script>
+
+    </body>
+
+    </html>

@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    
+        
+                <meta name="keywords" content="爱前端 | 爱工作 | 爱生活">
+                
+                    
+                            <meta name="description" content="This is My blog">
+                            
+                                <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+                                <title>
+                                    
+                                        左滑动删除组件 |
+                                            
+                                                一只正在成长的程序猿
+                                </title>
+                                
+                                    <link rel="shortcut icon" href="/images/headPortrait.png">
+                                    
+                                        <link rel="stylesheet" href="/css/style.css">
+                                            
+                                                <link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+                                                    
+                                                        <script src="/js/pace.min.js"></script>
+</head></html>
+
+    <body>
+        <main class="content">
+            <section class="outer">
+    <article id="post-左滑动删除组件" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      左滑动删除组件
+    </h1>
+  
+  
+
+
+
+
+      </header>
+    
+
+    
+      <div class="article-meta">
+        <a href="/2019/08/07/左滑动删除组件/" class="article-date">
+  <time datetime="2019-08-07T09:31:46.842Z" itemprop="datePublished">2019-08-07</time>
+</a>
+        
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/技术/">技术</a>
+  </div>
+
+      </div>
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+
+      
+
+      
+        <h4 id="HTML"><a href="#HTML" class="headerlink" title="HTML"></a>HTML</h4><a id="more"></a>
+
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"container"</span> <span class="attr">v-if</span>=<span class="string">"this.checkIndex==0"</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- &lt;div class="page-title"&gt;滑动组件&lt;/div&gt; --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">"list-item "</span> <span class="attr">v-if</span>=<span class="string">"list.length&gt;0"</span> <span class="attr">v-for</span>=<span class="string">"(item,index) in list "</span> <span class="attr">:key</span>=<span class="string">"index"</span> <span class="attr">data-type</span>=<span class="string">"0"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"list-box"</span> @<span class="attr">touchstart.capture</span>=<span class="string">"touchStart"</span> @<span class="attr">touchend.capture</span>=<span class="string">"touchEnd"</span> @<span class="attr">click</span>=<span class="string">"skip"</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"list-content"</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">"title"</span>&gt;</span>&#123;&#123;item.bankname&#125;&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">"tips"</span>&gt;</span>&#123;&#123;item.bankno&#125;&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">                    <span class="comment">&lt;!-- &lt;p :class="item.statusClass"&gt;&#123;&#123;item.auditstate&#125;&#125;&lt;/p&gt; --&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">p</span> <span class="attr">v-if</span>=<span class="string">"item.auditstate==1"</span> <span class="attr">class</span>=<span class="string">"wait"</span>&gt;</span>待验证<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">p</span> <span class="attr">v-if</span>=<span class="string">"item.auditstate==2"</span> <span class="attr">class</span>=<span class="string">"denied"</span>&gt;</span>已验证<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">p</span> <span class="attr">v-if</span>=<span class="string">"item.auditstate==3"</span> <span class="attr">class</span>=<span class="string">"discontinued"</span>&gt;</span>已拒绝<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">                    <span class="comment">&lt;!-- &lt;p class="time"&gt;&#123;&#123;item.time&#125;&#125;&lt;/p&gt; --&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"delete"</span> @<span class="attr">click</span>=<span class="string">"deleteItem($event,item.bankid)"</span> <span class="attr">:data-index</span>=<span class="string">"index"</span>&gt;</span>删除<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="js"><a href="#js" class="headerlink" title="js"></a>js</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//跳转</span></span><br><span class="line"> skip() &#123;</span><br><span class="line">   <span class="keyword">if</span> (<span class="keyword">this</span>.checkSlide()) &#123;</span><br><span class="line">     <span class="keyword">this</span>.restSlide();</span><br><span class="line">   &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">     <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">   &#125;</span><br><span class="line"> &#125;,</span><br><span class="line"> <span class="comment">//滑动开始</span></span><br><span class="line"> touchStart(e) &#123;</span><br><span class="line">   <span class="comment">// 记录初始位置</span></span><br><span class="line">   <span class="keyword">this</span>.startX = e.touches[<span class="number">0</span>].clientX;</span><br><span class="line"> &#125;,</span><br><span class="line"> <span class="comment">//滑动结束</span></span><br><span class="line"> touchEnd(e) &#123;</span><br><span class="line">   <span class="comment">// 当前滑动的父级元素</span></span><br><span class="line">   <span class="keyword">let</span> parentElement = e.currentTarget.parentElement;</span><br><span class="line">   <span class="comment">// 记录结束位置</span></span><br><span class="line">   <span class="keyword">this</span>.endX = e.changedTouches[<span class="number">0</span>].clientX;</span><br><span class="line">   <span class="comment">// 左滑</span></span><br><span class="line">   <span class="keyword">if</span> (parentElement.dataset.type == <span class="number">0</span> &amp;&amp; <span class="keyword">this</span>.startX - <span class="keyword">this</span>.endX &gt; <span class="number">30</span>) &#123;</span><br><span class="line">     <span class="keyword">this</span>.restSlide();</span><br><span class="line">     parentElement.dataset.type = <span class="number">1</span>;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="comment">// 右滑</span></span><br><span class="line">   <span class="keyword">if</span> (parentElement.dataset.type == <span class="number">1</span> &amp;&amp; <span class="keyword">this</span>.startX - <span class="keyword">this</span>.endX &lt; <span class="number">-30</span>) &#123;</span><br><span class="line">     <span class="keyword">this</span>.restSlide();</span><br><span class="line">     parentElement.dataset.type = <span class="number">0</span>;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">this</span>.startX = <span class="number">0</span>;</span><br><span class="line">   <span class="keyword">this</span>.endX = <span class="number">0</span>;</span><br><span class="line"> &#125;,</span><br><span class="line"> <span class="comment">//判断当前是否有滑块处于滑动状态</span></span><br><span class="line"> checkSlide() &#123;</span><br><span class="line">   <span class="keyword">let</span> listItems = <span class="built_in">document</span>.querySelectorAll(<span class="string">".list-item"</span>);</span><br><span class="line">   <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; listItems.length; i++) &#123;</span><br><span class="line">     <span class="keyword">if</span> (listItems[i].dataset.type == <span class="number">1</span>) &#123;</span><br><span class="line">       <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">     &#125;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line"> &#125;,</span><br><span class="line"> <span class="comment">//复位滑动状态</span></span><br><span class="line"> restSlide() &#123;</span><br><span class="line">   <span class="keyword">let</span> listItems = <span class="built_in">document</span>.querySelectorAll(<span class="string">".list-item"</span>);</span><br><span class="line">   <span class="comment">// 复位</span></span><br><span class="line">   <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; listItems.length; i++) &#123;</span><br><span class="line">     listItems[i].dataset.type = <span class="number">0</span>;</span><br><span class="line">   &#125;</span><br><span class="line"> &#125;,</span><br><span class="line"> <span class="comment">//删除银行卡</span></span><br><span class="line"> deleteItem(e, bankid) &#123;</span><br><span class="line">   <span class="comment">// 当前索引</span></span><br><span class="line">   <span class="keyword">let</span> index = e.currentTarget.dataset.index;</span><br><span class="line">   <span class="built_in">console</span>.log(bankid);</span><br><span class="line">   <span class="keyword">let</span> params = &#123;</span><br><span class="line">     cardid: bankid</span><br><span class="line">   &#125;;</span><br><span class="line">   delebankcard(params).then(<span class="function"><span class="params">r</span> =&gt;</span> &#123;</span><br><span class="line">       <span class="comment">//如果后台删除成功</span></span><br><span class="line">     <span class="keyword">if</span> (r.data.code == <span class="number">0</span>) &#123;</span><br><span class="line">         <span class="comment">//删除这个数据</span></span><br><span class="line">       <span class="keyword">this</span>.list.splice(index, <span class="number">1</span>); </span><br><span class="line">       <span class="keyword">this</span>.$vux.toast.text(r.data.msg, <span class="string">"middle"</span>);</span><br><span class="line">     &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">       <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">     &#125;</span><br><span class="line">   &#125;);</span><br><span class="line">   <span class="comment">// 复位</span></span><br><span class="line">   <span class="keyword">this</span>.restSlide();</span><br><span class="line">   <span class="comment">// 删除</span></span><br><span class="line"> &#125;,</span><br></pre></td></tr></table></figure>
+
+<h4 id="scss"><a href="#scss" class="headerlink" title="scss"></a>scss</h4><figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.list-item</span> &#123;</span><br><span class="line">    <span class="attribute">position</span>: relative;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">1.6rem</span>;</span><br><span class="line">    -webkit-<span class="attribute">transition</span>: all <span class="number">0.2s</span>;</span><br><span class="line">    <span class="attribute">transition</span>: all <span class="number">0.2s</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="selector-class">.list-item</span><span class="selector-attr">[data-type="0"]</span> &#123;</span><br><span class="line">    <span class="attribute">transform</span>: translate3d(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="selector-class">.list-item</span><span class="selector-attr">[data-type="1"]</span> &#123;</span><br><span class="line">    <span class="attribute">transform</span>: translate3d(-<span class="number">2rem</span>, <span class="number">0</span>, <span class="number">0</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="selector-class">.list-item</span>:after &#123;</span><br><span class="line">    <span class="attribute">content</span>: <span class="string">" "</span>;</span><br><span class="line">    <span class="attribute">position</span>: absolute;</span><br><span class="line">    <span class="attribute">left</span>: <span class="number">0.2rem</span>;</span><br><span class="line">    <span class="attribute">bottom</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">right</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">height</span>: rem(<span class="number">1</span>);</span><br><span class="line">    <span class="attribute">border-bottom</span>: rem(<span class="number">1</span>) solid <span class="number">#ccc</span>;</span><br><span class="line">    <span class="attribute">color</span>: <span class="number">#ccc</span>;</span><br><span class="line">    -webkit-<span class="attribute">transform-origin</span>: <span class="number">0</span> <span class="number">100%</span>;</span><br><span class="line">    <span class="attribute">transform-origin</span>: <span class="number">0</span> <span class="number">100%</span>;</span><br><span class="line">    -webkit-<span class="attribute">transform</span>: scaleY(<span class="number">0.5</span>);</span><br><span class="line">    <span class="attribute">transform</span>: scaleY(<span class="number">0.5</span>);</span><br><span class="line">    <span class="attribute">z-index</span>: <span class="number">2</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="selector-class">.list-item</span>:last-child:after &#123;</span><br><span class="line">    <span class="attribute">content</span>: <span class="string">" "</span>;</span><br><span class="line">    <span class="attribute">position</span>: absolute;</span><br><span class="line">    <span class="attribute">left</span>: <span class="number">0.2rem</span>;</span><br><span class="line">    <span class="attribute">bottom</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">right</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">height</span>: rem(<span class="number">1</span>);</span><br><span class="line">    <span class="attribute">border-bottom</span>: <span class="number">0</span> none;</span><br><span class="line">    <span class="attribute">color</span>: <span class="number">#ccc</span>;</span><br><span class="line">    -webkit-<span class="attribute">transform-origin</span>: <span class="number">0</span> <span class="number">100%</span>;</span><br><span class="line">    <span class="attribute">transform-origin</span>: <span class="number">0</span> <span class="number">100%</span>;</span><br><span class="line">    -webkit-<span class="attribute">transform</span>: scaleY(<span class="number">0.5</span>);</span><br><span class="line">    <span class="attribute">transform</span>: scaleY(<span class="number">0.5</span>);</span><br><span class="line">    <span class="attribute">z-index</span>: <span class="number">2</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="selector-class">.list-box</span> &#123;</span><br><span class="line">    <span class="attribute">padding</span>: <span class="number">0.2rem</span>;</span><br><span class="line">    <span class="attribute">background</span>: <span class="number">#fff</span>;</span><br><span class="line">    <span class="attribute">display</span>: flex;</span><br><span class="line">    <span class="attribute">align-items</span>: center;</span><br><span class="line">    -webkit-<span class="attribute">box-sizing</span>: border-box;</span><br><span class="line">    <span class="attribute">box-sizing</span>: border-box;</span><br><span class="line">    <span class="attribute">justify-content</span>: flex-end;</span><br><span class="line">    <span class="attribute">position</span>: absolute;</span><br><span class="line">    <span class="attribute">top</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">right</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">bottom</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">left</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">font-size</span>: <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="selector-class">.wait</span> &#123;</span><br><span class="line">      <span class="attribute">width</span>: rem(<span class="number">170</span>);</span><br><span class="line">      <span class="attribute">height</span>: rem(<span class="number">54</span>);</span><br><span class="line">      <span class="attribute">line-height</span>: rem(<span class="number">54</span>);</span><br><span class="line">      <span class="attribute">background-color</span>: <span class="number">#faf7f2</span>;</span><br><span class="line">      <span class="attribute">opacity</span>: <span class="number">0.6</span>;</span><br><span class="line">      <span class="attribute">border-radius</span>: rem(<span class="number">30</span>);</span><br><span class="line">      <span class="attribute">position</span>: absolute;</span><br><span class="line">      <span class="attribute">right</span>: <span class="number">0</span>;</span><br><span class="line">      <span class="attribute">top</span>: rem(<span class="number">18</span>);</span><br><span class="line">      <span class="attribute">color</span>: <span class="number">#a4752a</span>;</span><br><span class="line">      <span class="attribute">font-weight</span>: bold;</span><br><span class="line">      <span class="attribute">font-size</span>: rem(<span class="number">22</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="selector-class">.denied</span> &#123;</span><br><span class="line">      <span class="attribute">width</span>: rem(<span class="number">170</span>);</span><br><span class="line">      <span class="attribute">height</span>: rem(<span class="number">54</span>);</span><br><span class="line">      <span class="attribute">line-height</span>: rem(<span class="number">54</span>);</span><br><span class="line">      <span class="attribute">background-color</span>: <span class="number">#ffe9e9</span>;</span><br><span class="line">      <span class="attribute">opacity</span>: <span class="number">0.6</span>;</span><br><span class="line">      <span class="attribute">border-radius</span>: rem(<span class="number">30</span>);</span><br><span class="line">      <span class="attribute">position</span>: absolute;</span><br><span class="line">      <span class="attribute">right</span>: <span class="number">0</span>;</span><br><span class="line">      <span class="attribute">top</span>: rem(<span class="number">18</span>);</span><br><span class="line">      <span class="attribute">color</span>: <span class="number">#ff4d4d</span>;</span><br><span class="line">      <span class="attribute">font-weight</span>: bold;</span><br><span class="line">      <span class="attribute">font-size</span>: rem(<span class="number">22</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="selector-class">.discontinued</span> &#123;</span><br><span class="line">      <span class="attribute">width</span>: rem(<span class="number">170</span>);</span><br><span class="line">      <span class="attribute">height</span>: rem(<span class="number">54</span>);</span><br><span class="line">      <span class="attribute">line-height</span>: rem(<span class="number">54</span>);</span><br><span class="line">      <span class="attribute">background-color</span>: <span class="number">#eeeeee</span>;</span><br><span class="line">      <span class="attribute">opacity</span>: <span class="number">0.6</span>;</span><br><span class="line">      <span class="attribute">border-radius</span>: rem(<span class="number">30</span>);</span><br><span class="line">      <span class="attribute">position</span>: absolute;</span><br><span class="line">      <span class="attribute">right</span>: <span class="number">0</span>;</span><br><span class="line">      <span class="attribute">top</span>: rem(<span class="number">18</span>);</span><br><span class="line">      <span class="attribute">color</span>: <span class="number">#777777</span>;</span><br><span class="line">      <span class="attribute">font-weight</span>: bold;</span><br><span class="line">      <span class="attribute">font-size</span>: rem(<span class="number">22</span>);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="selector-class">.list-item</span> <span class="selector-class">.list-img</span> &#123;</span><br><span class="line">    <span class="attribute">display</span>: block;</span><br><span class="line">    <span class="comment">//   width: 1rem;</span></span><br><span class="line">    <span class="attribute">height</span>: <span class="number">1rem</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="selector-class">.list-item</span> <span class="selector-class">.list-content</span> &#123;</span><br><span class="line">    <span class="comment">//   padding: 0.1rem 0 0.1rem 0.2rem;</span></span><br><span class="line">    <span class="attribute">position</span>: relative;</span><br><span class="line">    <span class="attribute">flex</span>: <span class="number">1</span>;</span><br><span class="line">    <span class="attribute">flex-direction</span>: column;</span><br><span class="line">    <span class="attribute">align-items</span>: flex-start;</span><br><span class="line">    <span class="attribute">justify-content</span>: center;</span><br><span class="line">    <span class="attribute">overflow</span>: hidden;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="selector-class">.list-item</span> <span class="selector-class">.title</span> &#123;</span><br><span class="line">    <span class="attribute">display</span>: block;</span><br><span class="line">    <span class="attribute">color</span>: <span class="number">#333</span>;</span><br><span class="line">    <span class="attribute">overflow</span>: hidden;</span><br><span class="line">    <span class="attribute">font-size</span>: rem(<span class="number">26</span>);</span><br><span class="line">    <span class="comment">// line-height: rem(46);</span></span><br><span class="line">    <span class="attribute">font-weight</span>: bold;</span><br><span class="line">    <span class="attribute">text-overflow</span>: ellipsis;</span><br><span class="line">    <span class="attribute">white-space</span>: nowrap;</span><br><span class="line">    <span class="attribute">margin-left</span>: rem(<span class="number">20</span>);</span><br><span class="line">    <span class="attribute">text-align</span>: left;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="selector-class">.titleCredit</span> &#123;</span><br><span class="line">    <span class="attribute">height</span>: rem(<span class="number">75</span>);</span><br><span class="line">    <span class="attribute">line-height</span>: rem(<span class="number">75</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="selector-class">.list-item</span> <span class="selector-class">.tips</span> &#123;</span><br><span class="line">    <span class="attribute">display</span>: block;</span><br><span class="line">    <span class="attribute">overflow</span>: hidden;</span><br><span class="line">    <span class="attribute">text-align</span>: left;</span><br><span class="line">    <span class="attribute">color</span>: <span class="number">#8e8e8e</span>;</span><br><span class="line">    <span class="attribute">font-size</span>: rem(<span class="number">14</span>);</span><br><span class="line">    <span class="attribute">font-weight</span>: normal;</span><br><span class="line">    <span class="attribute">line-height</span>: rem(<span class="number">50</span>);</span><br><span class="line">    <span class="attribute">text-overflow</span>: ellipsis;</span><br><span class="line">    <span class="attribute">white-space</span>: nowrap;</span><br><span class="line">    <span class="attribute">margin-left</span>: rem(<span class="number">20</span>);</span><br><span class="line">    <span class="attribute">letter-spacing</span>: rem(<span class="number">4</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// .list-item .time &#123;</span></span><br><span class="line">  <span class="comment">//   display: block;</span></span><br><span class="line">  <span class="comment">//   font-size: 12px;</span></span><br><span class="line">  <span class="comment">//   position: absolute;</span></span><br><span class="line">  <span class="comment">//   right: 0;</span></span><br><span class="line">  <span class="comment">//   top: 0.1rem;</span></span><br><span class="line">  <span class="comment">//   color: #666;</span></span><br><span class="line">  <span class="comment">// &#125;</span></span><br><span class="line">  <span class="selector-class">.list-item</span> <span class="selector-class">.delete</span> &#123;</span><br><span class="line">    <span class="attribute">width</span>: rem(<span class="number">110</span>);</span><br><span class="line">    <span class="attribute">height</span>: rem(<span class="number">126</span>);</span><br><span class="line">    <span class="attribute">background</span>: <span class="number">#ff4949</span>;</span><br><span class="line">    <span class="attribute">font-size</span>: rem(<span class="number">30</span>);</span><br><span class="line">    <span class="attribute">color</span>: <span class="number">#fff</span>;</span><br><span class="line">    <span class="attribute">text-align</span>: center;</span><br><span class="line">    <span class="attribute">line-height</span>: rem(<span class="number">126</span>);</span><br><span class="line">    <span class="attribute">position</span>: absolute;</span><br><span class="line">    <span class="attribute">top</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">right</span>: -<span class="number">2rem</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="selector-class">.container</span> &#123;</span><br><span class="line">    <span class="attribute">overflow</span>: hidden;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="示例图片"><a href="#示例图片" class="headerlink" title="示例图片"></a>示例图片</h4><img src="/07/左滑动删除组件/slide.png">
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="wgjh5.github.io/2019/08/07/左滑动删除组件/" data-id="cjzdv8run002584u8r0arqzgy"
+         class="article-share-link">分享</a>
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vue/">vue</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/左滑动删除组件/">左滑动删除组件</a></li></ul>
+
+    </footer>
+
+  </div>
+
+  
+    
+  <nav class="article-nav">
+    
+    
+      <a href="/2019/08/07/运用百度api实现定位城市/" class="article-nav-link">
+        <strong class="article-nav-caption">后一篇</strong>
+        <div class="article-nav-title">运用百度api实现定位城市</div>
+      </a>
+    
+  </nav>
+
+
+  
+
+  
+    
+    <div class="gitalk" id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+        <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+            <script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.min.js"></script>
+                <script type="text/javascript">
+                    var gitalk = new Gitalk({
+                        clientID: '64ce5333a42f02cf200d',
+                        clientSecret: '7d37a3d8d3c9e215de06d3078bd1894053368739',
+                        repo: 'wgjh5.github.io',
+                        owner: 'wgjh5',
+                        admin: ['wgjh5'],
+                        // id: location.pathname,      // Ensure uniqueness and length less than 50
+                        id: md5(location.pathname),
+                        distractionFreeMode: true, // Facebook-like distraction free mode
+                        pagerDirection: 'last'
+                    })
+
+                    gitalk.render('gitalk-container')
+                </script>
+                
+  
+
+</article>
+
+
+
+</section>
+                <footer class="footer">
+  <div class="outer">
+    <div class="float-right">
+      <ul class="list-inline">
+  
+    <li><i class="fe fe-smile-alt"></i> <span id="busuanzi_value_site_uv"></span></li>
+  
+</ul>
+    </div>
+    <ul class="list-inline">
+      <li>&copy; 2019 一只正在成长的程序猿</li>
+      <li>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></li>
+      <li>Theme  <a href="https://github.com/zhwangart/hexo-theme-ocean">Ocean</a></li>
+    </ul>
+  </div>
+</footer>
+
+        </main>
+        <aside class="sidebar">
+            <button class="navbar-toggle"></button>
+
+<nav class="navbar">
+  
+    <div class="logo">
+      <a href="/"><img src="/images/shark.svg" alt="一只正在成长的程序猿"></a>
+    </div>
+  
+  <ul class="nav nav-main">
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/">主页</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/archives">归档</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/about">关于</a>
+      </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link nav-item-search" title="搜索">
+        <i class="fe fe-search"></i>
+        搜索
+      </a>
+    </li>
+  </ul>
+</nav>
+
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      <div class="totop" id="totop">
+  <i class="fe fe-rocket"></i>
+</div>
+    </li>
+    <li class="nav-item">
+      
+        <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+          <i class="fe fe-feed"></i>
+        </a>
+      
+    </li>
+  </ul>
+</nav>
+
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+        </aside>
+        <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/lazyload.min.js"></script>
+<script src="/js/snap.svg-min.js"></script>
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+  <script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+  <script src="/js/search.js"></script>
+
+
+<script src="/js/ocean.js"></script>
+
+    </body>
+
+    </html>

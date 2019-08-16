@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    
+        
+                <meta name="keywords" content="爱前端 | 爱工作 | 爱生活">
+                
+                    
+                            <meta name="description" content="This is My blog">
+                            
+                                <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+                                <title>
+                                    
+                                        vue-i18n |
+                                            
+                                                一只正在成长的程序猿
+                                </title>
+                                
+                                    <link rel="shortcut icon" href="/images/headPortrait.png">
+                                    
+                                        <link rel="stylesheet" href="/css/style.css">
+                                            
+                                                <link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+                                                    
+                                                        <script src="/js/pace.min.js"></script>
+</head></html>
+
+    <body>
+        <main class="content">
+            <section class="outer">
+    <article id="post-vue-i18n用法" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      vue-i18n
+    </h1>
+  
+  
+
+
+
+
+      </header>
+    
+
+    
+      <div class="article-meta">
+        <a href="/2019/08/07/vue-i18n用法/" class="article-date">
+  <time datetime="2019-08-07T09:31:46.575Z" itemprop="datePublished">2019-08-07</time>
+</a>
+        
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/技术/">技术</a>
+  </div>
+
+      </div>
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+
+      
+
+      
+        <h2 id="vue-i18n"><a href="#vue-i18n" class="headerlink" title="vue-i18n"></a>vue-i18n</h2><h4 id="1-先下载"><a href="#1-先下载" class="headerlink" title="1.先下载"></a>1.先下载</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cnpm install vue-i18n --save-dev</span><br></pre></td></tr></table></figure>
+
+<a id="more"></a>
+<h4 id="2-在main-js引入"><a href="#2-在main-js引入" class="headerlink" title="2.在main.js引入"></a>2.在main.js引入</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> VueI18n <span class="keyword">from</span> <span class="string">'vue-i18n'</span></span><br><span class="line"> </span><br><span class="line">Vue.use(VueI18n) <span class="comment">// 通过插件的形式挂载</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="3-在src新建个lib文件夹，里面在新建语言文件夹lang"><a href="#3-在src新建个lib文件夹，里面在新建语言文件夹lang" class="headerlink" title="3.在src新建个lib文件夹，里面在新建语言文件夹lang"></a>3.在src新建个lib文件夹，里面在新建语言文件夹<code>lang</code></h4><p><img src="/07/vue-i18n用法/lang.png" alt="1559023487125"></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//en.js 英文语言包：</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> m = &#123; </span><br><span class="line">  music: <span class="string">'Music'</span>,<span class="comment">//网易云音乐</span></span><br><span class="line">  findMusic: <span class="string">'FIND MUSIC'</span>,<span class="comment">//发现音乐</span></span><br><span class="line">  myMusic: <span class="string">'MY MUSIC'</span>,<span class="comment">//我的音乐</span></span><br><span class="line">  friend: <span class="string">'FRIEND'</span>,<span class="comment">//朋友</span></span><br><span class="line">  musician: <span class="string">'MUSICIAN'</span>,<span class="comment">//音乐人</span></span><br><span class="line">  download: <span class="string">'DOWNLOAD'</span><span class="comment">//下载客户端</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//zh.js中文语言包：</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> m = &#123;</span><br><span class="line">  music: <span class="string">'网易云音乐'</span>,</span><br><span class="line">  findMusic: <span class="string">'发现音乐'</span>,</span><br><span class="line">  myMusic: <span class="string">'我的音乐'</span>,</span><br><span class="line">  friend: <span class="string">'朋友'</span>,</span><br><span class="line">  musician: <span class="string">'音乐人'</span>,</span><br><span class="line">  download: <span class="string">'下载客户端'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-然后在main-js中写如下代码"><a href="#3-然后在main-js中写如下代码" class="headerlink" title="3.然后在main.js中写如下代码"></a>3.然后在main.js中写如下代码</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 判断当前是什么语言，如果本地有语言就用本地的，没有则默认中文</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">lang</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 将选择的语言存在localStorage中</span></span><br><span class="line">    <span class="keyword">let</span> t = localStorage.getItem(<span class="string">'lang'</span>)</span><br><span class="line">    <span class="keyword">if</span> (t) <span class="keyword">return</span> t</span><br><span class="line">        <span class="comment">// 默认中文</span></span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">return</span> <span class="string">'zh'</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> language = lang()</span><br><span class="line"><span class="keyword">const</span> i18n = <span class="keyword">new</span> VueI18n(&#123;</span><br><span class="line">        locale: language, <span class="comment">// 语言标识</span></span><br><span class="line">        <span class="comment">//this.$i18n.locale // 通过切换locale的值来实现语言切换</span></span><br><span class="line">        messages: &#123;</span><br><span class="line">            <span class="string">'zh'</span>: <span class="built_in">require</span>(<span class="string">'./lib/lang/zh'</span>), <span class="comment">// 中文语言包</span></span><br><span class="line">            <span class="string">'en'</span>: <span class="built_in">require</span>(<span class="string">'./lib/lang/en'</span>) <span class="comment">// 英文语言包</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">//不要忘记</span></span><br><span class="line"><span class="comment">/* eslint-disable no-new */</span></span><br><span class="line"><span class="keyword">new</span> Vue(&#123;</span><br><span class="line">    el: <span class="string">'#app'</span>,</span><br><span class="line">    router,</span><br><span class="line">    store,</span><br><span class="line">    i18n,</span><br><span class="line">    VueSocketIO,</span><br><span class="line">    components: &#123;</span><br><span class="line">        App</span><br><span class="line">    &#125;,</span><br><span class="line">    template: <span class="string">'&lt;App/&gt;'</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h4 id="4-切换语言"><a href="#4-切换语言" class="headerlink" title="4.切换语言"></a>4.切换语言</h4><blockquote>
+<p>最后我们只需要通过触发事件的形式，来控制 locale 的值，去调用对应的语言包就可以实现国际化啦。 </p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">changeLangEvent() &#123;</span><br><span class="line">    <span class="keyword">if</span> (localStorage.getItem(<span class="string">"lang"</span>) === <span class="string">"zh"</span>) &#123;</span><br><span class="line">      <span class="keyword">this</span>.lang = <span class="string">"en"</span>;</span><br><span class="line">      <span class="keyword">this</span>.$i18n.locale = <span class="keyword">this</span>.lang; <span class="comment">//关键语句</span></span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">this</span>.lang = <span class="string">"zh"</span>;</span><br><span class="line">      <span class="keyword">this</span>.$i18n.locale = <span class="keyword">this</span>.lang; <span class="comment">//关键语句</span></span><br><span class="line">    &#125;</span><br><span class="line">    localStorage.setItem(<span class="string">"lang"</span>, <span class="keyword">this</span>.lang);</span><br><span class="line">  &#125;,</span><br></pre></td></tr></table></figure>
+
+<h4 id="6-渲染方式"><a href="#6-渲染方式" class="headerlink" title="6.渲染方式"></a>6.渲染方式</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;span&gt;&#123;&#123;$t(<span class="string">'m.music'</span>)&#125;&#125;&lt;<span class="regexp">/span&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>参考链接：<a href="https://blog.csdn.net/Dream_xun/article/details/82743762" target="_blank" rel="noopener">https://blog.csdn.net/Dream_xun/article/details/82743762</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="wgjh5.github.io/2019/08/07/vue-i18n用法/" data-id="cjzdv8rtp000m84u8pnt34fo4"
+         class="article-share-link">分享</a>
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vue/">vue</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vue-i18n/">vue-i18n</a></li></ul>
+
+    </footer>
+
+  </div>
+
+  
+    
+  <nav class="article-nav">
+    
+      <a href="/2019/08/07/vuejs 移动端 实现div拖拽移动/" class="article-nav-link">
+        <strong class="article-nav-caption">前一篇</strong>
+        <div class="article-nav-title">
+          
+            vue 移动端 实现div拖拽移动
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2019/08/07/vue-cookies/" class="article-nav-link">
+        <strong class="article-nav-caption">后一篇</strong>
+        <div class="article-nav-title">vue-cookies</div>
+      </a>
+    
+  </nav>
+
+
+  
+
+  
+    
+    <div class="gitalk" id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+        <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+            <script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.min.js"></script>
+                <script type="text/javascript">
+                    var gitalk = new Gitalk({
+                        clientID: '64ce5333a42f02cf200d',
+                        clientSecret: '7d37a3d8d3c9e215de06d3078bd1894053368739',
+                        repo: 'wgjh5.github.io',
+                        owner: 'wgjh5',
+                        admin: ['wgjh5'],
+                        // id: location.pathname,      // Ensure uniqueness and length less than 50
+                        id: md5(location.pathname),
+                        distractionFreeMode: true, // Facebook-like distraction free mode
+                        pagerDirection: 'last'
+                    })
+
+                    gitalk.render('gitalk-container')
+                </script>
+                
+  
+
+</article>
+
+
+
+</section>
+                <footer class="footer">
+  <div class="outer">
+    <div class="float-right">
+      <ul class="list-inline">
+  
+    <li><i class="fe fe-smile-alt"></i> <span id="busuanzi_value_site_uv"></span></li>
+  
+</ul>
+    </div>
+    <ul class="list-inline">
+      <li>&copy; 2019 一只正在成长的程序猿</li>
+      <li>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></li>
+      <li>Theme  <a href="https://github.com/zhwangart/hexo-theme-ocean">Ocean</a></li>
+    </ul>
+  </div>
+</footer>
+
+        </main>
+        <aside class="sidebar">
+            <button class="navbar-toggle"></button>
+
+<nav class="navbar">
+  
+    <div class="logo">
+      <a href="/"><img src="/images/shark.svg" alt="一只正在成长的程序猿"></a>
+    </div>
+  
+  <ul class="nav nav-main">
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/">主页</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/archives">归档</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/about">关于</a>
+      </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link nav-item-search" title="搜索">
+        <i class="fe fe-search"></i>
+        搜索
+      </a>
+    </li>
+  </ul>
+</nav>
+
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      <div class="totop" id="totop">
+  <i class="fe fe-rocket"></i>
+</div>
+    </li>
+    <li class="nav-item">
+      
+        <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+          <i class="fe fe-feed"></i>
+        </a>
+      
+    </li>
+  </ul>
+</nav>
+
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+        </aside>
+        <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/lazyload.min.js"></script>
+<script src="/js/snap.svg-min.js"></script>
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+  <script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+  <script src="/js/search.js"></script>
+
+
+<script src="/js/ocean.js"></script>
+
+    </body>
+
+    </html>

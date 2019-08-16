@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    
+        
+                <meta name="keywords" content="爱前端 | 爱工作 | 爱生活">
+                
+                    
+                            <meta name="description" content="This is My blog">
+                            
+                                <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+                                <title>
+                                    
+                                        swiper用法 |
+                                            
+                                                一只正在成长的程序猿
+                                </title>
+                                
+                                    <link rel="shortcut icon" href="/images/headPortrait.png">
+                                    
+                                        <link rel="stylesheet" href="/css/style.css">
+                                            
+                                                <link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+                                                    
+                                                        <script src="/js/pace.min.js"></script>
+</head></html>
+
+    <body>
+        <main class="content">
+            <section class="outer">
+    <article id="post-swiper" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      swiper用法
+    </h1>
+  
+  
+
+
+
+
+      </header>
+    
+
+    
+      <div class="article-meta">
+        <a href="/2019/08/07/swiper/" class="article-date">
+  <time datetime="2019-08-07T09:31:46.534Z" itemprop="datePublished">2019-08-07</time>
+</a>
+        
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/技术/">技术</a>
+  </div>
+
+      </div>
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+
+      
+
+      
+        <h4 id="1-先下载"><a href="#1-先下载" class="headerlink" title="1.先下载"></a>1.先下载</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cnpm install swiper --save-dev</span><br></pre></td></tr></table></figure>
+
+<a id="more"></a>
+<h4 id="2-结构"><a href="#2-结构" class="headerlink" title="2.结构"></a>2.结构</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"swiper-container"</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"swiper-wrapper"</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"swiper-slide"</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"../../assets/img/mine/shopDetail.png"</span> <span class="attr">alt</span>=<span class="string">""</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"swiper-slide"</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"../../assets/img/mine/shopDetail2.png"</span> <span class="attr">alt</span>=<span class="string">""</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"swiper-slide"</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"../../assets/img/mine/shopDetail3.png"</span> <span class="attr">alt</span>=<span class="string">""</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">                    <span class="comment">&lt;!-- 如果需要分页器 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"swiper-pagination"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="3-js"><a href="#3-js" class="headerlink" title="3.js"></a>3.js</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//普通水平滑动轮播 </span></span><br><span class="line">swiper() &#123;</span><br><span class="line">      <span class="keyword">var</span> mySwiper = <span class="keyword">new</span> Swiper(<span class="string">".swiper-container"</span>, &#123;</span><br><span class="line">        speed: <span class="number">500</span>,</span><br><span class="line">        loop: <span class="literal">true</span>,</span><br><span class="line">        autoplay: &#123;</span><br><span class="line">          disableOnInteraction: <span class="literal">false</span>,</span><br><span class="line">          delay: <span class="number">2500</span></span><br><span class="line">        &#125;,</span><br><span class="line">        pagination: &#123;</span><br><span class="line">          el: <span class="string">".swiper-pagination"</span>,</span><br><span class="line">          clickable: <span class="literal">true</span>,</span><br><span class="line">          clickableClass: <span class="string">"my-pagination-clickable"</span></span><br><span class="line">        &#125;</span><br><span class="line">      &#125;);</span><br><span class="line">    &#125;,</span><br><span class="line"><span class="comment">//3d手动轮播</span></span><br><span class="line">  swiper() &#123;</span><br><span class="line">      <span class="keyword">var</span> mySwiper = <span class="keyword">new</span> Swiper(<span class="string">".swiper-container"</span>, &#123;</span><br><span class="line">        speed: <span class="number">500</span>,</span><br><span class="line">        loop: <span class="literal">true</span>,</span><br><span class="line">        autoplay: &#123;</span><br><span class="line">          disableOnInteraction: <span class="literal">false</span>,</span><br><span class="line">          delay: <span class="number">2500</span></span><br><span class="line">        &#125;,</span><br><span class="line">        pagination: &#123;</span><br><span class="line">          el: <span class="string">".swiper-pagination"</span>,</span><br><span class="line">          clickable: <span class="literal">true</span>,</span><br><span class="line">          clickableClass: <span class="string">"my-pagination-clickable"</span></span><br><span class="line">        &#125;</span><br><span class="line">      &#125;);</span><br><span class="line">    &#125;,</span><br></pre></td></tr></table></figure>
+
+<h4 id="4-样式"><a href="#4-样式" class="headerlink" title="4.样式"></a>4.样式</h4><blockquote>
+<p>备注：样式需另起一个style写，不能用scoped锁住，只有这样才能覆盖<code>swipe</code>r的样式，</p>
+<p>切记要引入<code>swiper</code>的自带样式，去<code>nodemodules</code>里面找</p>
+</blockquote>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">//分页器样式</span><br><span class="line">&lt;style lang="scss"&gt;</span><br><span class="line">@<span class="keyword">import</span> <span class="string">"../../assets/css/reset.scss"</span>;</span><br><span class="line">@<span class="keyword">import</span> <span class="string">"../../assets/css/swiper.min.css"</span>;</span><br><span class="line"><span class="selector-class">.swiper-container</span> <span class="selector-class">.swiper-pagination</span> &#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">100%</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="built_in">rem</span>(200);</span><br><span class="line">  <span class="attribute">opacity</span>: <span class="number">1</span>;</span><br><span class="line">  <span class="attribute">z-index</span>: <span class="number">100000</span>;</span><br><span class="line">  <span class="attribute">padding-left</span>: <span class="built_in">rem</span>(315);</span><br><span class="line">  <span class="attribute">position</span>: absolute;</span><br><span class="line">  <span class="attribute">left</span>: <span class="built_in">rem</span>(380);</span><br><span class="line">  <span class="attribute">top</span>: <span class="built_in">rem</span>(306);</span><br><span class="line"></span><br><span class="line">  span &#123;</span><br><span class="line">    <span class="selector-tag">display</span>: <span class="selector-tag">block</span>;</span><br><span class="line">    <span class="selector-tag">width</span>: <span class="selector-tag">rem</span>(12);</span><br><span class="line">    <span class="selector-tag">height</span>: <span class="selector-tag">rem</span>(12);</span><br><span class="line">    <span class="selector-tag">background-color</span>: <span class="selector-id">#fff</span>;</span><br><span class="line">    <span class="selector-tag">opacity</span>: 1;</span><br><span class="line">    <span class="selector-tag">float</span>: <span class="selector-tag">left</span>;</span><br><span class="line">    <span class="selector-tag">margin-right</span>: <span class="selector-tag">rem</span>(20);</span><br><span class="line">    <span class="selector-tag">z-index</span>: 100000;</span><br><span class="line">    <span class="selector-tag">border-radius</span>: 50%;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="selector-class">.swiper-pagination-bullet-active</span> &#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="built_in">rem</span>(22);</span><br><span class="line">    <span class="attribute">height</span>: <span class="built_in">rem</span>(9);</span><br><span class="line">    <span class="attribute">background-color</span>: <span class="number">#e4bc7c</span>;</span><br><span class="line">    <span class="attribute">border-radius</span>: <span class="built_in">rem</span>(5);</span><br><span class="line">    <span class="attribute">z-index</span>: <span class="number">100000</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="wgjh5.github.io/2019/08/07/swiper/" data-id="cjzdv8rte000a84u8uogydkw6"
+         class="article-share-link">分享</a>
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/swiper用法/">swiper用法</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vue/">vue</a></li></ul>
+
+    </footer>
+
+  </div>
+
+  
+    
+  <nav class="article-nav">
+    
+      <a href="/2019/08/07/vue md5加密用法/" class="article-nav-link">
+        <strong class="article-nav-caption">前一篇</strong>
+        <div class="article-nav-title">
+          
+            vue md5加密用法
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2019/08/07/README/" class="article-nav-link">
+        <strong class="article-nav-caption">后一篇</strong>
+        <div class="article-nav-title">目录</div>
+      </a>
+    
+  </nav>
+
+
+  
+
+  
+    
+    <div class="gitalk" id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+        <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+            <script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.min.js"></script>
+                <script type="text/javascript">
+                    var gitalk = new Gitalk({
+                        clientID: '64ce5333a42f02cf200d',
+                        clientSecret: '7d37a3d8d3c9e215de06d3078bd1894053368739',
+                        repo: 'wgjh5.github.io',
+                        owner: 'wgjh5',
+                        admin: ['wgjh5'],
+                        // id: location.pathname,      // Ensure uniqueness and length less than 50
+                        id: md5(location.pathname),
+                        distractionFreeMode: true, // Facebook-like distraction free mode
+                        pagerDirection: 'last'
+                    })
+
+                    gitalk.render('gitalk-container')
+                </script>
+                
+  
+
+</article>
+
+
+
+</section>
+                <footer class="footer">
+  <div class="outer">
+    <div class="float-right">
+      <ul class="list-inline">
+  
+    <li><i class="fe fe-smile-alt"></i> <span id="busuanzi_value_site_uv"></span></li>
+  
+</ul>
+    </div>
+    <ul class="list-inline">
+      <li>&copy; 2019 一只正在成长的程序猿</li>
+      <li>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></li>
+      <li>Theme  <a href="https://github.com/zhwangart/hexo-theme-ocean">Ocean</a></li>
+    </ul>
+  </div>
+</footer>
+
+        </main>
+        <aside class="sidebar">
+            <button class="navbar-toggle"></button>
+
+<nav class="navbar">
+  
+    <div class="logo">
+      <a href="/"><img src="/images/shark.svg" alt="一只正在成长的程序猿"></a>
+    </div>
+  
+  <ul class="nav nav-main">
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/">主页</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/archives">归档</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/about">关于</a>
+      </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link nav-item-search" title="搜索">
+        <i class="fe fe-search"></i>
+        搜索
+      </a>
+    </li>
+  </ul>
+</nav>
+
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      <div class="totop" id="totop">
+  <i class="fe fe-rocket"></i>
+</div>
+    </li>
+    <li class="nav-item">
+      
+        <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+          <i class="fe fe-feed"></i>
+        </a>
+      
+    </li>
+  </ul>
+</nav>
+
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+        </aside>
+        <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/lazyload.min.js"></script>
+<script src="/js/snap.svg-min.js"></script>
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+  <script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+  <script src="/js/search.js"></script>
+
+
+<script src="/js/ocean.js"></script>
+
+    </body>
+
+    </html>

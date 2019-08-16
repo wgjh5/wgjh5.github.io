@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    
+        
+                <meta name="keywords" content="爱前端 | 爱工作 | 爱生活">
+                
+                    
+                            <meta name="description" content="This is My blog">
+                            
+                                <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+                                <title>
+                                    
+                                        vue技术点 |
+                                            
+                                                一只正在成长的程序猿
+                                </title>
+                                
+                                    <link rel="shortcut icon" href="/images/headPortrait.png">
+                                    
+                                        <link rel="stylesheet" href="/css/style.css">
+                                            
+                                                <link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+                                                    
+                                                        <script src="/js/pace.min.js"></script>
+</head></html>
+
+    <body>
+        <main class="content">
+            <section class="outer">
+    <article id="post-vue技术点" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      vue技术点
+    </h1>
+  
+  
+
+
+
+
+      </header>
+    
+
+    
+      <div class="article-meta">
+        <a href="/2019/08/07/vue技术点/" class="article-date">
+  <time datetime="2019-08-07T09:31:46.629Z" itemprop="datePublished">2019-08-07</time>
+</a>
+        
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/技术/">技术</a>
+  </div>
+
+      </div>
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+
+      
+
+      
+        <h1 id="2019-2-15"><a href="#2019-2-15" class="headerlink" title="2019 2.15"></a>2019 2.15</h1><h2 id="一、vue中websocket用法及封装"><a href="#一、vue中websocket用法及封装" class="headerlink" title="一、vue中websocket用法及封装"></a>一、vue中websocket用法及封装</h2><h4 id="1-先下载"><a href="#1-先下载" class="headerlink" title="1.先下载"></a>1.先下载</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cnpm install vue-socket.io --save-dev</span><br></pre></td></tr></table></figure>
+
+<a id="more"></a>
+<h4 id="2-在src文件夹里面新建lib文件夹，在lib文件夹里面新建socket-js"><a href="#2-在src文件夹里面新建lib文件夹，在lib文件夹里面新建socket-js" class="headerlink" title="2.在src文件夹里面新建lib文件夹，在lib文件夹里面新建socket.js"></a>2.在src文件夹里面新建lib文件夹，在lib文件夹里面新建socket.js</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">'vue'</span></span><br><span class="line"><span class="keyword">import</span> VueSocketIO <span class="keyword">from</span> <span class="string">'vue-socket.io'</span></span><br><span class="line"><span class="keyword">import</span> axios <span class="keyword">from</span> <span class="string">'axios'</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> a;</span><br><span class="line"><span class="keyword">var</span> wesocket = &#123;</span><br><span class="line">    debug: <span class="literal">true</span>,</span><br><span class="line">    connection: <span class="string">""</span>,</span><br><span class="line">    vuex: &#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//ajax请求接口返回websocket连接</span></span><br><span class="line">axios(&#123;</span><br><span class="line">    method: <span class="string">'GET'</span>,</span><br><span class="line">    url: <span class="string">'http://192.168.0.110:8091/api/getpushurl'</span>,</span><br><span class="line">    headers: &#123;</span><br><span class="line">        <span class="string">'Content-Type'</span>: <span class="string">'application/json'</span></span><br><span class="line">    &#125;,</span><br><span class="line">&#125;).then(<span class="function"><span class="keyword">function</span>(<span class="params">response</span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">    wesocket.connection = response.data + <span class="string">'/price'</span>;</span><br><span class="line">    <span class="keyword">if</span> (wesocket.connection != <span class="string">""</span>) &#123;</span><br><span class="line">        Vue.use(<span class="keyword">new</span> VueSocketIO(wesocket))</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">console</span>.log(response.data)</span><br><span class="line"></span><br><span class="line">&#125;);</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> a;</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-在main-js引入"><a href="#3-在main-js引入" class="headerlink" title="3.在main.js引入"></a>3.在main.js引入</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> VueSocketIO <span class="keyword">from</span> <span class="string">'./lib/socket'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> Vue(&#123;</span><br><span class="line">    el: <span class="string">'#app'</span>,</span><br><span class="line">    VueSocketIO,</span><br><span class="line">    components: &#123;</span><br><span class="line">        App</span><br><span class="line">    &#125;,</span><br><span class="line">    template: <span class="string">'&lt;App/&gt;'</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h4 id="4-在组件中的用法"><a href="#4-在组件中的用法" class="headerlink" title="4.在组件中的用法"></a>4.在组件中的用法</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//跟methods同级 </span></span><br><span class="line">sockets: &#123;</span><br><span class="line">    connect() &#123;</span><br><span class="line">      <span class="keyword">this</span>.id = <span class="keyword">this</span>.$socket.id;</span><br><span class="line">      <span class="comment">// this.$socket.emit("sendMessageToServer", "0025520"); //监听connect事件</span></span><br><span class="line">    &#125;,</span><br><span class="line">    servermessage(data) &#123;</span><br><span class="line">      <span class="comment">// 监听message事件，方法是后台定义和提供的</span></span><br><span class="line">      <span class="built_in">console</span>.log(data);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line"> methods: &#123;</span><br><span class="line">    <span class="comment">// websocket</span></span><br><span class="line">    clickButton: <span class="function"><span class="keyword">function</span>(<span class="params">val</span>) </span>&#123;</span><br><span class="line">      <span class="comment">//添加按钮事件向服务端发送数据</span></span><br><span class="line">      <span class="keyword">this</span>.$socket.emit(<span class="string">"sendMessageToServer"</span>, val);</span><br><span class="line">    &#125;,</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="二、vue-md5加密用法"><a href="#二、vue-md5加密用法" class="headerlink" title="二、vue md5加密用法"></a>二、vue md5加密用法</h2><h4 id="1-先下载md5"><a href="#1-先下载md5" class="headerlink" title="1.先下载md5"></a>1.先下载md5</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cnpm install js-md5 --save-dev</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-按需引入"><a href="#2-按需引入" class="headerlink" title="2.按需引入"></a>2.按需引入</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> md5 <span class="keyword">from</span> <span class="string">"js-md5"</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//用法</span></span><br><span class="line">Pwd: md5(<span class="keyword">this</span>.password)</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-或者在main-js文件中将md5转换成vue原型："><a href="#3-或者在main-js文件中将md5转换成vue原型：" class="headerlink" title="3.或者在main.js文件中将md5转换成vue原型："></a>3.或者在main.js文件中将md5转换成vue原型：</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> md5 <span class="keyword">from</span> <span class="string">'js-md5'</span>;</span><br><span class="line">Vue.prototype.$md5 = md5;</span><br><span class="line"><span class="comment">//用法</span></span><br><span class="line"><span class="keyword">this</span>.$md5(<span class="string">'hello world'</span>)  <span class="comment">// 5eb63bbbe01eeed093cb22bb8f5acdc3</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="三、vue中v-touch事件用法"><a href="#三、vue中v-touch事件用法" class="headerlink" title="三、vue中v-touch事件用法"></a>三、vue中v-touch事件用法</h2><h4 id="1-先下载-1"><a href="#1-先下载-1" class="headerlink" title="1.先下载"></a>1.先下载</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cnpm install vue-touch@next --save dev</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-在main-js引入"><a href="#2-在main-js引入" class="headerlink" title="2.在main.js引入"></a>2.在main.js引入</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> VueTouch <span class="keyword">from</span> <span class="string">'vue-touch'</span></span><br><span class="line">Vue.use(VueTouch, &#123; <span class="attr">name</span>: <span class="string">'v-touch'</span> &#125;)</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-用法"><a href="#3-用法" class="headerlink" title="3.用法"></a>3.用法</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;v-touch v-on:swipeup=<span class="string">"goRegister"</span>&gt;</span><br><span class="line">   &lt;img src=<span class="string">"../../assets/img/sign/login.png"</span> alt=<span class="string">""</span>&gt;</span><br><span class="line">&lt;<span class="regexp">/v-touch&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="四、运用百度api实现定位城市"><a href="#四、运用百度api实现定位城市" class="headerlink" title="四、运用百度api实现定位城市"></a>四、运用百度api实现定位城市</h2><h4 id="1-在index-html中写"><a href="#1-在index-html中写" class="headerlink" title="1.在index.html中写"></a>1.在index.html中写</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type=<span class="string">"text/javascript"</span> src=<span class="string">"http://api.map.baidu.com/api?v=2.0&amp;ak=您的密钥"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+
+<h4 id="2-在lib里面封装一个getLocation-js"><a href="#2-在lib里面封装一个getLocation-js" class="headerlink" title="2.在lib里面封装一个getLocation.js"></a>2.在<code>lib</code>里面封装一个<code>getLocation.js</code></h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> getCurrentCityName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span>(<span class="params">resolve, reject</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">let</span> myCity = <span class="keyword">new</span> BMap.LocalCity()</span><br><span class="line">        myCity.get(<span class="function"><span class="keyword">function</span>(<span class="params">result</span>) </span>&#123;</span><br><span class="line">            resolve(result.name)</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> getCurrentCityName</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-在你需要定位的文件里面写"><a href="#3-在你需要定位的文件里面写" class="headerlink" title="3.在你需要定位的文件里面写"></a>3.在你需要定位的文件里面写</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mounted()&#123;</span><br><span class="line">  getCurrentCityName().then(<span class="function">(<span class="params">city</span>)=&gt;</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.locations = city;</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><a href="https://www.imooc.com/article/35794?block_id=tuijian_wz" target="_blank" rel="noopener">参考文档</a></p>
+<h2 id="五、swiper用法"><a href="#五、swiper用法" class="headerlink" title="五、swiper用法"></a>五、swiper用法</h2><h4 id="1-先下载-2"><a href="#1-先下载-2" class="headerlink" title="1.先下载"></a>1.先下载</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cnpm install swiper --save-dev</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-结构"><a href="#2-结构" class="headerlink" title="2.结构"></a>2.结构</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"swiper-container"</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"swiper-wrapper"</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"swiper-slide"</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"../../assets/img/mine/shopDetail.png"</span> <span class="attr">alt</span>=<span class="string">""</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"swiper-slide"</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"../../assets/img/mine/shopDetail2.png"</span> <span class="attr">alt</span>=<span class="string">""</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"swiper-slide"</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"../../assets/img/mine/shopDetail3.png"</span> <span class="attr">alt</span>=<span class="string">""</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">                    <span class="comment">&lt;!-- 如果需要分页器 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"swiper-pagination"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="3-js"><a href="#3-js" class="headerlink" title="3.js"></a>3.js</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//普通水平滑动轮播 </span></span><br><span class="line">swiper() &#123;</span><br><span class="line">      <span class="keyword">var</span> mySwiper = <span class="keyword">new</span> Swiper(<span class="string">".swiper-container"</span>, &#123;</span><br><span class="line">        speed: <span class="number">500</span>,</span><br><span class="line">        loop: <span class="literal">true</span>,</span><br><span class="line">        autoplay: &#123;</span><br><span class="line">          disableOnInteraction: <span class="literal">false</span>,</span><br><span class="line">          delay: <span class="number">2500</span></span><br><span class="line">        &#125;,</span><br><span class="line">        pagination: &#123;</span><br><span class="line">          el: <span class="string">".swiper-pagination"</span>,</span><br><span class="line">          clickable: <span class="literal">true</span>,</span><br><span class="line">          clickableClass: <span class="string">"my-pagination-clickable"</span></span><br><span class="line">        &#125;</span><br><span class="line">      &#125;);</span><br><span class="line">    &#125;,</span><br><span class="line"><span class="comment">//3d手动轮播</span></span><br><span class="line">  swiper() &#123;</span><br><span class="line">      <span class="keyword">var</span> mySwiper = <span class="keyword">new</span> Swiper(<span class="string">".swiper-container"</span>, &#123;</span><br><span class="line">        speed: <span class="number">500</span>,</span><br><span class="line">        loop: <span class="literal">true</span>,</span><br><span class="line">        autoplay: &#123;</span><br><span class="line">          disableOnInteraction: <span class="literal">false</span>,</span><br><span class="line">          delay: <span class="number">2500</span></span><br><span class="line">        &#125;,</span><br><span class="line">        pagination: &#123;</span><br><span class="line">          el: <span class="string">".swiper-pagination"</span>,</span><br><span class="line">          clickable: <span class="literal">true</span>,</span><br><span class="line">          clickableClass: <span class="string">"my-pagination-clickable"</span></span><br><span class="line">        &#125;</span><br><span class="line">      &#125;);</span><br><span class="line">    &#125;,</span><br></pre></td></tr></table></figure>
+
+<h4 id="4-样式"><a href="#4-样式" class="headerlink" title="4.样式"></a>4.样式</h4><blockquote>
+<p>备注：样式需另起一个style写，不能用scoped锁住，只有这样才能覆盖<code>swipe</code>r的样式，</p>
+<p>切记要引入<code>swiper</code>的自带样式，去<code>nodemodules</code>里面找</p>
+</blockquote>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">//分页器样式</span><br><span class="line">&lt;style lang="scss"&gt;</span><br><span class="line">@<span class="keyword">import</span> <span class="string">"../../assets/css/reset.scss"</span>;</span><br><span class="line">@<span class="keyword">import</span> <span class="string">"../../assets/css/swiper.min.css"</span>;</span><br><span class="line"><span class="selector-class">.swiper-container</span> <span class="selector-class">.swiper-pagination</span> &#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">100%</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="built_in">rem</span>(200);</span><br><span class="line">  <span class="attribute">opacity</span>: <span class="number">1</span>;</span><br><span class="line">  <span class="attribute">z-index</span>: <span class="number">100000</span>;</span><br><span class="line">  <span class="attribute">padding-left</span>: <span class="built_in">rem</span>(315);</span><br><span class="line">  <span class="attribute">position</span>: absolute;</span><br><span class="line">  <span class="attribute">left</span>: <span class="built_in">rem</span>(380);</span><br><span class="line">  <span class="attribute">top</span>: <span class="built_in">rem</span>(306);</span><br><span class="line"></span><br><span class="line">  span &#123;</span><br><span class="line">    <span class="selector-tag">display</span>: <span class="selector-tag">block</span>;</span><br><span class="line">    <span class="selector-tag">width</span>: <span class="selector-tag">rem</span>(12);</span><br><span class="line">    <span class="selector-tag">height</span>: <span class="selector-tag">rem</span>(12);</span><br><span class="line">    <span class="selector-tag">background-color</span>: <span class="selector-id">#fff</span>;</span><br><span class="line">    <span class="selector-tag">opacity</span>: 1;</span><br><span class="line">    <span class="selector-tag">float</span>: <span class="selector-tag">left</span>;</span><br><span class="line">    <span class="selector-tag">margin-right</span>: <span class="selector-tag">rem</span>(20);</span><br><span class="line">    <span class="selector-tag">z-index</span>: 100000;</span><br><span class="line">    <span class="selector-tag">border-radius</span>: 50%;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="selector-class">.swiper-pagination-bullet-active</span> &#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="built_in">rem</span>(22);</span><br><span class="line">    <span class="attribute">height</span>: <span class="built_in">rem</span>(9);</span><br><span class="line">    <span class="attribute">background-color</span>: <span class="number">#e4bc7c</span>;</span><br><span class="line">    <span class="attribute">border-radius</span>: <span class="built_in">rem</span>(5);</span><br><span class="line">    <span class="attribute">z-index</span>: <span class="number">100000</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="六、vue中animate-css用法"><a href="#六、vue中animate-css用法" class="headerlink" title="六、vue中animate.css用法"></a>六、vue中<code>animate.css</code>用法</h2><h4 id="1-先下载-3"><a href="#1-先下载-3" class="headerlink" title="1.先下载"></a>1.先下载</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cnpm install animate.css --save</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-引入"><a href="#2-引入" class="headerlink" title="2.引入"></a>2.引入</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> animated <span class="keyword">from</span> <span class="string">'animate.css'</span> </span><br><span class="line">Vue.use(animated)</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-用法-1"><a href="#3-用法-1" class="headerlink" title="3.用法"></a>3.用法</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"> <span class="tag">&lt;<span class="name">div</span> <span class="attr">v-if</span>=<span class="string">"nextStatus==false"</span> <span class="attr">ref</span>=<span class="string">"statusOne"</span></span></span><br><span class="line">      &lt;!--添加类名的方式--&gt;</span><br><span class="line">      class="animated rotateInDownRight"&gt;</span><br><span class="line">     <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"phone_number code_popup"</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"phoneTitle"</span>&gt;</span></span><br><span class="line">             <span class="tag">&lt;<span class="name">span</span>&gt;</span>+86<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">span</span>&gt;</span>&#123;&#123;phoneNumber&#125;&#125;<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">fade</span>: &#123;</span><br><span class="line">        <span class="attribute">title</span>: <span class="string">'淡入淡出'</span>,</span><br><span class="line">        <span class="attribute">fadeIn</span>: <span class="string">'淡入'</span>,</span><br><span class="line">        <span class="attribute">fadeInDown</span>: <span class="string">'向下淡入'</span>,</span><br><span class="line">        <span class="attribute">fadeInDownBig</span>: <span class="string">'向下快速淡入'</span>,</span><br><span class="line">        <span class="attribute">fadeInLeft</span>: <span class="string">'向右淡入'</span>,</span><br><span class="line">        <span class="attribute">fadeInLeftBig</span>: <span class="string">'向右快速淡入'</span>,</span><br><span class="line">        <span class="attribute">fadeInRight</span>: <span class="string">'向左淡入'</span>,</span><br><span class="line">        <span class="attribute">fadeInRightBig</span>: <span class="string">'向左快速淡入'</span>,</span><br><span class="line">        <span class="attribute">fadeInUp</span>: <span class="string">'向上淡入'</span>,</span><br><span class="line">        <span class="attribute">fadeInUpBig</span>: <span class="string">'向上快速淡入'</span>,</span><br><span class="line">        <span class="attribute">fadeOut</span>: <span class="string">'淡出'</span>,</span><br><span class="line">        <span class="attribute">fadeOutDown</span>: <span class="string">'向下淡出'</span>,</span><br><span class="line">        <span class="attribute">fadeOutDownBig</span>: <span class="string">'向下快速淡出'</span>,</span><br><span class="line">        <span class="attribute">fadeOutLeft</span>: <span class="string">'向左淡出'</span>,</span><br><span class="line">        <span class="attribute">fadeOutLeftBig</span>: <span class="string">'向左快速淡出'</span>,</span><br><span class="line">        <span class="attribute">adeOutRight</span>: <span class="string">'向右淡出'</span>,</span><br><span class="line">        <span class="attribute">fadeOutRightBig</span>: <span class="string">'向右快速淡出'</span>,</span><br><span class="line">        <span class="attribute">fadeOutUp</span>: <span class="string">'向上淡出'</span>,</span><br><span class="line">        <span class="attribute">fadeOutUpBig</span>: <span class="string">'向上快速淡出'</span></span><br><span class="line">      &#125;,</span><br><span class="line">      <span class="attribute">bounce</span>: &#123;</span><br><span class="line">        <span class="attribute">title</span>: <span class="string">'弹跳类'</span>,</span><br><span class="line">        <span class="attribute">bounceIn</span>: <span class="string">'弹跳进入'</span>,</span><br><span class="line">        <span class="attribute">bounceInDown</span>: <span class="string">'向下弹跳进入'</span>,</span><br><span class="line">        <span class="attribute">bounceInLeft</span>: <span class="string">'向右弹跳进入'</span>,</span><br><span class="line">        <span class="attribute">bounceInRight</span>: <span class="string">'向左弹跳进入'</span>,</span><br><span class="line">        <span class="attribute">bounceInUp</span>: <span class="string">'向上弹跳进入'</span>,</span><br><span class="line">        <span class="attribute">bounceOut</span>: <span class="string">'弹跳退出'</span>,</span><br><span class="line">        <span class="attribute">bounceOutDown</span>: <span class="string">'向下弹跳退出'</span>,</span><br><span class="line">        <span class="attribute">bounceOutLeft</span>: <span class="string">'向左弹跳退出'</span>,</span><br><span class="line">        <span class="attribute">bounceOutRight</span>: <span class="string">'向右弹跳退出'</span>,</span><br><span class="line">        <span class="attribute">bounceOutUp</span>: <span class="string">'向上弹跳退出'</span></span><br><span class="line">      &#125;,</span><br><span class="line">      <span class="attribute">zoom</span>: &#123;</span><br><span class="line">        <span class="attribute">title</span>: <span class="string">'缩放类'</span>,</span><br><span class="line">        <span class="attribute">zoomIn</span>: <span class="string">'放大进入'</span>,</span><br><span class="line">        <span class="attribute">zoomInDown</span>: <span class="string">'向下放大进入'</span>,</span><br><span class="line">        <span class="attribute">zoomInLeft</span>: <span class="string">'向右放大进入'</span>,</span><br><span class="line">        <span class="attribute">zoomInRight</span>: <span class="string">'向左放大进入'</span>,</span><br><span class="line">        <span class="attribute">zoomInUp</span>: <span class="string">'向上放大进入'</span>,</span><br><span class="line">        <span class="attribute">zoomOut</span>: <span class="string">'缩小退出'</span>,</span><br><span class="line">        <span class="attribute">zoomOutDown</span>: <span class="string">'向下缩小退出'</span>,</span><br><span class="line">        <span class="attribute">zoomOutLeft</span>: <span class="string">'向左缩小退出'</span>,</span><br><span class="line">        <span class="attribute">zoomOutRight</span>: <span class="string">'向右缩小退出'</span>,</span><br><span class="line">        <span class="attribute">zoomOutUp</span>: <span class="string">'向上缩小退出'</span></span><br><span class="line">      &#125;,</span><br><span class="line">      <span class="attribute">rotate</span>: &#123;</span><br><span class="line">        <span class="attribute">title</span>: <span class="string">'旋转类'</span>,</span><br><span class="line">        <span class="attribute">rotateIn</span>: <span class="string">'顺时针旋转进入'</span>,</span><br><span class="line">        <span class="attribute">rotateInDownLeft</span>: <span class="string">'从左往下旋入'</span>,</span><br><span class="line">        <span class="attribute">rotateInDownRight</span>: <span class="string">'从右往下旋入'</span>,</span><br><span class="line">        <span class="attribute">rotateInUpLeft</span>: <span class="string">'从左往上旋入'</span>,</span><br><span class="line">        <span class="attribute">rotateInUpRight</span>: <span class="string">'从右往上旋入'</span>,</span><br><span class="line">        <span class="attribute">rotateOut</span>: <span class="string">'顺时针旋转退出'</span>,</span><br><span class="line">        <span class="attribute">rotateOutDownLeft</span>: <span class="string">'向左下旋出'</span>,</span><br><span class="line">        <span class="attribute">rotateOutDownRight</span>: <span class="string">'向右下旋出'</span>,</span><br><span class="line">        <span class="attribute">rotateOutUpLeft</span>: <span class="string">'向左上旋出'</span>,</span><br><span class="line">        <span class="attribute">rotateOutUpRight</span>: <span class="string">'向右上旋出'</span></span><br><span class="line">      &#125;,</span><br><span class="line">      <span class="attribute">flip</span>: &#123;</span><br><span class="line">        <span class="attribute">title</span>: <span class="string">'翻转类'</span>,</span><br><span class="line">        <span class="attribute">flipInX</span>: <span class="string">'水平翻转进入'</span>,</span><br><span class="line">        <span class="attribute">flipInY</span>: <span class="string">'垂直翻转进入'</span>,</span><br><span class="line">        <span class="attribute">flipOutX</span>: <span class="string">'水平翻转退出'</span>,</span><br><span class="line">        <span class="attribute">flipOutY</span>: <span class="string">'垂直翻转退出'</span></span><br><span class="line">      &#125;,</span><br><span class="line">      <span class="attribute">strong</span>: &#123;</span><br><span class="line">        <span class="attribute">title</span>: <span class="string">'强调类'</span>,</span><br><span class="line">        <span class="attribute">bounce</span>: <span class="string">'弹跳'</span>,</span><br><span class="line">        <span class="attribute">flash</span>: <span class="string">'闪烁'</span>,</span><br><span class="line">        <span class="attribute">pulse</span>: <span class="string">'脉冲'</span>,</span><br><span class="line">        <span class="attribute">rubberBand</span>: <span class="string">'橡皮筋'</span>,</span><br><span class="line">        <span class="attribute">shake</span>: <span class="string">'左右弱晃动'</span>,</span><br><span class="line">        <span class="attribute">swing</span>: <span class="string">'上下摆动'</span>,</span><br><span class="line">        <span class="attribute">tada</span>: <span class="string">'缩放摆动'</span>,</span><br><span class="line">        <span class="attribute">wobble</span>: <span class="string">'左右强晃动'</span>,</span><br><span class="line">        <span class="attribute">jello</span>: <span class="string">'拉伸抖动'</span></span><br><span class="line">      &#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="fade"><a href="#fade" class="headerlink" title="fade"></a>fade</h4><table>
+<thead>
+<tr>
+<th align="center">title</th>
+<th align="center">淡入淡出</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">fadeIn</td>
+<td align="center">淡入</td>
+</tr>
+<tr>
+<td align="center">fadeInDown</td>
+<td align="center">向下淡入</td>
+</tr>
+<tr>
+<td align="center">fadeInDownBig</td>
+<td align="center">向下快速淡入</td>
+</tr>
+<tr>
+<td align="center">fadeInLeft</td>
+<td align="center">向右淡入</td>
+</tr>
+<tr>
+<td align="center">fadeInLeftBig</td>
+<td align="center">向右快速淡入</td>
+</tr>
+<tr>
+<td align="center">fadeInRight</td>
+<td align="center">向左淡入</td>
+</tr>
+<tr>
+<td align="center">fadeInRightBig</td>
+<td align="center">向左快速淡入</td>
+</tr>
+<tr>
+<td align="center">fadeInUp</td>
+<td align="center">向上淡入</td>
+</tr>
+<tr>
+<td align="center">fadeInUpBig</td>
+<td align="center">向上快速淡入</td>
+</tr>
+<tr>
+<td align="center">fadeOut</td>
+<td align="center">淡出</td>
+</tr>
+<tr>
+<td align="center">fadeOutDown</td>
+<td align="center">向下淡出</td>
+</tr>
+<tr>
+<td align="center">fadeOutDownBig</td>
+<td align="center">向下快速淡出</td>
+</tr>
+<tr>
+<td align="center">fadeOutLeft</td>
+<td align="center">向左淡出</td>
+</tr>
+<tr>
+<td align="center">fadeOutLeftBig</td>
+<td align="center">向左快速淡出</td>
+</tr>
+<tr>
+<td align="center">adeOutRight</td>
+<td align="center">向右淡出</td>
+</tr>
+<tr>
+<td align="center">fadeOutRightBig</td>
+<td align="center">向右快速淡出</td>
+</tr>
+<tr>
+<td align="center">fadeOutUp</td>
+<td align="center">向上淡出</td>
+</tr>
+<tr>
+<td align="center">fadeOutUpBig</td>
+<td align="center">向上快速淡出</td>
+</tr>
+</tbody></table>
+<h4 id="bounce"><a href="#bounce" class="headerlink" title="bounce"></a>bounce</h4><table>
+<thead>
+<tr>
+<th align="center">title</th>
+<th align="center">弹跳类</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">bounceIn</td>
+<td align="center">弹跳进入</td>
+</tr>
+<tr>
+<td align="center">bounceInDown</td>
+<td align="center">向下弹跳进入</td>
+</tr>
+<tr>
+<td align="center">bounceInLeft</td>
+<td align="center">向右弹跳进入</td>
+</tr>
+<tr>
+<td align="center">bounceInRight</td>
+<td align="center">向左弹跳进入</td>
+</tr>
+<tr>
+<td align="center">bounceInUp</td>
+<td align="center">向上弹跳进入</td>
+</tr>
+<tr>
+<td align="center">bounceOut</td>
+<td align="center">弹跳退出</td>
+</tr>
+<tr>
+<td align="center">bounceOutDown</td>
+<td align="center">向下弹跳退出</td>
+</tr>
+<tr>
+<td align="center">bounceOutLeft</td>
+<td align="center">向左弹跳退出</td>
+</tr>
+<tr>
+<td align="center">bounceOutRight</td>
+<td align="center">向右弹跳退出</td>
+</tr>
+<tr>
+<td align="center">bounceOutUp</td>
+<td align="center">向上弹跳退出</td>
+</tr>
+</tbody></table>
+<h4 id="zoom"><a href="#zoom" class="headerlink" title="zoom"></a>zoom</h4><table>
+<thead>
+<tr>
+<th align="center">title</th>
+<th align="center">缩放类</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">zoomIn</td>
+<td align="center">放大进入</td>
+</tr>
+<tr>
+<td align="center">zoomInDown</td>
+<td align="center">向下放大进入</td>
+</tr>
+<tr>
+<td align="center">zoomInLeft</td>
+<td align="center">向右放大进入</td>
+</tr>
+<tr>
+<td align="center">zoomInRight</td>
+<td align="center">向左放大进入</td>
+</tr>
+<tr>
+<td align="center">zoomInUp</td>
+<td align="center">向上放大进入</td>
+</tr>
+<tr>
+<td align="center">zoomOut</td>
+<td align="center">缩小退出</td>
+</tr>
+<tr>
+<td align="center">zoomOutDown</td>
+<td align="center">向下缩小退出</td>
+</tr>
+<tr>
+<td align="center">zoomOutLeft</td>
+<td align="center">向左缩小退出</td>
+</tr>
+<tr>
+<td align="center">zoomOutRight</td>
+<td align="center">向右缩小退出</td>
+</tr>
+<tr>
+<td align="center">zoomOutUp</td>
+<td align="center">向上缩小退出</td>
+</tr>
+</tbody></table>
+<h4 id="rotate"><a href="#rotate" class="headerlink" title="rotate"></a>rotate</h4><table>
+<thead>
+<tr>
+<th align="center">title</th>
+<th align="center">旋转类</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">rotateIn</td>
+<td align="center">顺时针旋转进入</td>
+</tr>
+<tr>
+<td align="center">rotateInDownLeft</td>
+<td align="center">从左往下旋入</td>
+</tr>
+<tr>
+<td align="center">rotateInDownRight</td>
+<td align="center">从右往下旋入</td>
+</tr>
+<tr>
+<td align="center">rotateInUpLeft</td>
+<td align="center">从左往上旋入</td>
+</tr>
+<tr>
+<td align="center">rotateInUpRight</td>
+<td align="center">从右往上旋入</td>
+</tr>
+<tr>
+<td align="center">rotateOut</td>
+<td align="center">顺时针旋转退出</td>
+</tr>
+<tr>
+<td align="center">rotateOutDownLeft</td>
+<td align="center">向左下旋出</td>
+</tr>
+<tr>
+<td align="center">rotateOutDownRight</td>
+<td align="center">向右下旋出</td>
+</tr>
+<tr>
+<td align="center">rotateOutUpLeft</td>
+<td align="center">向左上旋出</td>
+</tr>
+<tr>
+<td align="center">rotateOutUpRight</td>
+<td align="center">向右上旋出</td>
+</tr>
+</tbody></table>
+<h4 id="flip"><a href="#flip" class="headerlink" title="flip"></a>flip</h4><table>
+<thead>
+<tr>
+<th align="center">title</th>
+<th align="center">翻转类</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">flipInX</td>
+<td align="center">水平翻转进入</td>
+</tr>
+<tr>
+<td align="center">flipInY</td>
+<td align="center">垂直翻转进入</td>
+</tr>
+<tr>
+<td align="center">flipOutX</td>
+<td align="center">水平翻转退出</td>
+</tr>
+<tr>
+<td align="center">flipOutY</td>
+<td align="center">垂直翻转退出</td>
+</tr>
+</tbody></table>
+<h4 id="strong"><a href="#strong" class="headerlink" title="strong"></a>strong</h4><table>
+<thead>
+<tr>
+<th align="center">title</th>
+<th align="center">强调类</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">bounce</td>
+<td align="center">弹跳</td>
+</tr>
+<tr>
+<td align="center">flash</td>
+<td align="center">闪烁</td>
+</tr>
+<tr>
+<td align="center">pulse</td>
+<td align="center">脉冲</td>
+</tr>
+<tr>
+<td align="center">rubberBand</td>
+<td align="center">橡皮筋</td>
+</tr>
+<tr>
+<td align="center">shake</td>
+<td align="center">左右弱晃动</td>
+</tr>
+<tr>
+<td align="center">swing</td>
+<td align="center">上下摆动</td>
+</tr>
+<tr>
+<td align="center">tada</td>
+<td align="center">缩放摆动</td>
+</tr>
+<tr>
+<td align="center">wobble</td>
+<td align="center">左右强晃动</td>
+</tr>
+<tr>
+<td align="center">jello</td>
+<td align="center">拉伸抖动</td>
+</tr>
+</tbody></table>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="wgjh5.github.io/2019/08/07/vue技术点/" data-id="cjzdv8ruf001r84u87ddmu5wj"
+         class="article-share-link">分享</a>
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vue/">vue</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vue技术点/">vue技术点</a></li></ul>
+
+    </footer>
+
+  </div>
+
+  
+    
+  <nav class="article-nav">
+    
+      <a href="/2019/08/07/vue判断手机移动端/" class="article-nav-link">
+        <strong class="article-nav-caption">前一篇</strong>
+        <div class="article-nav-title">
+          
+            vue判断手机移动端
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2019/08/07/vue给js添加版本号/" class="article-nav-link">
+        <strong class="article-nav-caption">后一篇</strong>
+        <div class="article-nav-title">vue给js加版本号</div>
+      </a>
+    
+  </nav>
+
+
+  
+
+  
+    
+    <div class="gitalk" id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+        <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+            <script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.min.js"></script>
+                <script type="text/javascript">
+                    var gitalk = new Gitalk({
+                        clientID: '64ce5333a42f02cf200d',
+                        clientSecret: '7d37a3d8d3c9e215de06d3078bd1894053368739',
+                        repo: 'wgjh5.github.io',
+                        owner: 'wgjh5',
+                        admin: ['wgjh5'],
+                        // id: location.pathname,      // Ensure uniqueness and length less than 50
+                        id: md5(location.pathname),
+                        distractionFreeMode: true, // Facebook-like distraction free mode
+                        pagerDirection: 'last'
+                    })
+
+                    gitalk.render('gitalk-container')
+                </script>
+                
+  
+
+</article>
+
+
+
+</section>
+                <footer class="footer">
+  <div class="outer">
+    <div class="float-right">
+      <ul class="list-inline">
+  
+    <li><i class="fe fe-smile-alt"></i> <span id="busuanzi_value_site_uv"></span></li>
+  
+</ul>
+    </div>
+    <ul class="list-inline">
+      <li>&copy; 2019 一只正在成长的程序猿</li>
+      <li>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></li>
+      <li>Theme  <a href="https://github.com/zhwangart/hexo-theme-ocean">Ocean</a></li>
+    </ul>
+  </div>
+</footer>
+
+        </main>
+        <aside class="sidebar">
+            <button class="navbar-toggle"></button>
+
+<nav class="navbar">
+  
+    <div class="logo">
+      <a href="/"><img src="/images/shark.svg" alt="一只正在成长的程序猿"></a>
+    </div>
+  
+  <ul class="nav nav-main">
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/">主页</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/archives">归档</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/about">关于</a>
+      </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link nav-item-search" title="搜索">
+        <i class="fe fe-search"></i>
+        搜索
+      </a>
+    </li>
+  </ul>
+</nav>
+
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      <div class="totop" id="totop">
+  <i class="fe fe-rocket"></i>
+</div>
+    </li>
+    <li class="nav-item">
+      
+        <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+          <i class="fe fe-feed"></i>
+        </a>
+      
+    </li>
+  </ul>
+</nav>
+
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+        </aside>
+        <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/lazyload.min.js"></script>
+<script src="/js/snap.svg-min.js"></script>
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+  <script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+  <script src="/js/search.js"></script>
+
+
+<script src="/js/ocean.js"></script>
+
+    </body>
+
+    </html>
